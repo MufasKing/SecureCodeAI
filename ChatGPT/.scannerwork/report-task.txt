@@ -1,0 +1,6 @@
+projectKey=SecureCodeAI_ChatGPT
+serverUrl=http://localhost:9000
+serverVersion=10.6.0.92116
+dashboardUrl=http://localhost:9000/dashboard?id=SecureCodeAI_ChatGPT
+ceTaskId=81edc827-2be9-4414-8b05-a47b274a5aa8
+ceTaskUrl=http://localhost:9000/api/ce/task?id=81edc827-2be9-4414-8b05-a47b274a5aa8
