@@ -317,4 +317,4 @@ def get_temperature_for_location():
 if __name__ == '__main__':
 
 >>>>>>> ba676d116bd92de16bbd8430dcbd7b419c5f8d74
-    app.run(debug=True)
+    app.run(  )
