@@ -140,4 +140,4 @@ if __name__ == '__main__':
 
     create_table()  # Ensure the table exists before running the app
 
-    app.run(debug=True)
+    app.run( )

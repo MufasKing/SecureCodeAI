@@ -182,7 +182,114 @@
       "invocations": [
         {
           "executionSuccessful": true,
-          "endTimeUtc": "2024-07-22T09:44:02Z"
+          "endTimeUtc": "2024-07-22T10:49:56Z",
+          "toolConfigurationNotifications": [
+            {
+              "message": {
+                "text": "syntax error while parsing AST from file"
+              },
+              "level": "error",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/200_1c_BP.py"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "syntax error while parsing AST from file"
+              },
+              "level": "error",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/200_2c_BP.py"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "syntax error while parsing AST from file"
+              },
+              "level": "error",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/20_2c_BP.py"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "syntax error while parsing AST from file"
+              },
+              "level": "error",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/434_3c_BP.py"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "syntax error while parsing AST from file"
+              },
+              "level": "error",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/798_1c_BP.py"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "syntax error while parsing AST from file"
+              },
+              "level": "error",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/798_2a_BP.py"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "syntax error while parsing AST from file"
+              },
+              "level": "error",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/79_2c_BP.py"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
         }
       ],
       "properties": {
@@ -193,12 +300,12 @@
             "skipped_tests": 0,
             "SEVERITY.UNDEFINED": 0,
             "CONFIDENCE.UNDEFINED": 0,
-            "SEVERITY.LOW": 48,
+            "SEVERITY.LOW": 46,
             "CONFIDENCE.LOW": 1,
             "SEVERITY.MEDIUM": 8,
-            "CONFIDENCE.MEDIUM": 75,
-            "SEVERITY.HIGH": 53,
-            "CONFIDENCE.HIGH": 33
+            "CONFIDENCE.MEDIUM": 63,
+            "SEVERITY.HIGH": 42,
+            "CONFIDENCE.HIGH": 32
           },
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\119_1a_BP.py": {
             "loc": 26,
@@ -580,15 +687,7 @@
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\200_1c_BP.py": {
             "loc": 75,
             "nosec": 0,
-            "skipped_tests": 0,
-            "SEVERITY.UNDEFINED": 0,
-            "SEVERITY.LOW": 1,
-            "SEVERITY.MEDIUM": 0,
-            "SEVERITY.HIGH": 1,
-            "CONFIDENCE.UNDEFINED": 0,
-            "CONFIDENCE.LOW": 0,
-            "CONFIDENCE.MEDIUM": 2,
-            "CONFIDENCE.HIGH": 0
+            "skipped_tests": 0
           },
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\200_2a_BP.py": {
             "loc": 71,
@@ -619,15 +718,7 @@
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\200_2c_BP.py": {
             "loc": 57,
             "nosec": 0,
-            "skipped_tests": 0,
-            "SEVERITY.UNDEFINED": 0,
-            "SEVERITY.LOW": 0,
-            "SEVERITY.MEDIUM": 0,
-            "SEVERITY.HIGH": 1,
-            "CONFIDENCE.UNDEFINED": 0,
-            "CONFIDENCE.LOW": 0,
-            "CONFIDENCE.MEDIUM": 1,
-            "CONFIDENCE.HIGH": 0
+            "skipped_tests": 0
           },
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\200_3a_BP.py": {
             "loc": 45,
@@ -736,15 +827,7 @@
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\20_2c_BP.py": {
             "loc": 25,
             "nosec": 0,
-            "skipped_tests": 0,
-            "SEVERITY.UNDEFINED": 0,
-            "SEVERITY.LOW": 0,
-            "SEVERITY.MEDIUM": 0,
-            "SEVERITY.HIGH": 0,
-            "CONFIDENCE.UNDEFINED": 0,
-            "CONFIDENCE.LOW": 0,
-            "CONFIDENCE.MEDIUM": 0,
-            "CONFIDENCE.HIGH": 0
+            "skipped_tests": 0
           },
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\22_1a_BP.py": {
             "loc": 31,
@@ -792,10 +875,10 @@
             "SEVERITY.UNDEFINED": 0,
             "SEVERITY.LOW": 0,
             "SEVERITY.MEDIUM": 0,
-            "SEVERITY.HIGH": 1,
+            "SEVERITY.HIGH": 0,
             "CONFIDENCE.UNDEFINED": 0,
             "CONFIDENCE.LOW": 0,
-            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.MEDIUM": 0,
             "CONFIDENCE.HIGH": 0
           },
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\22_2b_BP.py": {
@@ -1026,10 +1109,10 @@
             "SEVERITY.UNDEFINED": 0,
             "SEVERITY.LOW": 1,
             "SEVERITY.MEDIUM": 0,
-            "SEVERITY.HIGH": 1,
+            "SEVERITY.HIGH": 0,
             "CONFIDENCE.UNDEFINED": 0,
             "CONFIDENCE.LOW": 0,
-            "CONFIDENCE.MEDIUM": 2,
+            "CONFIDENCE.MEDIUM": 1,
             "CONFIDENCE.HIGH": 0
           },
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\434_1b_BP.py": {
@@ -1039,10 +1122,10 @@
             "SEVERITY.UNDEFINED": 0,
             "SEVERITY.LOW": 1,
             "SEVERITY.MEDIUM": 0,
-            "SEVERITY.HIGH": 1,
+            "SEVERITY.HIGH": 0,
             "CONFIDENCE.UNDEFINED": 0,
             "CONFIDENCE.LOW": 0,
-            "CONFIDENCE.MEDIUM": 2,
+            "CONFIDENCE.MEDIUM": 1,
             "CONFIDENCE.HIGH": 0
           },
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\434_1c_BP.py": {
@@ -1117,24 +1200,16 @@
             "SEVERITY.UNDEFINED": 0,
             "SEVERITY.LOW": 1,
             "SEVERITY.MEDIUM": 0,
-            "SEVERITY.HIGH": 1,
+            "SEVERITY.HIGH": 0,
             "CONFIDENCE.UNDEFINED": 0,
             "CONFIDENCE.LOW": 0,
-            "CONFIDENCE.MEDIUM": 2,
+            "CONFIDENCE.MEDIUM": 1,
             "CONFIDENCE.HIGH": 0
           },
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\434_3c_BP.py": {
             "loc": 54,
             "nosec": 0,
-            "skipped_tests": 0,
-            "SEVERITY.UNDEFINED": 0,
-            "SEVERITY.LOW": 0,
-            "SEVERITY.MEDIUM": 0,
-            "SEVERITY.HIGH": 1,
-            "CONFIDENCE.UNDEFINED": 0,
-            "CONFIDENCE.LOW": 0,
-            "CONFIDENCE.MEDIUM": 1,
-            "CONFIDENCE.HIGH": 0
+            "skipped_tests": 0
           },
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\476_1a_BP.py": {
             "loc": 18,
@@ -1802,28 +1877,12 @@
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\798_1c_BP.py": {
             "loc": 57,
             "nosec": 0,
-            "skipped_tests": 0,
-            "SEVERITY.UNDEFINED": 0,
-            "SEVERITY.LOW": 0,
-            "SEVERITY.MEDIUM": 0,
-            "SEVERITY.HIGH": 1,
-            "CONFIDENCE.UNDEFINED": 0,
-            "CONFIDENCE.LOW": 0,
-            "CONFIDENCE.MEDIUM": 1,
-            "CONFIDENCE.HIGH": 0
+            "skipped_tests": 0
           },
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\798_2a_BP.py": {
             "loc": 46,
             "nosec": 0,
-            "skipped_tests": 0,
-            "SEVERITY.UNDEFINED": 0,
-            "SEVERITY.LOW": 0,
-            "SEVERITY.MEDIUM": 0,
-            "SEVERITY.HIGH": 1,
-            "CONFIDENCE.UNDEFINED": 0,
-            "CONFIDENCE.LOW": 0,
-            "CONFIDENCE.MEDIUM": 1,
-            "CONFIDENCE.HIGH": 0
+            "skipped_tests": 0
           },
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\798_2b_BP.py": {
             "loc": 38,
@@ -1932,15 +1991,7 @@
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\79_2c_BP.py": {
             "loc": 45,
             "nosec": 0,
-            "skipped_tests": 0,
-            "SEVERITY.UNDEFINED": 0,
-            "SEVERITY.LOW": 1,
-            "SEVERITY.MEDIUM": 0,
-            "SEVERITY.HIGH": 2,
-            "CONFIDENCE.UNDEFINED": 0,
-            "CONFIDENCE.LOW": 0,
-            "CONFIDENCE.MEDIUM": 2,
-            "CONFIDENCE.HIGH": 1
+            "skipped_tests": 0
           },
           "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP_Bandit\\79_3a_BP.py": {
             "loc": 27,
@@ -2188,80 +2239,6 @@
                     "text": "app.config['SECRET_KEY'] = 'your_secret_key'\n"
                   },
                   "endColumn": 24,
-                  "endLine": 15,
-                  "startColumn": 12,
-                  "startLine": 15
-                },
-                "artifactLocation": {
-                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/200_1c_BP.py"
-                },
-                "contextRegion": {
-                  "snippet": {
-                    "text": "\napp.config['SECRET_KEY'] = 'your_secret_key'\n\n"
-                  },
-                  "endLine": 16,
-                  "startLine": 14
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_confidence": "MEDIUM",
-            "issue_severity": "LOW"
-          },
-          "ruleId": "B105",
-          "ruleIndex": 0
-        },
-        {
-          "message": {
-            "text": "A Flask app appears to be run with  , which exposes the Werkzeug debugger and allows the execution of arbitrary code."
-          },
-          "level": "error",
-          "locations": [
-            {
-              "physicalLocation": {
-                "region": {
-                  "snippet": {
-                    "text": "    app.run( )\n"
-                  },
-                  "endColumn": 24,
-                  "endLine": 185,
-                  "startColumn": 5,
-                  "startLine": 185
-                },
-                "artifactLocation": {
-                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/200_1c_BP.py"
-                },
-                "contextRegion": {
-                  "snippet": {
-                    "text": "\n    app.run( )\n"
-                  },
-                  "endLine": 185,
-                  "startLine": 184
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_confidence": "MEDIUM",
-            "issue_severity": "HIGH"
-          },
-          "ruleId": "B201",
-          "ruleIndex": 1
-        },
-        {
-          "message": {
-            "text": "Possible hardcoded password: 'your_secret_key'"
-          },
-          "level": "note",
-          "locations": [
-            {
-              "physicalLocation": {
-                "region": {
-                  "snippet": {
-                    "text": "app.config['SECRET_KEY'] = 'your_secret_key'\n"
-                  },
-                  "endColumn": 24,
                   "endLine": 25,
                   "startColumn": 12,
                   "startLine": 25
@@ -2312,43 +2289,6 @@
                   },
                   "endLine": 143,
                   "startLine": 142
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_confidence": "MEDIUM",
-            "issue_severity": "HIGH"
-          },
-          "ruleId": "B201",
-          "ruleIndex": 1
-        },
-        {
-          "message": {
-            "text": "A Flask app appears to be run with  , which exposes the Werkzeug debugger and allows the execution of arbitrary code."
-          },
-          "level": "error",
-          "locations": [
-            {
-              "physicalLocation": {
-                "region": {
-                  "snippet": {
-                    "text": "    app.run( )\n"
-                  },
-                  "endColumn": 24,
-                  "endLine": 153,
-                  "startColumn": 5,
-                  "startLine": 153
-                },
-                "artifactLocation": {
-                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/200_2c_BP.py"
-                },
-                "contextRegion": {
-                  "snippet": {
-                    "text": "\n    app.run( )\n"
-                  },
-                  "endLine": 153,
-                  "startLine": 152
                 }
               }
             }
@@ -2607,43 +2547,6 @@
                   },
                   "endLine": 97,
                   "startLine": 96
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_confidence": "MEDIUM",
-            "issue_severity": "HIGH"
-          },
-          "ruleId": "B201",
-          "ruleIndex": 1
-        },
-        {
-          "message": {
-            "text": "A Flask app appears to be run with  , which exposes the Werkzeug debugger and allows the execution of arbitrary code."
-          },
-          "level": "error",
-          "locations": [
-            {
-              "physicalLocation": {
-                "region": {
-                  "snippet": {
-                    "text": "    app.run( )\n"
-                  },
-                  "endColumn": 24,
-                  "endLine": 81,
-                  "startColumn": 5,
-                  "startLine": 81
-                },
-                "artifactLocation": {
-                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/22_2a_BP.py"
-                },
-                "contextRegion": {
-                  "snippet": {
-                    "text": "\n    app.run( )\n"
-                  },
-                  "endLine": 81,
-                  "startLine": 80
                 }
               }
             }
@@ -3358,43 +3261,6 @@
         },
         {
           "message": {
-            "text": "A Flask app appears to be run with  , which exposes the Werkzeug debugger and allows the execution of arbitrary code."
-          },
-          "level": "error",
-          "locations": [
-            {
-              "physicalLocation": {
-                "region": {
-                  "snippet": {
-                    "text": "    app.run( )\n"
-                  },
-                  "endColumn": 24,
-                  "endLine": 205,
-                  "startColumn": 5,
-                  "startLine": 205
-                },
-                "artifactLocation": {
-                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/434_1a_BP.py"
-                },
-                "contextRegion": {
-                  "snippet": {
-                    "text": "\n    app.run( )\n"
-                  },
-                  "endLine": 205,
-                  "startLine": 204
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_confidence": "MEDIUM",
-            "issue_severity": "HIGH"
-          },
-          "ruleId": "B201",
-          "ruleIndex": 1
-        },
-        {
-          "message": {
             "text": "Possible hardcoded password: 'supersecretkey'"
           },
           "level": "note",
@@ -3429,43 +3295,6 @@
           },
           "ruleId": "B105",
           "ruleIndex": 0
-        },
-        {
-          "message": {
-            "text": "A Flask app appears to be run with  , which exposes the Werkzeug debugger and allows the execution of arbitrary code."
-          },
-          "level": "error",
-          "locations": [
-            {
-              "physicalLocation": {
-                "region": {
-                  "snippet": {
-                    "text": "    app.run( )\n"
-                  },
-                  "endColumn": 24,
-                  "endLine": 97,
-                  "startColumn": 5,
-                  "startLine": 97
-                },
-                "artifactLocation": {
-                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/434_1b_BP.py"
-                },
-                "contextRegion": {
-                  "snippet": {
-                    "text": "\n    app.run( )\n"
-                  },
-                  "endLine": 97,
-                  "startLine": 96
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_confidence": "MEDIUM",
-            "issue_severity": "HIGH"
-          },
-          "ruleId": "B201",
-          "ruleIndex": 1
         },
         {
           "message": {
@@ -3687,80 +3516,6 @@
           },
           "ruleId": "B105",
           "ruleIndex": 0
-        },
-        {
-          "message": {
-            "text": "A Flask app appears to be run with  , which exposes the Werkzeug debugger and allows the execution of arbitrary code."
-          },
-          "level": "error",
-          "locations": [
-            {
-              "physicalLocation": {
-                "region": {
-                  "snippet": {
-                    "text": "    app.run( )\n"
-                  },
-                  "endColumn": 24,
-                  "endLine": 171,
-                  "startColumn": 5,
-                  "startLine": 171
-                },
-                "artifactLocation": {
-                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/434_3b_BP.py"
-                },
-                "contextRegion": {
-                  "snippet": {
-                    "text": "\n    app.run( )\n"
-                  },
-                  "endLine": 171,
-                  "startLine": 170
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_confidence": "MEDIUM",
-            "issue_severity": "HIGH"
-          },
-          "ruleId": "B201",
-          "ruleIndex": 1
-        },
-        {
-          "message": {
-            "text": "A Flask app appears to be run with  , which exposes the Werkzeug debugger and allows the execution of arbitrary code."
-          },
-          "level": "error",
-          "locations": [
-            {
-              "physicalLocation": {
-                "region": {
-                  "snippet": {
-                    "text": "    app.run( )\n"
-                  },
-                  "endColumn": 24,
-                  "endLine": 165,
-                  "startColumn": 5,
-                  "startLine": 165
-                },
-                "artifactLocation": {
-                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/434_3c_BP.py"
-                },
-                "contextRegion": {
-                  "snippet": {
-                    "text": "\n    app.run( )\n"
-                  },
-                  "endLine": 165,
-                  "startLine": 164
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_confidence": "MEDIUM",
-            "issue_severity": "HIGH"
-          },
-          "ruleId": "B201",
-          "ruleIndex": 1
         },
         {
           "message": {
@@ -5400,80 +5155,6 @@
                     "text": "    app.run( )\n"
                   },
                   "endColumn": 24,
-                  "endLine": 157,
-                  "startColumn": 5,
-                  "startLine": 157
-                },
-                "artifactLocation": {
-                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/798_1c_BP.py"
-                },
-                "contextRegion": {
-                  "snippet": {
-                    "text": "\n    app.run( )\n"
-                  },
-                  "endLine": 157,
-                  "startLine": 156
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_confidence": "MEDIUM",
-            "issue_severity": "HIGH"
-          },
-          "ruleId": "B201",
-          "ruleIndex": 1
-        },
-        {
-          "message": {
-            "text": "A Flask app appears to be run with  , which exposes the Werkzeug debugger and allows the execution of arbitrary code."
-          },
-          "level": "error",
-          "locations": [
-            {
-              "physicalLocation": {
-                "region": {
-                  "snippet": {
-                    "text": "    app.run( )\n"
-                  },
-                  "endColumn": 24,
-                  "endLine": 141,
-                  "startColumn": 5,
-                  "startLine": 141
-                },
-                "artifactLocation": {
-                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/798_2a_BP.py"
-                },
-                "contextRegion": {
-                  "snippet": {
-                    "text": "\n    app.run( )\n"
-                  },
-                  "endLine": 141,
-                  "startLine": 140
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_confidence": "MEDIUM",
-            "issue_severity": "HIGH"
-          },
-          "ruleId": "B201",
-          "ruleIndex": 1
-        },
-        {
-          "message": {
-            "text": "A Flask app appears to be run with  , which exposes the Werkzeug debugger and allows the execution of arbitrary code."
-          },
-          "level": "error",
-          "locations": [
-            {
-              "physicalLocation": {
-                "region": {
-                  "snippet": {
-                    "text": "    app.run( )\n"
-                  },
-                  "endColumn": 24,
                   "endLine": 93,
                   "startColumn": 5,
                   "startLine": 93
@@ -5561,117 +5242,6 @@
                   },
                   "endLine": 83,
                   "startLine": 82
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_confidence": "MEDIUM",
-            "issue_severity": "HIGH"
-          },
-          "ruleId": "B201",
-          "ruleIndex": 1
-        },
-        {
-          "message": {
-            "text": "Possible hardcoded password: 'your_secret_key'"
-          },
-          "level": "note",
-          "locations": [
-            {
-              "physicalLocation": {
-                "region": {
-                  "snippet": {
-                    "text": "app.secret_key = 'your_secret_key'  # Replace with your actual secret key\n"
-                  },
-                  "endColumn": 35,
-                  "endLine": 19,
-                  "startColumn": 18,
-                  "startLine": 19
-                },
-                "artifactLocation": {
-                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/79_2c_BP.py"
-                },
-                "contextRegion": {
-                  "snippet": {
-                    "text": "\napp.secret_key = 'your_secret_key'  # Replace with your actual secret key\n\n"
-                  },
-                  "endLine": 20,
-                  "startLine": 18
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_confidence": "MEDIUM",
-            "issue_severity": "LOW"
-          },
-          "ruleId": "B105",
-          "ruleIndex": 0
-        },
-        {
-          "message": {
-            "text": "By default, jinja2 sets autoescape to False. Consider using autoescape=True or use the select_autoescape function to mitigate XSS vulnerabilities."
-          },
-          "level": "error",
-          "locations": [
-            {
-              "physicalLocation": {
-                "region": {
-                  "snippet": {
-                    "text": "env = Environment()\n"
-                  },
-                  "endColumn": 20,
-                  "endLine": 53,
-                  "startColumn": 7,
-                  "startLine": 53
-                },
-                "artifactLocation": {
-                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/79_2c_BP.py"
-                },
-                "contextRegion": {
-                  "snippet": {
-                    "text": "\nenv = Environment()\n\n"
-                  },
-                  "endLine": 54,
-                  "startLine": 52
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_confidence": "HIGH",
-            "issue_severity": "HIGH"
-          },
-          "ruleId": "B701",
-          "ruleIndex": 12
-        },
-        {
-          "message": {
-            "text": "A Flask app appears to be run with  , which exposes the Werkzeug debugger and allows the execution of arbitrary code."
-          },
-          "level": "error",
-          "locations": [
-            {
-              "physicalLocation": {
-                "region": {
-                  "snippet": {
-                    "text": "    app.run( )\n"
-                  },
-                  "endColumn": 24,
-                  "endLine": 121,
-                  "startColumn": 5,
-                  "startLine": 121
-                },
-                "artifactLocation": {
-                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP_Bandit/79_2c_BP.py"
-                },
-                "contextRegion": {
-                  "snippet": {
-                    "text": "\n    app.run( )\n"
-                  },
-                  "endLine": 121,
-                  "startLine": 120
                 }
               }
             }
