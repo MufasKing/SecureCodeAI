@@ -18,7 +18,7 @@ def process_jsonl(input_file):
                 # Chiedi all'utente di inserire il nome del file .py
                 filename = input("Inserisci il nome del file .py per il codice corrente: ")
                 if not filename.endswith('.py'):
-                    filename += '.py'
+                    filename += '_BP.py'
                 
                 # Salva il codice in un file .py
                 with open(filename, 'w', encoding='utf-8') as code_file:
