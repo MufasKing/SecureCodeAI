@@ -27,7 +27,7 @@ def process_jsonl(input_file):
 
 if __name__ == "__main__":
     # Chiedi all'utente di inserire il percorso del file JSONL
-    input_file = "SecureGPTCatalogue.jsonl"
+    input_file = "SecurePRCatalogue.jsonl"
     if os.path.exists(input_file):
         process_jsonl(input_file)
     else:
