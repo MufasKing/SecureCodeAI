@@ -1,0 +1,208 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Bandit",
+          "organization": "PyCQA",
+          "rules": [
+            {
+              "id": "B307",
+              "name": "blacklist",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-78"
+                ],
+                "precision": "high"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/blacklists/blacklist_calls.html#b307-eval"
+            }
+          ],
+          "version": "1.7.9",
+          "semanticVersion": "1.7.9"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2024-07-24T16:54:10Z"
+        }
+      ],
+      "properties": {
+        "metrics": {
+          "_totals": {
+            "loc": 245,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "CONFIDENCE.LOW": 0,
+            "SEVERITY.MEDIUM": 1,
+            "CONFIDENCE.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.HIGH": 1
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-502\\502_1a.py": {
+            "loc": 13,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 1,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 1
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-502\\502_1b.py": {
+            "loc": 7,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-502\\502_1c.py": {
+            "loc": 18,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-502\\502_2a.py": {
+            "loc": 33,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-502\\502_2b.py": {
+            "loc": 50,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-502\\502_2c.py": {
+            "loc": 35,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-502\\502_3a.py": {
+            "loc": 32,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-502\\502_3b.py": {
+            "loc": 28,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-502\\502_3c.py": {
+            "loc": 29,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          }
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "Use of possibly insecure function - consider using safer ast.literal_eval."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "        data = eval(payload)  # For security reasons, consider using `json.loads` in production\n"
+                  },
+                  "endColumn": 29,
+                  "endLine": 12,
+                  "startColumn": 16,
+                  "startLine": 12
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT/CWE-502/502_1a.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "        # Load the payload into a dictionary\n        data = eval(payload)  # For security reasons, consider using `json.loads` in production\n        \n"
+                  },
+                  "endLine": 13,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B307",
+          "ruleIndex": 0
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json"
+}

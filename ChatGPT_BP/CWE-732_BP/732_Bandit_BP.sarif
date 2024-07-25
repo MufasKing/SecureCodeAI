@@ -1,0 +1,105 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Bandit",
+          "organization": "PyCQA",
+          "version": "1.7.9",
+          "semanticVersion": "1.7.9"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2024-07-24T16:49:16Z"
+        }
+      ],
+      "properties": {
+        "metrics": {
+          "_totals": {
+            "loc": 102,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "CONFIDENCE.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-732_BP\\732_1a_BP.py": {
+            "loc": 19,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-732_BP\\732_1b_BP.py": {
+            "loc": 21,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-732_BP\\732_2a_BP.py": {
+            "loc": 19,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-732_BP\\732_2b_BP.py": {
+            "loc": 24,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-732_BP\\732_2c_BP.py": {
+            "loc": 19,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          }
+        }
+      },
+      "results": []
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json"
+}

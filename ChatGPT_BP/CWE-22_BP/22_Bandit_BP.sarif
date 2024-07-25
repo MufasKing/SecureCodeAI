@@ -1,0 +1,404 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Bandit",
+          "organization": "PyCQA",
+          "rules": [
+            {
+              "id": "B202",
+              "name": "tarfile_unsafe_members",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-22"
+                ],
+                "precision": "high"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b202_tarfile_unsafe_members.html"
+            },
+            {
+              "id": "B108",
+              "name": "hardcoded_tmp_directory",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-377"
+                ],
+                "precision": "medium"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b108_hardcoded_tmp_directory.html"
+            }
+          ],
+          "version": "1.7.9",
+          "semanticVersion": "1.7.9"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2024-07-24T16:33:38Z"
+        }
+      ],
+      "properties": {
+        "metrics": {
+          "_totals": {
+            "loc": 278,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "CONFIDENCE.LOW": 0,
+            "SEVERITY.MEDIUM": 2,
+            "CONFIDENCE.MEDIUM": 2,
+            "SEVERITY.HIGH": 4,
+            "CONFIDENCE.HIGH": 4
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-22_BP\\22_1a_BP.py": {
+            "loc": 31,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-22_BP\\22_1b_BP.py": {
+            "loc": 22,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-22_BP\\22_1c_BP.py": {
+            "loc": 28,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-22_BP\\22_2a_BP.py": {
+            "loc": 23,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-22_BP\\22_2b_BP.py": {
+            "loc": 22,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-22_BP\\22_2c_BP.py": {
+            "loc": 22,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-22_BP\\22_3a_BP.py": {
+            "loc": 36,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 1,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 1
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-22_BP\\22_3b_BP.py": {
+            "loc": 48,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 1,
+            "SEVERITY.HIGH": 2,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 2
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-22_BP\\22_3c_BP.py": {
+            "loc": 46,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 1
+          }
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "tarfile.extractall used without any validation. Please check and discard dangerous members."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "            tar.extractall(path=extract_to)\n"
+                  },
+                  "endColumn": 44,
+                  "endLine": 51,
+                  "startColumn": 13,
+                  "startLine": 51
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-22_BP/22_3a_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\n            tar.extractall(path=extract_to)\n\n"
+                  },
+                  "endLine": 52,
+                  "startLine": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B202",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Probable insecure usage of temp file/directory."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    extract_to = \"/tmp/unpack\"\n"
+                  },
+                  "endColumn": 31,
+                  "endLine": 69,
+                  "startColumn": 18,
+                  "startLine": 69
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-22_BP/22_3a_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\n    extract_to = \"/tmp/unpack\"\n\n"
+                  },
+                  "endLine": 70,
+                  "startLine": 68
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B108",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "tarfile.extractall used without any validation. Please check and discard dangerous members."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "                archive.extractall(path=extract_to)\n"
+                  },
+                  "endColumn": 52,
+                  "endLine": 31,
+                  "startColumn": 17,
+                  "startLine": 31
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-22_BP/22_3b_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\n                archive.extractall(path=extract_to)\n\n"
+                  },
+                  "endLine": 32,
+                  "startLine": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B202",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "tarfile.extractall used without any validation. Please check and discard dangerous members."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "                archive.extractall(path=extract_to)\n"
+                  },
+                  "endColumn": 52,
+                  "endLine": 37,
+                  "startColumn": 17,
+                  "startLine": 37
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-22_BP/22_3b_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\n                archive.extractall(path=extract_to)\n\n"
+                  },
+                  "endLine": 38,
+                  "startLine": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B202",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Probable insecure usage of temp file/directory."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    extract_to = '/tmp/unpack'\n"
+                  },
+                  "endColumn": 31,
+                  "endLine": 101,
+                  "startColumn": 18,
+                  "startLine": 101
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-22_BP/22_3b_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\n    extract_to = '/tmp/unpack'\n\n"
+                  },
+                  "endLine": 102,
+                  "startLine": 100
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B108",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "tarfile.extractall used without any validation. Please check and discard dangerous members."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    tar.extractall(path)\n"
+                  },
+                  "endColumn": 25,
+                  "endLine": 33,
+                  "startColumn": 5,
+                  "startLine": 33
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-22_BP/22_3c_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\n    tar.extractall(path)\n\n"
+                  },
+                  "endLine": 34,
+                  "startLine": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B202",
+          "ruleIndex": 0
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json"
+}

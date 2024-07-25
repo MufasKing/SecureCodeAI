@@ -1,0 +1,283 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Bandit",
+          "organization": "PyCQA",
+          "rules": [
+            {
+              "id": "B311",
+              "name": "blacklist",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-330"
+                ],
+                "precision": "high"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/blacklists/blacklist_calls.html#b311-random"
+            }
+          ],
+          "version": "1.7.9",
+          "semanticVersion": "1.7.9"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2024-07-24T16:49:34Z"
+        }
+      ],
+      "properties": {
+        "metrics": {
+          "_totals": {
+            "loc": 203,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "SEVERITY.LOW": 3,
+            "CONFIDENCE.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.HIGH": 3
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-787_BP\\787_1a_BP.py": {
+            "loc": 35,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-787_BP\\787_1b_BP.py": {
+            "loc": 19,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-787_BP\\787_1c_BP.py": {
+            "loc": 19,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 3,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 3
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-787_BP\\787_2a_BP.py": {
+            "loc": 27,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-787_BP\\787_2b_BP.py": {
+            "loc": 39,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-787_BP\\787_2c_BP.py": {
+            "loc": 12,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-787_BP\\787_3a_BP.py": {
+            "loc": 16,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-787_BP\\787_3b_BP.py": {
+            "loc": 12,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-787_BP\\787_3c_BP.py": {
+            "loc": 24,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          }
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "random_float1 = random.random() * RAND_MAX\n"
+                  },
+                  "endColumn": 32,
+                  "endLine": 13,
+                  "startColumn": 17,
+                  "startLine": 13
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-787_BP/787_1c_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\nrandom_float1 = random.random() * RAND_MAX\n\n"
+                  },
+                  "endLine": 14,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B311",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "random_float2 = random.random() * RAND_MAX\n"
+                  },
+                  "endColumn": 32,
+                  "endLine": 15,
+                  "startColumn": 17,
+                  "startLine": 15
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-787_BP/787_1c_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\nrandom_float2 = random.random() * RAND_MAX\n\n"
+                  },
+                  "endLine": 16,
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B311",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "random_float3 = random.random() * RAND_MAX\n"
+                  },
+                  "endColumn": 32,
+                  "endLine": 17,
+                  "startColumn": 17,
+                  "startLine": 17
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-787_BP/787_1c_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\nrandom_float3 = random.random() * RAND_MAX\n\n"
+                  },
+                  "endLine": 18,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B311",
+          "ruleIndex": 0
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json"
+}

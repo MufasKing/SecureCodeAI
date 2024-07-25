@@ -1,0 +1,417 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Bandit",
+          "organization": "PyCQA",
+          "rules": [
+            {
+              "id": "B105",
+              "name": "hardcoded_password_string",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-259"
+                ],
+                "precision": "medium"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b105_hardcoded_password_string.html"
+            },
+            {
+              "id": "B104",
+              "name": "hardcoded_bind_all_interfaces",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-605"
+                ],
+                "precision": "medium"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b104_hardcoded_bind_all_interfaces.html"
+            },
+            {
+              "id": "B106",
+              "name": "hardcoded_password_funcarg",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-259"
+                ],
+                "precision": "medium"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b106_hardcoded_password_funcarg.html"
+            }
+          ],
+          "version": "1.7.9",
+          "semanticVersion": "1.7.9"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2024-07-24T16:48:00Z"
+        }
+      ],
+      "properties": {
+        "metrics": {
+          "_totals": {
+            "loc": 521,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "SEVERITY.LOW": 5,
+            "CONFIDENCE.LOW": 0,
+            "SEVERITY.MEDIUM": 1,
+            "CONFIDENCE.MEDIUM": 6,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-434_BP\\434_1a_BP.py": {
+            "loc": 70,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-434_BP\\434_1b_BP.py": {
+            "loc": 37,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-434_BP\\434_1c_BP.py": {
+            "loc": 78,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 1,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-434_BP\\434_2a_BP.py": {
+            "loc": 61,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-434_BP\\434_2b_BP.py": {
+            "loc": 53,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-434_BP\\434_2c_BP.py": {
+            "loc": 55,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-434_BP\\434_3a_BP.py": {
+            "loc": 54,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-434_BP\\434_3b_BP.py": {
+            "loc": 59,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-434_BP\\434_3c_BP.py": {
+            "loc": 54,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          }
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'password'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "DB_PASSWORD = 'password'\n"
+                  },
+                  "endColumn": 25,
+                  "endLine": 27,
+                  "startColumn": 15,
+                  "startLine": 27
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-434_BP/434_1a_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\nDB_PASSWORD = 'password'\n\n"
+                  },
+                  "endLine": 28,
+                  "startLine": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'supersecretkey'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "app.secret_key = 'supersecretkey'  # Required for flash messages\n"
+                  },
+                  "endColumn": 34,
+                  "endLine": 13,
+                  "startColumn": 18,
+                  "startLine": 13
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-434_BP/434_1b_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\napp.secret_key = 'supersecretkey'  # Required for flash messages\n\n"
+                  },
+                  "endLine": 14,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(debug=False, host='0.0.0.0', port=5000)\n"
+                  },
+                  "endColumn": 40,
+                  "endLine": 199,
+                  "startColumn": 31,
+                  "startLine": 199
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-434_BP/434_1c_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\n    app.run(debug=False, host='0.0.0.0', port=5000)\n"
+                  },
+                  "endLine": 199,
+                  "startLine": 198
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B104",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'your_password'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "        connection = mysql.connector.connect(\n"
+                  },
+                  "endColumn": 10,
+                  "endLine": 38,
+                  "startColumn": 22,
+                  "startLine": 37
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-434_BP/434_2a_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\n        connection = mysql.connector.connect(\n\n            host='localhost',\n\n            database='image_db',\n\n            user='your_username',\n\n            password='your_password'\n\n        )\n\n"
+                  },
+                  "endLine": 48,
+                  "startLine": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B106",
+          "ruleIndex": 2
+        },
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'your_secret_key'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "SECRET_KEY = 'your_secret_key'  # Replace with your actual secret key\n"
+                  },
+                  "endColumn": 31,
+                  "endLine": 21,
+                  "startColumn": 14,
+                  "startLine": 21
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-434_BP/434_3a_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\nSECRET_KEY = 'your_secret_key'  # Replace with your actual secret key\n\n"
+                  },
+                  "endLine": 22,
+                  "startLine": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'your_secret_key'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "app.secret_key = 'your_secret_key'\n"
+                  },
+                  "endColumn": 35,
+                  "endLine": 45,
+                  "startColumn": 18,
+                  "startLine": 45
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-434_BP/434_3b_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\napp.secret_key = 'your_secret_key'\n\n"
+                  },
+                  "endLine": 46,
+                  "startLine": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json"
+}

@@ -1,0 +1,20 @@
+CHATGPT:	NO BP					SI BP
+BANDIT	20	0					0
+	22	1					0(4 ma sanificate)
+	78	7					0 +2(ma 'command' sanificato)
+	79	0					0 +CWE-94(jinja2_autoescape_false -> di default è falso, si deve mettere True)
+	89	0+CWE-400				0 +CWE-400(request_without_timeout->si deve settare un timeout quando si fa una richiesta)
+	119	0					0
+	125	0					0
+	190	0+BlackList(random)			0
+	200	0					0
+	306	0					0
+	416	0+CWE-327(Use of weak MD5 hash)		0
+	434	0					0
+	476	0					0
+	502	0+BL(eval)				0
+	522	0+CWE-327				0 +CWE-327
+	732	0					0
+	787	0+BlackList(random)			0+BlackList(random)
+	798	0					0
+	

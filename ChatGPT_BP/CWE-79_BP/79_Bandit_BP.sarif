@@ -1,0 +1,295 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Bandit",
+          "organization": "PyCQA",
+          "rules": [
+            {
+              "id": "B701",
+              "name": "jinja2_autoescape_false",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-94"
+                ],
+                "precision": "high"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b701_jinja2_autoescape_false.html"
+            },
+            {
+              "id": "B105",
+              "name": "hardcoded_password_string",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-259"
+                ],
+                "precision": "medium"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b105_hardcoded_password_string.html"
+            }
+          ],
+          "version": "1.7.9",
+          "semanticVersion": "1.7.9"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2024-07-24T16:45:00Z"
+        }
+      ],
+      "properties": {
+        "metrics": {
+          "_totals": {
+            "loc": 292,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "CONFIDENCE.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "SEVERITY.HIGH": 2,
+            "CONFIDENCE.HIGH": 2
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-79_BP\\79_1a_BP.py": {
+            "loc": 50,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-79_BP\\79_1b_BP.py": {
+            "loc": 39,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-79_BP\\79_1c_BP.py": {
+            "loc": 43,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-79_BP\\79_2a_BP.py": {
+            "loc": 25,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-79_BP\\79_2b_BP.py": {
+            "loc": 27,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 1
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-79_BP\\79_2c_BP.py": {
+            "loc": 45,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 1
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-79_BP\\79_3a_BP.py": {
+            "loc": 27,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-79_BP\\79_3b_BP.py": {
+            "loc": 18,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT_BP\\CWE-79_BP\\79_3c_BP.py": {
+            "loc": 18,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          }
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "By default, jinja2 sets autoescape to False. Consider using autoescape=True or use the select_autoescape function to mitigate XSS vulnerabilities."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "env = Environment()\n"
+                  },
+                  "endColumn": 20,
+                  "endLine": 15,
+                  "startColumn": 7,
+                  "startLine": 15
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-79_BP/79_2b_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\nenv = Environment()\n\n"
+                  },
+                  "endLine": 16,
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B701",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'your_secret_key'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "app.secret_key = 'your_secret_key'  # Replace with your actual secret key\n"
+                  },
+                  "endColumn": 35,
+                  "endLine": 19,
+                  "startColumn": 18,
+                  "startLine": 19
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-79_BP/79_2c_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\napp.secret_key = 'your_secret_key'  # Replace with your actual secret key\n\n"
+                  },
+                  "endLine": 20,
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "By default, jinja2 sets autoescape to False. Consider using autoescape=True or use the select_autoescape function to mitigate XSS vulnerabilities."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "env = Environment()\n"
+                  },
+                  "endColumn": 20,
+                  "endLine": 53,
+                  "startColumn": 7,
+                  "startLine": 53
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT_BP/CWE-79_BP/79_2c_BP.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\nenv = Environment()\n\n"
+                  },
+                  "endLine": 54,
+                  "startLine": 52
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B701",
+          "ruleIndex": 0
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json"
+}

@@ -1,0 +1,294 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Bandit",
+          "organization": "PyCQA",
+          "rules": [
+            {
+              "id": "B105",
+              "name": "hardcoded_password_string",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-259"
+                ],
+                "precision": "medium"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b105_hardcoded_password_string.html"
+            }
+          ],
+          "version": "1.7.9",
+          "semanticVersion": "1.7.9"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2024-07-24T16:52:56Z"
+        }
+      ],
+      "properties": {
+        "metrics": {
+          "_totals": {
+            "loc": 282,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "SEVERITY.LOW": 4,
+            "CONFIDENCE.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "CONFIDENCE.MEDIUM": 4,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-306\\306_1a.py": {
+            "loc": 26,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 2,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 2,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-306\\306_2a.py": {
+            "loc": 50,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-306\\306_2b.py": {
+            "loc": 27,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-306\\306_2c.py": {
+            "loc": 25,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-306\\306_3a.py": {
+            "loc": 81,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-306\\306_3b.py": {
+            "loc": 34,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\ChatGPT\\CWE-306\\306_3c.py": {
+            "loc": 39,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          }
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'supersecretkey'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "app.secret_key = 'supersecretkey'  # This is required to use sessions\n"
+                  },
+                  "endColumn": 34,
+                  "endLine": 4,
+                  "startColumn": 18,
+                  "startLine": 4
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT/CWE-306/306_1a.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "app = Flask(__name__)\napp.secret_key = 'supersecretkey'  # This is required to use sessions\n\n"
+                  },
+                  "endLine": 5,
+                  "startLine": 3
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'pass'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "VALID_PASSWORD = 'pass'\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 8,
+                  "startColumn": 18,
+                  "startLine": 8
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT/CWE-306/306_1a.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "VALID_USERNAME = 'user'\nVALID_PASSWORD = 'pass'\n\n"
+                  },
+                  "endLine": 9,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'your_secret_key'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "app.secret_key = 'your_secret_key'  # You should use a secure, random key in production\n"
+                  },
+                  "endColumn": 35,
+                  "endLine": 4,
+                  "startColumn": 18,
+                  "startLine": 4
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT/CWE-306/306_2a.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "app = Flask(__name__)\napp.secret_key = 'your_secret_key'  # You should use a secure, random key in production\n\n"
+                  },
+                  "endLine": 5,
+                  "startLine": 3
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'your_secret_key'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "app.secret_key = 'your_secret_key'\n"
+                  },
+                  "endColumn": 35,
+                  "endLine": 5,
+                  "startColumn": 18,
+                  "startLine": 5
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/ChatGPT/CWE-306/306_3a.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "app = Flask(__name__)\napp.secret_key = 'your_secret_key'\n\n"
+                  },
+                  "endLine": 6,
+                  "startLine": 4
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json"
+}
