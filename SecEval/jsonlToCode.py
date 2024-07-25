@@ -18,7 +18,7 @@ def process_jsonl(input_file):
                 # Chiedi all'utente di inserire il nome del file .py
                 filename = input("Inserisci il nome del file .py per il codice corrente: ")
                 if not filename.endswith('.py'):
-                    filename += '_BP.py'
+                    filename += '.py'
                 
                 # Salva il codice in un file .py
                 with open(filename, 'w', encoding='utf-8') as code_file:
@@ -27,7 +27,7 @@ def process_jsonl(input_file):
 
 if __name__ == "__main__":
     # Chiedi all'utente di inserire il percorso del file JSONL
-    input_file = "SecurePRCatalogue.jsonl"
+    input_file = "SecEvalDataset.jsonl"
     if os.path.exists(input_file):
         process_jsonl(input_file)
     else:
