@@ -1,0 +1,6 @@
+projectKey=ChatGPT_CWE-200
+serverUrl=http://localhost:9000
+serverVersion=10.6.0.92116
+dashboardUrl=http://localhost:9000/dashboard?id=ChatGPT_CWE-200
+ceTaskId=a78b30b2-8735-472e-ae31-5612e5fb4137
+ceTaskUrl=http://localhost:9000/api/ce/task?id=a78b30b2-8735-472e-ae31-5612e5fb4137

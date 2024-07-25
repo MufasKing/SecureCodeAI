@@ -1,0 +1,6 @@
+projectKey=ChatGPT_CWE-125_BP
+serverUrl=http://localhost:9000
+serverVersion=10.6.0.92116
+dashboardUrl=http://localhost:9000/dashboard?id=ChatGPT_CWE-125_BP
+ceTaskId=4c8895c4-074d-4cfa-bc52-311c96e608ed
+ceTaskUrl=http://localhost:9000/api/ce/task?id=4c8895c4-074d-4cfa-bc52-311c96e608ed

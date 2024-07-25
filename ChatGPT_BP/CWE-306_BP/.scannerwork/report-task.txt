@@ -1,0 +1,6 @@
+projectKey=ChatGPT_CWE-306_BP
+serverUrl=http://localhost:9000
+serverVersion=10.6.0.92116
+dashboardUrl=http://localhost:9000/dashboard?id=ChatGPT_CWE-306_BP
+ceTaskId=c24ec63c-b9c8-4ae5-9402-13118731204e
+ceTaskUrl=http://localhost:9000/api/ce/task?id=c24ec63c-b9c8-4ae5-9402-13118731204e
