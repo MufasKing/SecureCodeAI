@@ -1,0 +1,1009 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Bandit",
+          "organization": "PyCQA",
+          "rules": [
+            {
+              "id": "B605",
+              "name": "start_process_with_a_shell",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-78"
+                ],
+                "precision": "high"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b605_start_process_with_a_shell.html"
+            },
+            {
+              "id": "B404",
+              "name": "blacklist",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-78"
+                ],
+                "precision": "high"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/blacklists/blacklist_imports.html#b404-import-subprocess"
+            },
+            {
+              "id": "B602",
+              "name": "subprocess_popen_with_shell_equals_true",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-78"
+                ],
+                "precision": "high"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b602_subprocess_popen_with_shell_equals_true.html"
+            },
+            {
+              "id": "B607",
+              "name": "start_process_with_partial_path",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-78"
+                ],
+                "precision": "high"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b607_start_process_with_partial_path.html"
+            },
+            {
+              "id": "B603",
+              "name": "subprocess_without_shell_equals_true",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-78"
+                ],
+                "precision": "high"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b603_subprocess_without_shell_equals_true.html"
+            },
+            {
+              "id": "B201",
+              "name": "flask_debug_true",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-94"
+                ],
+                "precision": "medium"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b201_flask_debug_true.html"
+            }
+          ],
+          "version": "1.7.9",
+          "semanticVersion": "1.7.9"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2024-08-05T10:27:06Z"
+        }
+      ],
+      "properties": {
+        "metrics": {
+          "_totals": {
+            "loc": 83,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "SEVERITY.LOW": 13,
+            "CONFIDENCE.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "CONFIDENCE.MEDIUM": 2,
+            "SEVERITY.HIGH": 8,
+            "CONFIDENCE.HIGH": 19
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\GithubCopilot\\CWE-78\\78_1a.py": {
+            "loc": 8,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 2,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 2
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\GithubCopilot\\CWE-78\\78_1b.py": {
+            "loc": 13,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 2
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\GithubCopilot\\CWE-78\\78_1c.py": {
+            "loc": 12,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 3,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 3
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\GithubCopilot\\CWE-78\\78_2a.py": {
+            "loc": 11,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 3,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 3
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\GithubCopilot\\CWE-78\\78_2b.py": {
+            "loc": 10,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 3,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 3
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\GithubCopilot\\CWE-78\\78_2c.py": {
+            "loc": 17,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 3,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 3
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\GithubCopilot\\CWE-78\\78_3a.py": {
+            "loc": 3,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 1
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\GithubCopilot\\CWE-78\\78_3b.py": {
+            "loc": 6,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 1
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\SecureCodeAI\\GithubCopilot\\CWE-78\\78_3c.py": {
+            "loc": 3,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 1
+          }
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "Starting a process with a shell, possible injection detected, security issue."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "os.system(f\"{command} > output_system.txt\")\n"
+                  },
+                  "endColumn": 44,
+                  "endLine": 7,
+                  "startColumn": 1,
+                  "startLine": 7
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_1a.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "# Using os.system()\nos.system(f\"{command} > output_system.txt\")\n\n"
+                  },
+                  "endLine": 8,
+                  "startLine": 6
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B605",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Starting a process with a shell, possible injection detected, security issue."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "with os.popen(command) as process:\n"
+                  },
+                  "endColumn": 23,
+                  "endLine": 10,
+                  "startColumn": 6,
+                  "startLine": 10
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_1a.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "# Using os.popen()\nwith os.popen(command) as process:\n    output = process.read()\n"
+                  },
+                  "endLine": 11,
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B605",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Consider possible security implications associated with the subprocess module."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "import subprocess\n"
+                  },
+                  "endColumn": 18,
+                  "endLine": 1,
+                  "startColumn": 1,
+                  "startLine": 1
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_1b.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "import subprocess\nimport sys\n\n"
+                  },
+                  "endLine": 3,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B404",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "subprocess call with shell=True identified, security issue."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    result = subprocess.run(command, shell=True, capture_output=True, text=True)\n"
+                  },
+                  "endColumn": 81,
+                  "endLine": 5,
+                  "startColumn": 14,
+                  "startLine": 5
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_1b.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "def execute_command(command):\n    result = subprocess.run(command, shell=True, capture_output=True, text=True)\n    return result.stdout\n"
+                  },
+                  "endLine": 6,
+                  "startLine": 4
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B602",
+          "ruleIndex": 2
+        },
+        {
+          "message": {
+            "text": "Consider possible security implications associated with the subprocess module."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "import subprocess\n"
+                  },
+                  "endColumn": 18,
+                  "endLine": 1,
+                  "startColumn": 1,
+                  "startLine": 1
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_1c.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "import subprocess\nimport sys\n\n"
+                  },
+                  "endLine": 3,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B404",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Starting a process with a partial executable path"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    result = subprocess.run(['id', username], capture_output=True)\n"
+                  },
+                  "endColumn": 67,
+                  "endLine": 5,
+                  "startColumn": 14,
+                  "startLine": 5
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_1c.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "def run_id_command(username):\n    result = subprocess.run(['id', username], capture_output=True)\n    return result.returncode\n"
+                  },
+                  "endLine": 6,
+                  "startLine": 4
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B607",
+          "ruleIndex": 3
+        },
+        {
+          "message": {
+            "text": "subprocess call - check for execution of untrusted input."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    result = subprocess.run(['id', username], capture_output=True)\n"
+                  },
+                  "endColumn": 67,
+                  "endLine": 5,
+                  "startColumn": 14,
+                  "startLine": 5
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_1c.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "def run_id_command(username):\n    result = subprocess.run(['id', username], capture_output=True)\n    return result.returncode\n"
+                  },
+                  "endLine": 6,
+                  "startLine": 4
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B603",
+          "ruleIndex": 4
+        },
+        {
+          "message": {
+            "text": "Consider possible security implications associated with the subprocess module."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "import subprocess\n"
+                  },
+                  "endColumn": 18,
+                  "endLine": 2,
+                  "startColumn": 1,
+                  "startLine": 2
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_2a.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "from flask import Flask, request\nimport subprocess\n\n"
+                  },
+                  "endLine": 3,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B404",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Starting a process with a partial executable path"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    result = subprocess.run(['ping', '-c', '4', url], capture_output=True, text=True)\n"
+                  },
+                  "endColumn": 86,
+                  "endLine": 12,
+                  "startColumn": 14,
+                  "startLine": 12
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_2a.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    # Run the ping command\n    result = subprocess.run(['ping', '-c', '4', url], capture_output=True, text=True)\n    \n"
+                  },
+                  "endLine": 13,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B607",
+          "ruleIndex": 3
+        },
+        {
+          "message": {
+            "text": "subprocess call - check for execution of untrusted input."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    result = subprocess.run(['ping', '-c', '4', url], capture_output=True, text=True)\n"
+                  },
+                  "endColumn": 86,
+                  "endLine": 12,
+                  "startColumn": 14,
+                  "startLine": 12
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_2a.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    # Run the ping command\n    result = subprocess.run(['ping', '-c', '4', url], capture_output=True, text=True)\n    \n"
+                  },
+                  "endLine": 13,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B603",
+          "ruleIndex": 4
+        },
+        {
+          "message": {
+            "text": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(debug=True)\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 21,
+                  "startColumn": 5,
+                  "startLine": 21
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_2a.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "if __name__ == '__main__':\n    app.run(debug=True)\n"
+                  },
+                  "endLine": 21,
+                  "startLine": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B201",
+          "ruleIndex": 5
+        },
+        {
+          "message": {
+            "text": "Consider possible security implications associated with the subprocess module."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "import subprocess\n"
+                  },
+                  "endColumn": 18,
+                  "endLine": 1,
+                  "startColumn": 1,
+                  "startLine": 1
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_2b.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "import subprocess\nfrom flask import Flask, jsonify\n\n"
+                  },
+                  "endLine": 3,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B404",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Starting a process with a partial executable path"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    result = subprocess.run(['ping', '-c', '4', url], stdout=subprocess.PIPE, text=True)\n"
+                  },
+                  "endColumn": 89,
+                  "endLine": 13,
+                  "startColumn": 14,
+                  "startLine": 13
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_2b.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    # Run the system command 'ping'\n    result = subprocess.run(['ping', '-c', '4', url], stdout=subprocess.PIPE, text=True)\n    # Return the result to the browser\n"
+                  },
+                  "endLine": 14,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B607",
+          "ruleIndex": 3
+        },
+        {
+          "message": {
+            "text": "subprocess call - check for execution of untrusted input."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    result = subprocess.run(['ping', '-c', '4', url], stdout=subprocess.PIPE, text=True)\n"
+                  },
+                  "endColumn": 89,
+                  "endLine": 13,
+                  "startColumn": 14,
+                  "startLine": 13
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_2b.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    # Run the system command 'ping'\n    result = subprocess.run(['ping', '-c', '4', url], stdout=subprocess.PIPE, text=True)\n    # Return the result to the browser\n"
+                  },
+                  "endLine": 14,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B603",
+          "ruleIndex": 4
+        },
+        {
+          "message": {
+            "text": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(debug=True)\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 18,
+                  "startColumn": 5,
+                  "startLine": 18
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_2b.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "if __name__ == '__main__':\n    app.run(debug=True)\n"
+                  },
+                  "endLine": 18,
+                  "startLine": 17
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B201",
+          "ruleIndex": 5
+        },
+        {
+          "message": {
+            "text": "Consider possible security implications associated with the subprocess module."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "import subprocess\n"
+                  },
+                  "endColumn": 18,
+                  "endLine": 1,
+                  "startColumn": 1,
+                  "startLine": 1
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_2c.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "import subprocess\n\n# URL to be pinged\n"
+                  },
+                  "endLine": 3,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B404",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Starting a process with a partial executable path"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    result = subprocess.run([\"ping\", \"-c\", \"1\", url], capture_output=True, text=True)\n"
+                  },
+                  "endColumn": 86,
+                  "endLine": 17,
+                  "startColumn": 14,
+                  "startLine": 17
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_2c.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    # Run the ping command\n    result = subprocess.run([\"ping\", \"-c\", \"1\", url], capture_output=True, text=True)\n    pong = result.stdout\n"
+                  },
+                  "endLine": 18,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B607",
+          "ruleIndex": 3
+        },
+        {
+          "message": {
+            "text": "subprocess call - check for execution of untrusted input."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    result = subprocess.run([\"ping\", \"-c\", \"1\", url], capture_output=True, text=True)\n"
+                  },
+                  "endColumn": 86,
+                  "endLine": 17,
+                  "startColumn": 14,
+                  "startLine": 17
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_2c.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    # Run the ping command\n    result = subprocess.run([\"ping\", \"-c\", \"1\", url], capture_output=True, text=True)\n    pong = result.stdout\n"
+                  },
+                  "endLine": 18,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B603",
+          "ruleIndex": 4
+        },
+        {
+          "message": {
+            "text": "Starting a process with a shell, possible injection detected, security issue."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "os.system(command)\n"
+                  },
+                  "endColumn": 19,
+                  "endLine": 7,
+                  "startColumn": 1,
+                  "startLine": 7
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_3a.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "# Execute the command using the os.system function\nos.system(command)\n"
+                  },
+                  "endLine": 7,
+                  "startLine": 6
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B605",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Starting a process with a shell, possible injection detected, security issue."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    os.system(command)\n"
+                  },
+                  "endColumn": 23,
+                  "endLine": 4,
+                  "startColumn": 5,
+                  "startLine": 4
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_3b.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "def execute_command(command):\n    os.system(command)\n\n"
+                  },
+                  "endLine": 5,
+                  "startLine": 3
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B605",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Starting a process with a shell, possible injection detected, security issue."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "os.system(command)\n"
+                  },
+                  "endColumn": 19,
+                  "endLine": 5,
+                  "startColumn": 1,
+                  "startLine": 5
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/SecureCodeAI/GithubCopilot/CWE-78/78_3c.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "command = \"ls\"\nos.system(command)\n"
+                  },
+                  "endLine": 5,
+                  "startLine": 4
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B605",
+          "ruleIndex": 0
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json"
+}

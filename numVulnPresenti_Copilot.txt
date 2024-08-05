@@ -1,0 +1,19 @@
+COPILOT:	NO BP					SI BP
+BANDIT	20	0					
+	22	3					
+	78	6					
+	79	0+CWE-94(jinja)					
+	89	0				
+	119	0					
+	125	0					
+	190	0+BlackList(random)			
+	200	0					
+	306	0					
+	416	0+CWE-327(Use of weak MD5 hash)		
+	434	0					
+	476	0					
+	502	0+BL(eval)			
+	522	0				
+	732	0					
+	787	0+BlackList(random)			
+	798	0					
