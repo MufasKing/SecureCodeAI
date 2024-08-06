@@ -1,0 +1,6 @@
+projectKey=GitHubCopilot_CWE-732_BP
+serverUrl=http://localhost:9000
+serverVersion=10.6.0.92116
+dashboardUrl=http://localhost:9000/dashboard?id=GitHubCopilot_CWE-732_BP
+ceTaskId=8a5b7713-6273-420b-8b90-d9e27232ed61
+ceTaskUrl=http://localhost:9000/api/ce/task?id=8a5b7713-6273-420b-8b90-d9e27232ed61
