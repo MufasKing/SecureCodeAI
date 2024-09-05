@@ -1,0 +1,19 @@
+CHATGPT:	NO BP						SI BP
+CODEQL	20	2(incomp-url-substr-sanit)			0
+	22	4+CWE-200(stack trace exposure)			0
+	78	0+CWE-200(stack trace exposure)			0 (2 ma input sanificato)
+	79	0						0	
+	89	0						0
+	119	0						0
+	125	0						0
+	190	0						0
+	200	0+CWE-327(Use of weak SHA256 hash)		0
+	306	0+CWE-327(Use of weak SHA256 hash)		0
+	416	0						0+CWE-327(Use of weak MD5 hash)		
+	434	0+CWE-22(path inj)+CWE-74(reflective-xss)	0
+	476	0						0
+	502	0+CWE-200(stk exp)+2CWE-74(refl-xss e code inj)	0
+	522	0+CWE-327(Use of weak MD5 and SHA256 hash)	0
+	732	1(overly-permissive-file)			0
+	787	0						0
+	798	0						0+CWE-327(Use of weak MD5 hash)	
