@@ -1,0 +1,19 @@
+COPILOT:	NO BP							SI BP
+CODEQL	20	2(incomp-url-substr-sanit)+4CWE-601(url-redir)		1(inc-url..)+3CWE-601(url-redir)
+	22	3(path-inj)						1(path-inj)
+	78	0							0
+	79	0+CWE-74(jinja2)					0+CWE-200(stack trace exposure)
+	89	0							0
+	119	0							0
+	125	0							0
+	190	0							0
+	200	0							0
+	306	0+CWE-74(reflective-xss)				0
+	416	0							0		
+	434	0+4CWE-22(path inj)+4CWE-601(url-redir)			0+7CWE-601(url-redir)+2+CWE-200(stk exp)
+	476	0							0
+	502	0+CWE-200(stk exp)+2CWE-74(code inj)			0(1 ma usa yaml safeLoader)+7CWE-200(stk exp)+1CWE-116(log inj)
+	522	0+warning:CWE-327(weak sensitive data hashing)		0+CWE-200(stack trace exposure perchè dopo exception e uso "error: str(e)")
+	732	0							0
+	787	0							0
+	798	0							0+warning:CWE-327(weak sensitive data hashing)+CWE-200(stack trace exposure come sopra)
