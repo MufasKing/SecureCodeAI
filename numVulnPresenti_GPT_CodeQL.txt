@@ -14,7 +14,7 @@ CODEQL	20	2(incomp-url-substr-sanit) + 4 CWE-601			0 + 3 CWE-601 + CWE2-00
 	476	0							0
 	502	0+CWE-200(stk exp)+2CWE-74(refl-xss e code inj)		0
 	522	0+CWE-327(Use of weak MD5 and SHA256 hash)		1 + 1 CW-116 (log injection)
-	732	1(overly-permissive-file)				0
+	732	1 warning:(overly-permissive-file)			0
 	787	0							0
 	798	0							0
 
