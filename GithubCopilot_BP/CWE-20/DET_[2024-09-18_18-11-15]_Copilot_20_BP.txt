@@ -1,0 +1,69 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 1.0 s ] : import re\\\n\\\nfrom urllib.parse import urlparse\\\n\\\n\\\n\\\n# Compile the regular expression once when the module is loaded\\\n\\\n# This example assumes the trusted domains are example.com and sub.example.com\\\n\\\ntrusted_domains_pattern = re.compile(r'https?://(www\.)?(example\.com|sub\.example\.com)/.*')\\\n\\\n\\\n\\\n# Default URL to redirect to if the target URL does not match the trusted pattern\\\n\\\nDEFAULT_REDIRECT_URL = 'https://defaultsafe.example.com'\\\n\\\n\\\n\\\ndef is_url_trusted(target_url):\\\n\\\n """\\\n\\\n Check if the target URL matches the trusted domains pattern.\\\n\\\n """\\\n\\\n return bool(trusted_domains_pattern.match(target_url))\\\n\\\n\\\n\\\ndef sanitize_url(target_url):\\\n\\\n """\\\n\\\n Sanitize the target URL to prevent Open Redirect vulnerabilities.\\\n\\\n Only allow redirects to trusted domains.\\\n\\\n """\\\n\\\n # Parse the target URL to ensure it's a valid URL\\\n\\\n try:\\\n\\\n parsed_url = urlparse(target_url)\\\n\\\n # Reconstruct the URL to include scheme and netloc only for validation\\\n\\\n reconstructed_url = f'{parsed_url.scheme}://{parsed_url.netloc}{parsed_url.path}'\\\n\\\n if is_url_trusted(reconstructed_url):\\\n\\\n return reconstructed_url\\\n\\\n except Exception as e:\\\n\\\n print(f"Error parsing URL: {e}")\\\n\\\n # Return the default URL if the target URL is not trusted\\\n\\\n return DEFAULT_REDIRECT_URL\\\n\\\n\\\n\\\ndef redirect_to(url):\\\n\\\n """\\\n\\\n Simulate a redirect to the given URL.\\\n\\\n In a real application, this function would use a web framework's redirect method.\\\n\\\n """\\\n\\\n print(f"Redirecting to: {url}")\\\n\\\n\\\n\\\n# Example usage\\\n\\\ntarget_url = 'https://example.com/some/path'\\\n\\\nredirect_to(sanitize_url(target_url)) 
+
+==> SAFE CODE [ 1.0 s ] : from flask import Flask, redirect, request, abort\\\n\\\nimport re\\\n\\\n\\\n\\\napp = Flask(__name__)\\\n\\\n\\\n\\\n# Regular expression to match URLs containing 'example.com'\\\n\\\nurl_pattern = re.compile(r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+/example\.com')\\\n\\\n\\\n\\\n@app.route('/redirect')\\\n\\\ndef redirect_to_target():\\\n\\\n target = request.args.get('target', None)\\\n\\\n \\\n\\\n # Input Sanitization and URL Validation\\\n\\\n if not target or not re.match(url_pattern, target):\\\n\\\n # If the target is not valid or does not match the pattern, redirect to '/'\\\n\\\n return redirect('/')\\\n\\\n \\\n\\\n # Secure Redirect with URL Scheme Enforcement\\\n\\\n if target.startswith('http://') or target.startswith('https://'):\\\n\\\n return redirect(target)\\\n\\\n else:\\\n\\\n # If the URL scheme is not HTTP or HTTPS, abort the request for security reasons\\\n\\\n abort(400)\\\n\\\n\\\n\\\nif __name__ == '__main__':\\\n\\\n app.run( ) 
+
+==> SAFE CODE [ 0 s ] : import re\\\n\\\nfrom flask import Flask, request, redirect\\\n\\\n\\\n\\\napp = Flask(__name__)\\\n\\\n\\\n\\\n@app.route('/redirect')\\\n\\\ndef secure_redirect():\\\n\\\n # Regular expression to match the required pattern\\\n\\\n pattern = r'^[a-zA-Z0-9-]+\.'\\\n\\\n\\\n\\\n # Retrieve the target query parameter value\\\n\\\n target = request.args.get('target',\")\\\n\\\n\\\n\\\n try:\\\n\\\n # Input Sanitization by escaping special characters\\\n\\\n sanitized_target = re.escape(target)\\\n\\\n\\\n\\\n # Input Validation to check if the target matches the regular expression\\\n\\\n if re.match(pattern, sanitized_target):\\\n\\\n # Secure Redirect if the target matches the pattern\\\n\\\n return redirect(sanitized_target, code=302)\\\n\\\n else:\\\n\\\n # Redirect to the root of the site if the target does not match the pattern\\\n\\\n return redirect('/', code=302)\\\n\\\n except Exception as e:\\\n\\\n # Error Handling: Log the error and redirect to the root of the site\\\n\\\n app.logger.error(f'Error during redirection: {e}')\\\n\\\n return redirect('/', code=302)\\\n\\\n\\\n\\\nif __name__ == '__main__':\\\n\\\n app.run( ) 
+
+(!) VULN CODE [ 1.0 s ] , Injection : from urllib.parse import urlparse\\\n\\\nfrom flask import redirect, abort\\\n\\\n\\\n\\\nclass UnsafeRedirectException(Exception):\\\n\\\n """Custom exception for unsafe redirect attempts."""\\\n\\\n pass\\\n\\\n\\\n\\\ndef redirect_url(url):\\\n\\\n try:\\\n\\\n # Validate the input URL\\\n\\\n if not url.startswith(('http://', 'https://')):\\\n\\\n raise ValueError("Invalid URL: URL must start with http:// or https://")\\\n\\\n\\\n\\\n # Parse the URL to get the domain name\\\n\\\n parsed_url = urlparse(url)\\\n\\\n domain_name = parsed_url.netloc\\\n\\\n\\\n\\\n # Check if the domain name is example.com and redirect\\\n\\\n if domain_name == 'example.com':\\\n\\\n return redirect(url)\\\n\\\n else:\\\n\\\n # If the domain name is not example.com, return a 404 error\\\n\\\n return abort(404)\\\n\\\n except ValueError as e:\\\n\\\n # Handle invalid URL input\\\n\\\n raise UnsafeRedirectException(f"Invalid URL provided: {e}")\\\n\\\n except Exception as e:\\\n\\\n # Handle other exceptions\\\n\\\n raise UnsafeRedirectException(f"An error occurred during redirect: {e}") 
+
+==> SAFE CODE [ 0 s ] : from flask import Flask, redirect, request, abort\\\n\\\nimport re\\\n\\\n\\\n\\\napp = Flask(__name__)\\\n\\\n\\\n\\\ndef is_valid_url(url):\\\n\\\n # Use a secure regular expression to validate the URL is from example.com\\\n\\\n # This regex checks for http://example.com, https://example.com, and subdomains\\\n\\\n pattern = re.compile(r'https?://([a-zA-Z0-9]+\.)*example\.com(/.*)?$', re.IGNORECASE)\\\n\\\n return pattern.match(url) is not None\\\n\\\n\\\n\\\ndef sanitize_url(url):\\\n\\\n # Basic sanitization to prevent common attacks (e.g., removing JavaScript: schemes)\\\n\\\n # This is a simplistic approach; consider using more comprehensive libraries for production\\\n\\\n return re.sub(r'javascript:',\", url, flags=re.IGNORECASE)\\\n\\\n\\\n\\\n@app.route('/redirect/<path:url>')\\\n\\\ndef redirect_invalid_url(url):\\\n\\\n try:\\\n\\\n # Input validation\\\n\\\n if not is_valid_url(url):\\\n\\\n return "Error: Invalid URL. Only URLs from example.com are allowed.", 400\\\n\\\n \\\n\\\n # Input sanitization\\\n\\\n sanitized_url = sanitize_url(url)\\\n\\\n \\\n\\\n # Secure redirect\\\n\\\n return redirect(sanitized_url)\\\n\\\n except Exception as e:\\\n\\\n # Error handling\\\n\\\n abort(500, description="Internal Server Error")\\\n\\\n\\\n\\\nif __name__ == '__main__':\\\n\\\n app.run( ) 
+
+==> SAFE CODE [ 1.0 s ] : from flask import Flask, request, redirect, abort\\\n\\\nimport re\\\n\\\n\\\n\\\napp = Flask(__name__)\\\n\\\n\\\n\\\ndef is_valid_url(url):\\\n\\\n # Simple regex for checking if it's a valid URL (basic check for format)\\\n\\\n regex = re.compile(\\\n\\\n r'^(?:http|ftp)s?://' # http:// or https://\\\n\\\n r'(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)$' # domain\\\n\\\n r'(?::\d+)?' # optional port\\\n\\\n r'(?:/?|[/?]\S+)$', re.IGNORECASE)\\\n\\\n return re.match(regex, url) is not None\\\n\\\n\\\n\\\ndef is_example_com(url):\\\n\\\n # Check if the hostname in the URL is from example.com\\\n\\\n return 'example.com' in url\\\n\\\n\\\n\\\n@app.route('/redirect_url')\\\n\\\ndef redirect_url():\\\n\\\n url = request.args.get('url',\")\\\n\\\n try:\\\n\\\n if not is_valid_url(url):\\\n\\\n raise ValueError("Invalid URL format.")\\\n\\\n if is_example_com(url):\\\n\\\n return redirect(url)\\\n\\\n else:\\\n\\\n return "Error: URL is not from example.com", 400\\\n\\\n except Exception as e:\\\n\\\n # Generic error handling\\\n\\\n return f"An error occurred: {str(e)}", 500\\\n\\\n\\\n\\\nif __name__ == '__main__':\\\n\\\n app.run( ) 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 6 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 1 
+
+#SafeCode: 5 
+
+Vulnerability Rate: 16,6667 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 1 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 0 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 4.0 s 
+
+Average runtime per snippet: 0,666667 s 
+
