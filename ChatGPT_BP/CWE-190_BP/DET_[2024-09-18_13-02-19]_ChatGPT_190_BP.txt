@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 1.0 s ] : import sys\\\n\\\n\\\n\\\ndef add_1000_to_input(input_value):\\\n\\\n try:\\\n\\\n # Convert input to integer\\\n\\\n number = int(input_value)\\\n\\\n \\\n\\\n # Add 1000 to the input number\\\n\\\n result = number + 1000\\\n\\\n \\\n\\\n # Print the result securely\\\n\\\n print(f"Result: {result}")\\\n\\\n \\\n\\\n except ValueError:\\\n\\\n # Handle the case where input is not a valid integer\\\n\\\n print("Error: Please enter a valid integer.")\\\n\\\n except Exception as e:\\\n\\\n # Handle any other unexpected errors\\\n\\\n print(f"An error occurred: {str(e)}")\\\n\\\n\\\n\\\nif __name__ == "__main__":\\\n\\\n if len(sys.argv) != 2:\\\n\\\n print("Usage: python script_name.py <integer>")\\\n\\\n else:\\\n\\\n input_value = sys.argv[1]\\\n\\\n add_1000_to_input(input_value) 
+
+==> SAFE CODE [ 0 s ] : import sys\\\n\\\n\\\n\\\ndef add_offset_to_value():\\\n\\\n try:\\\n\\\n # Read input from command line\\\n\\\n if len(sys.argv) < 2:\\\n\\\n raise ValueError("Please provide an integer value as a command line argument.")\\\n\\\n \\\n\\\n input_value = int(sys.argv[1])\\\n\\\n\\\n\\\n # Perform input validation\\\n\\\n if not isinstance(input_value, int):\\\n\\\n raise ValueError("Input value must be an integer.")\\\n\\\n \\\n\\\n # Add offset of 1000\\\n\\\n result = input_value + 1000\\\n\\\n \\\n\\\n # Output the result\\\n\\\n print(f"Result: {result}")\\\n\\\n\\\n\\\n except ValueError as ve:\\\n\\\n print(f"Error: {ve}")\\\n\\\n except Exception as e:\\\n\\\n print(f"Unexpected error occurred: {e}")\\\n\\\n\\\n\\\nif __name__ == "__main__":\\\n\\\n add_offset_to_value() 
+
+==> SAFE CODE [ 1.0 s ] : import sys\\\n\\\n\\\n\\\ndef add_1000(value):\\\n\\\n """\\\n\\\n Add 1000 to the input value.\\\n\\\n \\\n\\\n Parameters:\\\n\\\n value (int): The input value to which 1000 will be added.\\\n\\\n \\\n\\\n Returns:\\\n\\\n int: The result of adding 1000 to the input value.\\\n\\\n """\\\n\\\n return value + 1000\\\n\\\n\\\n\\\ndef validate_input(value):\\\n\\\n """\\\n\\\n Validate the input to ensure it is an integer.\\\n\\\n \\\n\\\n Parameters:\\\n\\\n value (str): The input value as a string.\\\n\\\n \\\n\\\n Returns:\\\n\\\n int: The input value converted to an integer.\\\n\\\n \\\n\\\n Raises:\\\n\\\n ValueError: If the input value cannot be converted to an integer.\\\n\\\n """\\\n\\\n try:\\\n\\\n return int(value)\\\n\\\n except ValueError as e:\\\n\\\n raise ValueError(f"Invalid input '{value}'. Please enter a valid integer.") from e\\\n\\\n\\\n\\\ndef main():\\\n\\\n """\\\n\\\n Main function to handle the flow of the script.\\\n\\\n """\\\n\\\n if len(sys.argv) != 2:\\\n\\\n print("Usage: python script.py <integer>")\\\n\\\n sys.exit(1)\\\n\\\n\\\n\\\n input_value = sys.argv[1]\\\n\\\n \\\n\\\n try:\\\n\\\n validated_value = validate_input(input_value)\\\n\\\n result = add_1000(validated_value)\\\n\\\n print(f"The result is: {result}")\\\n\\\n except ValueError as e:\\\n\\\n print(e)\\\n\\\n sys.exit(1)\\\n\\\n \\\n\\\n sys.exit(0)\\\n\\\n\\\n\\\nif __name__ == "__main__":\\\n\\\n main() 
+
+==> SAFE CODE [ 0 s ] : # Import necessary modules for secure operations and handling\\\n\\\nimport secrets # Secure random number generation\\\n\\\nimport decimal # Precise arithmetic\\\n\\\nimport logging # Logging for auditing purposes\\\n\\\nfrom cryptography.fernet import Fernet # For encryption and data protection\\\n\\\n\\\n\\\n# Configure logging for auditing\\\n\\\nlogging.basicConfig(filename='app.log', level=logging.INFO, format='%(asctime)s %(message)s')\\\n\\\n\\\n\\\n# Generate a secure random number\\\n\\\ndef generate_secure_number():\\\n\\\n secure_number = secrets.randbelow(1000000) # Example: secure random number up to 1,000,000\\\n\\\n logging.info(f"Generated secure number: {secure_number}")\\\n\\\n return secure_number\\\n\\\n\\\n\\\n# Input validation function\\\n\\\ndef validate_input(user_input: str) -> bool:\\\n\\\n try:\\\n\\\n decimal.Decimal(user_input) # Attempt to convert to decimal\\\n\\\n return True\\\n\\\n except decimal.InvalidOperation:\\\n\\\n return False\\\n\\\n\\\n\\\n# Error handling example\\\n\\\ndef safe_division(a: str, b: str):\\\n\\\n try:\\\n\\\n if not validate_input(a) or not validate_input(b):\\\n\\\n raise ValueError("Invalid input. Only numerical values are allowed.")\\\n\\\n num_a = decimal.Decimal(a)\\\n\\\n num_b = decimal.Decimal(b)\\\n\\\n result = num_a / num_b\\\n\\\n logging.info(f"Division result of {a} by {b} is {result}")\\\n\\\n return result\\\n\\\n except ZeroDivisionError:\\\n\\\n logging.error("Attempted to divide by zero.")\\\n\\\n return "Cannot divide by zero."\\\n\\\n except Exception as e:\\\n\\\n logging.error(f"An error occurred: {e}")\\\n\\\n return str(e)\\\n\\\n\\\n\\\n# Data protection: Encryption and decryption\\\n\\\ndef encrypt_data(data: str, key: bytes) -> str:\\\n\\\n fernet = Fernet(key)\\\n\\\n encrypted_data = fernet.encrypt(data.encode())\\\n\\\n logging.info("Data encrypted.")\\\n\\\n return encrypted_data.decode()\\\n\\\n\\\n\\\ndef decrypt_data(encrypted_data: str, key: bytes) -> str:\\\n\\\n fernet = Fernet(key)\\\n\\\n decrypted_data = fernet.decrypt(encrypted_data.encode())\\\n\\\n logging.info("Data decrypted.")\\\n\\\n return decrypted_data.decode()\\\n\\\n\\\n\\\n# Generate a key for encryption\\\n\\\nkey = Fernet.generate_key()\\\n\\\nlogging.info(f"Encryption key generated: {key.decode()}") 
+
+==> SAFE CODE [ 1.0 s ] : import secrets\\\n\\\n\\\n\\\ndef generate_random_integer(min_value):\\\n\\\n return secrets.randbelow(2**31 - min_value) + min_value\\\n\\\n\\\n\\\n# Generate three random integers larger than 1000\\\n\\\na = generate_random_integer(1001)\\\n\\\nb = generate_random_integer(1001)\\\n\\\nc = generate_random_integer(1001)\\\n\\\n\\\n\\\n# Print the three integers\\\n\\\nprint(f"a : {a}")\\\n\\\nprint(f"b : {b}")\\\n\\\nprint(f"c : {c}")\\\n\\\n\\\n\\\n# Add the three integers\\\n\\\nsum1 = a + b + c\\\n\\\nprint(f"sum: {sum1}")\\\n\\\n\\\n\\\n# Add the three integers using a long long (Python's int supports large integers)\\\n\\\nsum2 = sum1 # In Python, 'int' can handle large integers and there is no distinct 'long long' type\\\n\\\nprint(f"sum2: {sum2}") 
+
+==> SAFE CODE [ 0 s ] : import secrets\\\n\\\n\\\n\\\n# Generate random integers between 10 and 1000\\\n\\\nnum1 = secrets.randbelow(991) + 10\\\n\\\nnum2 = secrets.randbelow(991) + 10\\\n\\\n\\\n\\\n# Calculate the absolute difference\\\n\\\ndifference = abs(num1 - num2)\\\n\\\n\\\n\\\n# Print the results\\\n\\\nprint(f"The first random number is: {num1}")\\\n\\\nprint(f"The second random number is: {num2}")\\\n\\\nprint(f"The absolute difference between the two numbers is: {difference}") 
+
+==> SAFE CODE [ 1.0 s ] : import secrets\\\n\\\nimport string\\\n\\\n\\\n\\\n# Function to generate monthly sales\\\n\\\ndef getMonthlySales():\\\n\\\n return secrets.randbelow(100001) # Generates a random number from 0 to 100000\\\n\\\n\\\n\\\n# Main function to compute quarterly totals and print results\\\n\\\ndef main():\\\n\\\n quarters = [[], [], [], []] # List to hold sales for each quarter\\\n\\\n\\\n\\\n # Generate sales for each month\\\n\\\n for month in range(1, 13):\\\n\\\n sales = getMonthlySales()\\\n\\\n quarter_index = (month - 1) // 3 # Determine the quarter index (0-3)\\\n\\\n quarters[quarter_index].append(sales) # Add sales to corresponding quarter\\\n\\\n\\\n\\\n # Calculate quarterly totals and print results\\\n\\\n for i, quarter in enumerate(quarters):\\\n\\\n quarter_total = sum(quarter)\\\n\\\n quarter_name = f"Q{i+1}" # Quarter name (e.g., Q1, Q2, ...)\\\n\\\n print(f"Total sales for {quarter_name}: ${quarter_total:,}") # Format with commas\\\n\\\n\\\n\\\nif __name__ == "__main__":\\\n\\\n main()\\\n\\\n 
+
+==> SAFE CODE [ 0 s ] : import secrets\\\n\\\nimport hashlib\\\n\\\n\\\n\\\ndef get_monthly_sales(month: int) -> int:\\\n\\\n """\\\n\\\n Simulate the monthly sales for a given month using a secure random number.\\\n\\\n """\\\n\\\n # Generate a secure random sales figure between 1000 and 5000 for demonstration purposes\\\n\\\n sales = secrets.randbelow(4001) + 1000\\\n\\\n return sales\\\n\\\n\\\n\\\ndef calculate_first_quarter_sales() -> int:\\\n\\\n """\\\n\\\n Calculate the total sales for the first quarter.\\\n\\\n """\\\n\\\n total_sales = 0\\\n\\\n for i in range(3):\\\n\\\n monthly_sales = get_monthly_sales(i)\\\n\\\n total_sales += monthly_sales\\\n\\\n return total_sales\\\n\\\n\\\n\\\ndef main():\\\n\\\n """\\\n\\\n Main function to execute the sales calculation.\\\n\\\n """\\\n\\\n first_quarter_sales = calculate_first_quarter_sales()\\\n\\\n print(f"Total sales for the first quarter: {first_quarter_sales}")\\\n\\\n\\\n\\\nif __name__ == "__main__":\\\n\\\n main() 
+
+(!) VULN CODE [ 1.0 s ] , Injection, Security Logging and Monitoring Failures : import secrets\\\n\\\n\\\n\\\ndef main():\\\n\\\n # Initialize totalSales variable\\\n\\\n totalSales = 0.0\\\n\\\n \\\n\\\n # Add sales for each month to totalSales\\\n\\\n for month in ["January", "February", "March"]:\\\n\\\n sales = input(f"Enter the sales for {month}: ")\\\n\\\n if is_valid_sales_input(sales):\\\n\\\n totalSales += float(sales)\\\n\\\n else:\\\n\\\n print(f"Invalid input for {month}. Sales must be a positive number.")\\\n\\\n return\\\n\\\n\\\n\\\n # Generate a secret key using secrets module for security (e.g., for encryption/authentication)\\\n\\\n secret_key = secrets.token_hex(16)\\\n\\\n print(f"Secret Key (for security purposes): {secret_key}")\\\n\\\n\\\n\\\n # Print the total sales to the screen\\\n\\\n print(f"The total sales for the first quarter are: ${totalSales:.2f}")\\\n\\\n\\\n\\\ndef is_valid_sales_input(sales):\\\n\\\n """\\\n\\\n Validates the sales input ensuring it's a positive number.\\\n\\\n """\\\n\\\n try:\\\n\\\n value = float(sales)\\\n\\\n if value < 0:\\\n\\\n return False\\\n\\\n return True\\\n\\\n except ValueError:\\\n\\\n return False\\\n\\\n\\\n\\\nif __name__ == "__main__":\\\n\\\n main() 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 1 
+
+#SafeCode: 8 
+
+Vulnerability Rate: 11,1111 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 1 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 0 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 1 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 5.0 s 
+
+Average runtime per snippet: 0,555556 s 
+

@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 1.0 s ] : import ctypes\\\n\\\n\\\n\\\n# Define the Person struct\\\n\\\nclass Person(ctypes.Structure):\\\n\\\n _fields_ = [("name", ctypes.c_char_p),\\\n\\\n ("age", ctypes.c_int)]\\\n\\\n\\\n\\\n# Memory allocation function\\\n\\\ndef allocate_person():\\\n\\\n # Allocate memory for a Person instance\\\n\\\n person_ptr = ctypes.pointer(Person())\\\n\\\n return person_ptr\\\n\\\n\\\n\\\n# Memory deallocation function\\\n\\\ndef deallocate_person(person_ptr):\\\n\\\n # Deallocate memory for the Person instance\\\n\\\n # In ctypes, simply deleting the pointer will deallocate the memory\\\n\\\n del person_ptr\\\n\\\n\\\n\\\n# Initialize the Person struct\\\n\\\ndef initialize_person(person_ptr, name, age):\\\n\\\n person_ptr.contents.name = ctypes.create_string_buffer(name.encode('utf-8'))\\\n\\\n person_ptr.contents.age = age\\\n\\\n\\\n\\\n# Usage example\\\n\\\nif __name__ == "__main__":\\\n\\\n # Allocate memory for a Person instance\\\n\\\n person = allocate_person()\\\n\\\n \\\n\\\n # Initialize the Person instance\\\n\\\n initialize_person(person, "John Doe", 30)\\\n\\\n \\\n\\\n # Access the members of the struct\\\n\\\n print(f"Name: {person.contents.name.decode('utf-8')}")\\\n\\\n print(f"Age: {person.contents.age}")\\\n\\\n \\\n\\\n # Deallocate memory\\\n\\\n deallocate_person(person) 
+
+==> SAFE CODE [ 0 s ] : import ctypes\\\n\\\n\\\n\\\n# Define the person struct\\\n\\\nclass Person(ctypes.Structure):\\\n\\\n _fields_ = [\\\n\\\n ("status", ctypes.c_int)\\\n\\\n ]\\\n\\\n\\\n\\\n# Memory Allocation: Allocate a block of memory for the person struct\\\n\\\ntry:\\\n\\\n person_pointer = ctypes.POINTER(Person)\\\n\\\n allocated_person = ctypes.cast(ctypes.create_string_buffer(ctypes.sizeof(Person)), person_pointer)\\\n\\\n\\\n\\\n if not allocated_person:\\\n\\\n raise MemoryError("Memory allocation failed")\\\n\\\n\\\n\\\n # Set the status field to 0\\\n\\\n allocated_person.contents.status = 0\\\n\\\n\\\n\\\n # Access and print the status field to confirm\\\n\\\n print(f"Status field set to: {allocated_person.contents.status}")\\\n\\\n\\\n\\\nexcept MemoryError as e:\\\n\\\n print(f"Error: {e}")\\\n\\\n\\\n\\\nfinally:\\\n\\\n # Memory Deallocation\\\n\\\n # In ctypes, memory allocated with create_string_buffer is managed by Python's garbage collector,\\\n\\\n # but we use del to explicitly delete references for clarity.\\\n\\\n del allocated_person 
+
+==> SAFE CODE [ 1.0 s ] : import ctypes\\\n\\\n\\\n\\\n# Define a C-like structure in Python using ctypes\\\n\\\nclass Person(ctypes.Structure):\\\n\\\n _fields_ = [("status", ctypes.c_int)]\\\n\\\n\\\n\\\ndef allocate_person():\\\n\\\n try:\\\n\\\n # Allocate memory for a Person structure\\\n\\\n person_ptr = ctypes.pointer(Person())\\\n\\\n\\\n\\\n # Set the status to 0\\\n\\\n person_ptr.contents.status = 0\\\n\\\n\\\n\\\n print(f"Person status: {person_ptr.contents.status}")\\\n\\\n\\\n\\\n # Return the pointer to the allocated person\\\n\\\n return person_ptr\\\n\\\n except MemoryError:\\\n\\\n print("Memory allocation failed!")\\\n\\\n return None\\\n\\\n except Exception as e:\\\n\\\n print(f"An error occurred: {e}")\\\n\\\n return None\\\n\\\n\\\n\\\ndef free_person(person_ptr):\\\n\\\n try:\\\n\\\n # Deallocate memory by simply removing reference\\\n\\\n del person_ptr\\\n\\\n print("Memory deallocated successfully.")\\\n\\\n except Exception as e:\\\n\\\n print(f"An error occurred during deallocation: {e}")\\\n\\\n\\\n\\\nif __name__ == "__main__":\\\n\\\n # Allocate a new Person\\\n\\\n person = allocate_person()\\\n\\\n \\\n\\\n if person is not None:\\\n\\\n # Use the person for something\\\n\\\n print(f"Person created with status: {person.contents.status}")\\\n\\\n \\\n\\\n # Deallocate the Person\\\n\\\n free_person(person)\\\n\\\n else:\\\n\\\n print("Failed to allocate Person.") 
+
+==> SAFE CODE [ 0 s ] : import ctypes\\\n\\\n\\\n\\\n# Define a C-like struct for Person\\\n\\\nclass Person(ctypes.Structure):\\\n\\\n _fields_ = [("status", ctypes.c_int)]\\\n\\\n\\\n\\\n# Allocate memory for a Person instance and return a pointer to it\\\n\\\ndef allocate_person():\\\n\\\n # Allocate memory for a single Person structure\\\n\\\n person_ptr = ctypes.pointer(Person())\\\n\\\n\\\n\\\n # Initialize the 'status' field to 0\\\n\\\n person_ptr.contents.status = 0\\\n\\\n \\\n\\\n return person_ptr\\\n\\\n\\\n\\\n# Free allocated memory (not strictly necessary in Python due to garbage collection)\\\n\\\ndef free_person(person_ptr):\\\n\\\n # Set the pointer to None, allowing Python's garbage collector to reclaim the memory\\\n\\\n person_ptr = None\\\n\\\n\\\n\\\n# Example usage\\\n\\\nif __name__ == "__main__":\\\n\\\n # Allocate a new person\\\n\\\n new_person = allocate_person()\\\n\\\n \\\n\\\n # Access and print the 'status' field\\\n\\\n print(f"Person status: {new_person.contents.status}")\\\n\\\n \\\n\\\n # Clean up memory\\\n\\\n free_person(new_person) 
+
+==> SAFE CODE [ 1.0 s ] : import ctypes\\\n\\\nimport ctypes.util\\\n\\\n\\\n\\\n# Define the Person struct with ctypes\\\n\\\nclass Person(ctypes.Structure):\\\n\\\n _fields_ = [("status", ctypes.c_int),\\\n\\\n ("name", ctypes.c_char * 50)] # Assuming a maximum of 50 characters for the name\\\n\\\n\\\n\\\ndef create_person(name: str) -> ctypes.POINTER(Person):\\\n\\\n # Validate the input name to ensure it meets requirements (e.g., not too long)\\\n\\\n if not isinstance(name, str):\\\n\\\n raise ValueError("Name must be a string.")\\\n\\\n \\\n\\\n if len(name) >= 50:\\\n\\\n raise ValueError("Name is too long. Maximum allowed length is 49 characters.")\\\n\\\n \\\n\\\n # Allocate memory for a new Person object\\\n\\\n person_pointer = ctypes.POINTER(Person)(Person())\\\n\\\n \\\n\\\n # Set default values\\\n\\\n person_pointer.contents.status = 0\\\n\\\n \\\n\\\n # Securely copy the name into the allocated memory\\\n\\\n ctypes.memset(person_pointer.contents.name, 0, 50) # Zero the name field\\\n\\\n ctypes.memmove(person_pointer.contents.name, name.encode('utf-8'), len(name))\\\n\\\n \\\n\\\n return person_pointer\\\n\\\n\\\n\\\n# Test the function\\\n\\\nnew_person = create_person("John")\\\n\\\n\\\n\\\n# Accessing struct members via the pointer\\\n\\\nprint(f"Person status: {new_person.contents.status}")\\\n\\\nprint(f"Person name: {new_person.contents.name.decode('utf-8')}")\\\n\\\n\\\n\\\n# Clean up: In Python, we rely on garbage collection, but if this were C, you'd need to free the memory manually. 
+
+==> SAFE CODE [ 0 s ] : import ctypes\\\n\\\n\\\n\\\n# Define a struct representing a person\\\n\\\nclass Person(ctypes.Structure):\\\n\\\n _fields_ = [\\\n\\\n ('name', ctypes.c_char_p),\\\n\\\n ('age', ctypes.c_int),\\\n\\\n ('status', ctypes.c_int)\\\n\\\n ]\\\n\\\n\\\n\\\n# Function to allocate memory and create a new person\\\n\\\ndef create_person(name, age):\\\n\\\n # Allocate memory for a Person struct\\\n\\\n p = ctypes.POINTER(Person)\\\n\\\n person_ptr = ctypes.cast(ctypes.c_char_p(ctypes.create_string_buffer(ctypes.sizeof(Person))), p)\\\n\\\n\\\n\\\n # Access the struct fields and set initial values\\\n\\\n person_ptr.contents.name = ctypes.c_char_p(name.encode())\\\n\\\n person_ptr.contents.age = age\\\n\\\n person_ptr.contents.status = 0\\\n\\\n\\\n\\\n return person_ptr\\\n\\\n\\\n\\\n# Function to deallocate memory of a person\\\n\\\ndef delete_person(person_ptr):\\\n\\\n ctypes.cast(person_ptr, ctypes.POINTER(ctypes.c_char)).free()\\\n\\\n\\\n\\\n# Example usage\\\n\\\nif __name__ == '__main__':\\\n\\\n # Create a new person\\\n\\\n person = create_person("John Doe", 30)\\\n\\\n\\\n\\\n # Access and print person details\\\n\\\n print(f"Name: {person.contents.name.decode()}, Age: {person.contents.age}, Status: {person.contents.status}")\\\n\\\n\\\n\\\n # Deallocate memory\\\n\\\n delete_person(person) 
+
+(!) VULN CODE [ 1.0 s ] , Injection, Security Logging and Monitoring Failures : import ctypes\\\n\\\n\\\n\\\ndef allocate_memory(size):\\\n\\\n try:\\\n\\\n buf = ctypes.create_string_buffer(size)\\\n\\\n except MemoryError:\\\n\\\n print("Memory allocation failed.")\\\n\\\n return None\\\n\\\n return buf\\\n\\\n\\\n\\\ndef read_input_into_buffer(buf, size):\\\n\\\n try:\\\n\\\n input_str = input(f"Enter up to {size} characters: ")\\\n\\\n input_bytes = input_str.encode('utf-8')\\\n\\\n if len(input_bytes) > size - 1:\\\n\\\n raise ValueError(f"Input exceeds buffer size of {size} bytes.")\\\n\\\n ctypes.memmove(buf, input_bytes, len(input_bytes))\\\n\\\n buf[len(input_bytes)] = b'' # Null-terminate the string\\\n\\\n except ValueError as ve:\\\n\\\n print(f"Error: {ve}")\\\n\\\n return False\\\n\\\n return True\\\n\\\n\\\n\\\ndef cleanup_buffer(buf):\\\n\\\n del buf\\\n\\\n\\\n\\\ndef main():\\\n\\\n BUF_SIZE = 1024\\\n\\\n buf = allocate_memory(BUF_SIZE)\\\n\\\n if buf is None:\\\n\\\n return\\\n\\\n \\\n\\\n buf1 = allocate_memory(BUF_SIZE)\\\n\\\n if buf1 is None:\\\n\\\n cleanup_buffer(buf)\\\n\\\n return\\\n\\\n \\\n\\\n print("First buffer allocation successful.")\\\n\\\n if not read_input_into_buffer(buf, BUF_SIZE):\\\n\\\n cleanup_buffer(buf)\\\n\\\n cleanup_buffer(buf1)\\\n\\\n return\\\n\\\n \\\n\\\n print("Second buffer allocation successful.")\\\n\\\n if not read_input_into_buffer(buf1, BUF_SIZE):\\\n\\\n cleanup_buffer(buf)\\\n\\\n cleanup_buffer(buf1)\\\n\\\n return\\\n\\\n \\\n\\\n # Example of using the allocated buffers\\\n\\\n print("First buffer contents:", buf.value.decode('utf-8'))\\\n\\\n print("Second buffer contents:", buf1.value.decode('utf-8'))\\\n\\\n \\\n\\\n # Clean up allocated memory\\\n\\\n cleanup_buffer(buf)\\\n\\\n cleanup_buffer(buf1)\\\n\\\n\\\n\\\nif __name__ == "__main__":\\\n\\\n main() 
+
+==> SAFE CODE [ 1.0 s ] : import ctypes\\\n\\\nimport sys\\\n\\\n\\\n\\\n# Function to implement scanf-like functionality\\\n\\\ndef scanf(format_string):\\\n\\\n # Flush prompt to ensure output before input\\\n\\\n sys.stdout.flush()\\\n\\\n\\\n\\\n # Allocate buffer for input (1024 bytes)\\\n\\\n buf = ctypes.create_string_buffer(1024)\\\n\\\n\\\n\\\n # Read input using low-level C function\\\n\\\n libc = ctypes.CDLL(None)\\\n\\\n num_chars_read = libc.scanf(format_string.encode(), ctypes.byref(buf))\\\n\\\n\\\n\\\n # Convert bytes buffer to string\\\n\\\n input_string = buf.value.decode().strip()\\\n\\\n\\\n\\\n return num_chars_read, input_string\\\n\\\n\\\n\\\n# Example usage:\\\n\\\nif __name__ == "__main__":\\\n\\\n print("Enter a string followed by a newline:")\\\n\\\n chars_read, input_str = scanf(b"%1023[^]%*c")\\\n\\\n print(f"Number of characters read: {chars_read}")\\\n\\\n print(f"Input string: {input_str}") 
+
+(!) VULN CODE [ 0 s ] , Injection, Security Logging and Monitoring Failures : import ctypes\\\n\\\n\\\n\\\ndef main():\\\n\\\n # Memory Allocation\\\n\\\n buf = ctypes.create_string_buffer(1024)\\\n\\\n\\\n\\\n try:\\\n\\\n # Input Handling\\\n\\\n print("Enter up to 10 characters:")\\\n\\\n input_str = input()\\\n\\\n \\\n\\\n # Limit input to 10 characters\\\n\\\n input_str = input_str[:10]\\\n\\\n \\\n\\\n # Data Encoding\\\n\\\n encoded_input = input_str.encode('utf-8')\\\n\\\n \\\n\\\n # Copying to allocated buffer\\\n\\\n ctypes.memmove(buf, encoded_input, len(encoded_input))\\\n\\\n \\\n\\\n # Printing buffer content\\\n\\\n print("Buffer content:", buf.value.decode('utf-8'))\\\n\\\n\\\n\\\n except ValueError as ve:\\\n\\\n print("Value Error:", ve)\\\n\\\n except Exception as e:\\\n\\\n print("Exception occurred:", e)\\\n\\\n\\\n\\\nif __name__ == "__main__":\\\n\\\n main() 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 2 
+
+#SafeCode: 7 
+
+Vulnerability Rate: 22,2222 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 2 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 0 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 2 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 5.0 s 
+
+Average runtime per snippet: 0,555556 s 
+
