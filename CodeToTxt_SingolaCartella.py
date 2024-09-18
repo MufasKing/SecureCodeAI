@@ -1,10 +1,10 @@
 import os
 
 # Percorso della cartella che contiene i file .py
-folder_path = "ChatGPT_BP\CWE-798_BP"
+folder_path = "/Users/stefano/Desktop/CARTELLA/ChatGPT/CWE-20"
 
 # Nome del file di output
-output_file = "ChatGPT_798_BP.txt"
+output_file = "ChatGPT_20.txt"
 
 # Apri il file di output in modalità scrittura
 with open(output_file, "w", encoding="utf-8") as outfile:
