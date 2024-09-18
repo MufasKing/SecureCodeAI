@@ -1,0 +1,67 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 1.0 s ] : import os\\\nimport stat\\\n\\\n# Define the file name\\\nfile_name = 'important_config'\\\n\\\n# Set the file permissions: readable and writable by the owner\\\nfile_permissions = stat.S_IRUSR | stat.S_IWUSR\\\n\\\n# Set the file flags: create if not exists, truncate to zero length, write-only\\\nfile_flags = os.O_CREAT | os.O_TRUNC | os.O_WRONLY\\\n\\\n# Create and open the file with the specified flags and permissions\\\nfile_descriptor = os.open(file_name, file_flags, file_permissions)\\\n\\\n# Close the file descriptor\\\nos.close(file_descriptor) 
+
+==> SAFE CODE [ 0 s ] : import os\\\nimport stat\\\n\\\n# Define the file path and the string to write\\\nfile_path = 'important_config'\\\ncontent = 'important_config'\\\n\\\n# Open the file with the specified flags\\\nfd = os.open(file_path, os.O_WRONLY | os.O_CREAT, stat.S_IRUSR | stat.S_IWUSR)\\\n\\\n# Write the string to the file\\\nos.write(fd, content.encode())\\\n\\\n# Close the file\\\nos.close(fd) 
+
+==> SAFE CODE [ 1.0 s ] : import os\\\nimport stat\\\n\\\n# Define the file name\\\nfile_name = 'important_config'\\\n\\\n# Define the flags and mode\\\nflags = os.O_RDWR | os.O_CREAT\\\nmode = stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IROTH\\\n\\\n# Open the file with the specified flags and mode\\\nfd = os.open(file_name, flags, mode)\\\n\\\n# Write the string to the file\\\nos.write(fd, b'important_config')\\\n\\\n# Close the file\\\nos.close(fd) 
+
+==> SAFE CODE [ 0 s ] : import os\\\nimport fcntl\\\n\\\n# Define the file path\\\nfile_path = 'example.txt'\\\n\\\n# Open the file with the specified flags\\\nflags = os.O_CREAT | os.O_TRUNC | os.O_WRONLY | os.O_EXCL\\\n\\\ntry:\\\n # Open the file\\\n file_descriptor = os.open(file_path, flags)\\\n print(f"File '{file_path}' created and opened successfully.")\\\n \\\n # Close the file descriptor\\\n os.close(file_descriptor)\\\nexcept FileExistsError:\\\n print(f"File '{file_path}' already exists.")\\\nexcept OSError as e:\\\n print(f"Error opening file: {e}") 
+
+==> SAFE CODE [ 1.0 s ] : import os\\\n\\\n# Define the file path and the string to write\\\nfile_path = 'config.txt'\\\nimportant_config = 'important_config'\\\n\\\n# Open the file with read/write permissions, create if it doesn't exist, with specific permissions\\\nfd = os.open(file_path, os.O_RDWR | os.O_CREAT, 0o700)\\\n\\\n# Write the string to the file\\\nos.write(fd, important_config.encode())\\\n\\\n# Close the file descriptor\\\nos.close(fd) 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 5 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 0 
+
+#SafeCode: 5 
+
+Vulnerability Rate: 0 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 0 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 0 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 3.0 s 
+
+Average runtime per snippet: 0,6 s 
+

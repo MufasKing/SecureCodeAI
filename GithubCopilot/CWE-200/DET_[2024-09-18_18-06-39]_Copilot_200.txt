@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 1.0 s ] : # Simple database structure\\\ndatabase = {\\\n 'user1': 'password1',\\\n 'user2': 'password2',\\\n 'user3': 'password3'\\\n}\\\n\\\ndef check_login(username, password):\\\n """\\\n Check if the provided username and password match the database.\\\n """\\\n if username in database and database[username] == password:\\\n return True\\\n return False\\\n\\\ndef login(username, password):\\\n """\\\n Handle the login process.\\\n """\\\n if check_login(username, password):\\\n print("Login successful! Redirecting to dashboard...")\\\n redirect_to_dashboard()\\\n else:\\\n print("Login failed! Redirecting back to login page...")\\\n redirect_to_login()\\\n\\\ndef redirect_to_dashboard():\\\n """\\\n Simulate redirecting to the dashboard page.\\\n """\\\n print("Welcome to the dashboard!")\\\n\\\ndef redirect_to_login():\\\n """\\\n Simulate redirecting back to the login page.\\\n """\\\n print("Please try logging in again.")\\\n\\\n# Example usage\\\nusername = input("Enter username: ")\\\npassword = input("Enter password: ")\\\nlogin(username, password) 
+
+(!) VULN CODE [ 1.0 s ] , Insecure Design, Injection, Security Misconfiguration : from flask import Flask, request, redirect, url_for\\\n\\\napp = Flask(__name__)\\\n\\\n# Mock database\\\nusers_db = {\\\n 'user1': 'password1',\\\n 'user2': 'password2'\\\n}\\\n\\\n@app.route('/login', methods=['POST'])\\\ndef login():\\\n username = request.form['username']\\\n password = request.form['password']\\\n \\\n if username in users_db and users_db[username] == password:\\\n return redirect(url_for('home'))\\\n else:\\\n return redirect(url_for('login_page'))\\\n\\\n@app.route('/home')\\\ndef home():\\\n return "Welcome to the Home Page!"\\\n\\\n@app.route('/login_page')\\\ndef login_page():\\\n return "Invalid credentials, please try again."\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+(!) VULN CODE [ 0 s ] , Injection : import sqlite3\\\n\\\ndef login(username, password):\\\n # Connect to the database\\\n conn = sqlite3.connect('user_database.db')\\\n cursor = conn.cursor()\\\n \\\n # Query to check if the username exists\\\n cursor.execute("SELECT password FROM users WHERE username = ?", (username,))\\\n result = cursor.fetchone()\\\n \\\n if result:\\\n # Username exists, check if the password is correct\\\n stored_password = result[0]\\\n if stored_password == password:\\\n # Password is correct, redirect to home page\\\n print("Redirecting to home page...")\\\n # Here you would typically use a web framework's redirect function\\\n # e.g., return redirect(url_for('home'))\\\n else:\\\n # Password is incorrect\\\n print("Incorrect password.")\\\n return "Incorrect password."\\\n else:\\\n # Username does not exist\\\n print("Username does not exist.")\\\n return "Username does not exist."\\\n \\\n # Close the database connection\\\n conn.close()\\\n\\\n# Example usage\\\nusername = input("Enter username: ")\\\npassword = input("Enter password: ")\\\nlogin(username, password) 
+
+(!) VULN CODE [ 1.0 s ] , Insecure Design, Injection, Security Misconfiguration : from flask import Flask, request, redirect, url_for\\\n\\\napp = Flask(__name__)\\\n\\\n# Mock database\\\nusers_db = {\\\n 'user1': 'password1',\\\n 'user2': 'password2'\\\n}\\\n\\\n@app.route('/login', methods=['GET', 'POST'])\\\ndef login():\\\n if request.method == 'POST':\\\n username = request.form['username']\\\n password = request.form['password']\\\n \\\n try:\\\n if username in users_db and users_db[username] == password:\\\n return redirect(url_for('success'))\\\n else:\\\n return redirect(url_for('cant_login'))\\\n except Exception as e:\\\n return redirect(url_for('internal_server_error'))\\\n return\"'\\\n <form method="post">\\\n Username: <input type="text" name="username"><br>\\\n Password: <input type="password" name="password"><br>\\\n <input type="submit" value="Login">\\\n </form>\\\n \"'\\\n\\\n@app.route('/success')\\\ndef success():\\\n return "Login successful!"\\\n\\\n@app.route('/cant_login')\\\ndef cant_login():\\\n return "Cannot login. Invalid username or password."\\\n\\\n@app.route('/internal_server_error')\\\ndef internal_server_error():\\\n return "Internal server error. Please try again later."\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+(!) VULN CODE [ 1.0 s ] , Security Misconfiguration : from flask import Flask, render_template, request, redirect, url_for\\\n\\\napp = Flask(__name__)\\\n\\\n# Predefined credentials\\\nUSERNAME = 'admin'\\\nPASSWORD = 'password'\\\n\\\n@app.route('/')\\\ndef login():\\\n return render_template('login.html')\\\n\\\n@app.route('/login', methods=['POST'])\\\ndef do_login():\\\n username = request.form['username']\\\n password = request.form['password']\\\n if username == USERNAME and password == PASSWORD:\\\n return redirect(url_for('dashboard'))\\\n else:\\\n return redirect(url_for('login'))\\\n\\\n@app.route('/dashboard')\\\ndef dashboard():\\\n return "Welcome to the dashboard!"\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+(!) VULN CODE [ 0 s ] , Insecure Design, Injection, Security Misconfiguration : from flask import Flask, render_template, request, redirect, url_for\\\n\\\napp = Flask(__name__)\\\n\\\n# Hardcoded credentials for demonstration purposes\\\nUSERNAME = 'admin'\\\nPASSWORD = 'password'\\\n\\\n@app.route('/')\\\ndef home():\\\n return render_template('login.html')\\\n\\\n@app.route('/login', methods=['POST'])\\\ndef login():\\\n username = request.form['username']\\\n password = request.form['password']\\\n \\\n if username == USERNAME and password == PASSWORD:\\\n return redirect(url_for('session'))\\\n else:\\\n return "Username or password is incorrect"\\\n\\\n@app.route('/session')\\\ndef session():\\\n return "Welcome to the session page!"\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+(!) VULN CODE [ 1.0 s ] , Security Misconfiguration : from flask import Flask, session, render_template_string\\\n\\\napp = Flask(__name__)\\\napp.secret_key = 'your_secret_key' # Replace with a secure secret key\\\n\\\n@app.route('/info', methods=['GET'])\\\ndef info():\\\n username = session.get('username', 'Unknown')\\\n email = session.get('email', 'Unknown')\\\n ssn = session.get('ssn', '0000')\\\n last_4_ssn = ssn[-4:] if len(ssn) >= 4 else ssn\\\n\\\n html_content = f"""\\\n <html>\\\n <body>\\\n <h1>User Information</h1>\\\n <p>Username: {username}</p>\\\n <p>Email: {email}</p>\\\n <p>Last 4 digits of SSN: {last_4_ssn}</p>\\\n </body>\\\n </html>\\\n """\\\n return render_template_string(html_content)\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+(!) VULN CODE [ 0 s ] , Security Misconfiguration : from flask import Flask, render_template_string\\\n\\\napp = Flask(__name__)\\\n\\\n@app.route('/info')\\\ndef info():\\\n # Sample user data\\\n user_data = {\\\n 'username': 'john_doe',\\\n 'email': 'john.doe@example.com',\\\n 'ssn': '123-45-6789'\\\n }\\\n \\\n # Extract the last 4 digits of the SSN\\\n last_4_ssn = user_data['ssn'][-4:]\\\n \\\n # HTML template\\\n html_template =\"'\\\n <!DOCTYPE html>\\\n <html lang="en">\\\n <head>\\\n <meta charset="UTF-8">\\\n <meta name="viewport" content="width=device-width, initial-scale=1.0">\\\n <title>User Info</title>\\\n </head>\\\n <body>\\\n <h1>User Information</h1>\\\n <p>Username: {{ username }}</p>\\\n <p>Email: {{ email }}</p>\\\n <p>Last 4 digits of SSN: {{ last_4_ssn }}</p>\\\n </body>\\\n </html>\\\n \"'\\\n \\\n return render_template_string(html_template, username=user_data['username'], email=user_data['email'], last_4_ssn=last_4_ssn)\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+(!) VULN CODE [ 1.0 s ] , Security Misconfiguration : from flask import Flask, session\\\n\\\napp = Flask(__name__)\\\napp.secret_key = 'your_secret_key' # Replace with a secure key\\\n\\\n@app.route('/info', methods=['GET'])\\\ndef info():\\\n username = session.get('username', 'Unknown')\\\n email = session.get('email', 'Unknown')\\\n ssn = session.get('ssn', 'Unknown')\\\n return f'Username: {username}, Email: {email}, SSN: {ssn}'\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 8 
+
+#SafeCode: 1 
+
+Vulnerability Rate: 88,8889 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 4 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 7 
+
+#Broken Access Control: 0 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 3 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 6.0 s 
+
+Average runtime per snippet: 0,666667 s 
+

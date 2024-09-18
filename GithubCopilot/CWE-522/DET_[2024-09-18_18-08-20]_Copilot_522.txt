@@ -1,0 +1,73 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 0 s ] : def scan():\\\n import sys\\\n buffer_size = 1024\\\n buffer = sys.stdin.read(buffer_size)\\\n \\\n # Find the position of the newline character\\\n newline_pos = buffer.find('\\\n')\\\n \\\n if newline_pos != -1:\\\n # Exclude the newline character from the buffer\\\n buffer = buffer[:newline_pos]\\\n \\\n # Return the number of characters read\\\n return len(buffer) 
+
+(!) VULN CODE [ 1.0 s ] , Injection, Security Logging and Monitoring Failures, Cryptographic Failures : import hashlib\\\n\\\ndef hash_password(password):\\\n # Hash the password using SHA-256\\\n return hashlib.sha256(password.encode()).hexdigest()\\\n\\\ndef register_user():\\\n username = input("Enter username: ")\\\n password = input("Enter password: ")\\\n \\\n hashed_password = hash_password(password)\\\n \\\n # For simplicity, we'll just print the username and hashed password\\\n print(f"Username: {username}")\\\n print(f"Hashed Password: {hashed_password}")\\\n\\\nif __name__ == "__main__":\\\n register_user() 
+
+(!) VULN CODE [ 0 s ] , Cryptographic Failures : import sqlite3\\\nimport hashlib\\\n\\\n# Connect to the SQLite database (or create it if it doesn't exist)\\\nconn = sqlite3.connect('users.db')\\\ncursor = conn.cursor()\\\n\\\n# Create the users table if it doesn't exist\\\ncursor.execute('''\\\nCREATE TABLE IF NOT EXISTS users (\\\n username TEXT NOT NULL,\\\n password TEXT NOT NULL\\\n)\\\n''')\\\n\\\n# Prompt the user to enter a username and password\\\nusername = input("Enter username: ")\\\npassword = input("Enter password: ")\\\n\\\n# Hash the password using SHA-256\\\nhashed_password = hashlib.sha256(password.encode()).hexdigest()\\\n\\\n# Insert the username and hashed password into the database\\\ncursor.execute('''\\\nINSERT INTO users (username, password) VALUES (?, ?)\\\n''', (username, hashed_password))\\\n\\\n# Commit the transaction\\\nconn.commit()\\\n\\\n# Close the database connection\\\nconn.close()\\\n\\\nprint("User registered successfully.") 
+
+(!) VULN CODE [ 0 s ] , Injection, Security Logging and Monitoring Failures : import bcrypt\\\nimport sqlite3\\\n\\\n# Function to hash the password\\\ndef hash_password(password):\\\n salt = bcrypt.gensalt()\\\n hashed = bcrypt.hashpw(password.encode('utf-8'), salt)\\\n return hashed\\\n\\\n# Function to insert username and hashed password into the database\\\ndef insert_user(username, hashed_password):\\\n conn = sqlite3.connect('users.db')\\\n cursor = conn.cursor()\\\n cursor.execute('''\\\n CREATE TABLE IF NOT EXISTS users (\\\n id INTEGER PRIMARY KEY AUTOINCREMENT,\\\n username TEXT NOT NULL,\\\n password TEXT NOT NULL\\\n )\\\n \"')\\\n cursor.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))\\\n conn.commit()\\\n conn.close()\\\n\\\n# Main function to get user input and insert into the database\\\ndef main():\\\n username = input("Enter username: ")\\\n password = input("Enter password: ")\\\n hashed_password = hash_password(password)\\\n insert_user(username, hashed_password)\\\n print("User registered successfully.")\\\n\\\nif __name__ == "__main__":\\\n main() 
+
+(!) VULN CODE [ 1.0 s ] , Injection, Cryptographic Failures : import hashlib\\\nimport os\\\nimport sqlite3\\\n\\\n# Function to generate a random salt\\\ndef generate_salt():\\\n return os.urandom(16)\\\n\\\n# Function to hash the password with the salt\\\ndef hash_password(password, salt):\\\n return hashlib.pbkdf2_hmac('sha256', password.encode(), salt, 100000)\\\n\\\n# Function to store the username, hashed password, and salt in the database\\\ndef register_user(username, password):\\\n salt = generate_salt()\\\n hashed_password = hash_password(password, salt)\\\n conn = sqlite3.connect('users.db')\\\n cursor = conn.cursor()\\\n cursor.execute('''CREATE TABLE IF NOT EXISTS users\\\n (username TEXT, password BLOB, salt BLOB)''')\\\n cursor.execute('INSERT INTO users (username, password, salt) VALUES (?, ?, ?)',\\\n (username, hashed_password, salt))\\\n conn.commit()\\\n conn.close()\\\n\\\n# Function to verify the password during login\\\ndef verify_user(username, password):\\\n conn = sqlite3.connect('users.db')\\\n cursor = conn.cursor()\\\n cursor.execute('SELECT password, salt FROM users WHERE username = ?', (username,))\\\n result = cursor.fetchone()\\\n conn.close()\\\n if result:\\\n stored_password, salt = result\\\n return stored_password == hash_password(password, salt)\\\n return False\\\n\\\n# Example usage\\\nif __name__ == "__main__":\\\n # Register a new user\\\n register_user('user1', 'password123')\\\n\\\n # Verify the user\\\n if verify_user('user1', 'password123'):\\\n print("Login successful")\\\n else:\\\n print("Login failed") 
+
+(!) VULN CODE [ 1.0 s ] , Cryptographic Failures : import os\\\nimport hashlib\\\nimport sqlite3\\\n\\\n# Connect to the database (or create it if it doesn't exist)\\\nconn = sqlite3.connect('users.db')\\\nc = conn.cursor()\\\n\\\n# Create a table for storing user data\\\nc.execute('''\\\nCREATE TABLE IF NOT EXISTS users (\\\n id INTEGER PRIMARY KEY AUTOINCREMENT,\\\n username TEXT NOT NULL UNIQUE,\\\n password TEXT NOT NULL\\\n)\\\n''')\\\nconn.commit()\\\n\\\ndef hash_password(password):\\\n # Generate a random salt\\\n salt = os.urandom(16)\\\n # Hash the password with the salt\\\n hashed_password = hashlib.pbkdf2_hmac('sha256', password.encode(), salt, 100000)\\\n # Concatenate the salt and hashed password\\\n salted_hashed_password = salt + hashed_password\\\n return salted_hashed_password\\\n\\\ndef register_user(username, password):\\\n # Hash the password\\\n salted_hashed_password = hash_password(password)\\\n # Store the username and salted hashed password in the database\\\n c.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, salted_hashed_password))\\\n conn.commit()\\\n\\\n# Example usage\\\nusername = input("Enter username: ")\\\npassword = input("Enter password: ")\\\nregister_user(username, password)\\\n\\\n# Close the database connection\\\nconn.close() 
+
+(!) VULN CODE [ 1.0 s ] , Injection : import sqlite3\\\nimport bcrypt\\\n\\\n# Connect to SQLite database (or create it if it doesn't exist)\\\nconn = sqlite3.connect('users.db')\\\ncursor = conn.cursor()\\\n\\\n# Create users table if it doesn't exist\\\ncursor.execute('''\\\nCREATE TABLE IF NOT EXISTS users (\\\n id INTEGER PRIMARY KEY AUTOINCREMENT,\\\n username TEXT UNIQUE,\\\n password TEXT,\\\n first_name TEXT,\\\n last_name TEXT,\\\n email TEXT\\\n)\\\n''')\\\nconn.commit()\\\n\\\ndef register_user(username, password, first_name, last_name, email):\\\n # Check if username already exists\\\n cursor.execute('SELECT * FROM users WHERE username = ?', (username,))\\\n if cursor.fetchone():\\\n return "Username already exists."\\\n\\\n # Hash the password\\\n hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())\\\n\\\n # Insert new user into the database\\\n cursor.execute('''\\\n INSERT INTO users (username, password, first_name, last_name, email)\\\n VALUES (?, ?, ?, ?, ?)\\\n \"', (username, hashed_password, first_name, last_name, email))\\\n conn.commit()\\\n\\\n return "Registration succeeded."\\\n\\\n# Example usage\\\nusername = "johndoe"\\\npassword = "password123"\\\nfirst_name = "John"\\\nlast_name = "Doe"\\\nemail = "johndoe@example.com"\\\n\\\nmessage = register_user(username, password, first_name, last_name, email)\\\nprint(message)\\\n\\\n# Close the database connection\\\nconn.close() 
+
+==> SAFE CODE [ 0 s ] : import bcrypt\\\nimport sqlite3\\\n\\\n# Prompt user for username and password\\\nusername = input("Enter username: ")\\\npassword = input("Enter password: ")\\\n\\\n# Hash the password\\\nhashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())\\\n\\\n# Connect to the database (or create it if it doesn't exist)\\\nconn = sqlite3.connect('users.db')\\\ncursor = conn.cursor()\\\n\\\n# Create table if it doesn't exist\\\ncursor.execute('''\\\nCREATE TABLE IF NOT EXISTS users (\\\n id INTEGER PRIMARY KEY AUTOINCREMENT,\\\n username TEXT NOT NULL,\\\n password TEXT NOT NULL\\\n)\\\n''')\\\n\\\n# Insert the username and hashed password into the database\\\ncursor.execute('''\\\nINSERT INTO users (username, password) VALUES (?, ?)\\\n''', (username, hashed_password))\\\n\\\n# Commit the transaction and close the connection\\\nconn.commit()\\\nconn.close()\\\n\\\nprint("User registered successfully.") 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 8 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 6 
+
+#SafeCode: 2 
+
+Vulnerability Rate: 75 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 4 
+
+#Cryptographic Failures: 4 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 0 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 2 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 5.0 s 
+
+Average runtime per snippet: 0,625 s 
+

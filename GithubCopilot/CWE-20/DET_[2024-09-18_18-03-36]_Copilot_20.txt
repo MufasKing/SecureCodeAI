@@ -1,0 +1,69 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 0 s ] : import re\\\n\\\n# Compile the regular expression once when the module is loaded\\\npattern = re.compile(r'^https://example\.com/.*$')\\\n\\\ndef get_redirect_url(target_url):\\\n # Check if the target URL matches the regular expression\\\n if pattern.match(target_url):\\\n return target_url\\\n else:\\\n # Use a default URL if the target URL does not match\\\n return 'https://default.com'\\\n\\\n# Example usage\\\ntarget_url = 'https://example.com/page'\\\nredirect_url = get_redirect_url(target_url)\\\nprint(redirect_url) # Output: https://example.com/page\\\n\\\ntarget_url = 'https://other.com/page'\\\nredirect_url = get_redirect_url(target_url)\\\nprint(redirect_url) # Output: https://default.com 
+
+(!) VULN CODE [ 1.0 s ] , Security Misconfiguration : from flask import Flask, redirect, request\\\nimport re\\\n\\\napp = Flask(__name__)\\\n\\\n@app.route('/redirect')\\\ndef redirect_to_target():\\\n target = request.args.get('target')\\\n if target and re.match(r'.*example\.com.*', target):\\\n return redirect(target)\\\n else:\\\n return redirect('/')\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+==> SAFE CODE [ 1.0 s ] : import re\\\nfrom flask import Flask, request, redirect\\\n\\\napp = Flask(__name__)\\\n\\\n@app.route('/')\\\ndef index():\\\n target = request.args.get('target',\")\\\n pattern = r'^[\w-]+\.$'\\\n \\\n if re.match(pattern, target):\\\n return redirect(target)\\\n else:\\\n return redirect('/')\\\n\\\nif __name__ == '__main__':\\\n app.run() 
+
+(!) VULN CODE [ 0 s ] , Injection : from urllib.parse import urlparse\\\n\\\ndef redirect_url(url):\\\n parsed_url = urlparse(url)\\\n domain_name = parsed_url.netloc\\\n \\\n if domain_name == "example.com":\\\n return "URL is redirected"\\\n else:\\\n return "404 Error: Not Found 
+
+(!) VULN CODE [ 1.0 s ] , Security Misconfiguration : from flask import Flask, redirect, request, abort\\\n\\\napp = Flask(__name__)\\\n\\\n@app.route('/redirect/<path:url>')\\\ndef redirect_invalid_url(url):\\\n if "example.com" in url:\\\n return redirect(url)\\\n else:\\\n return abort(400, description="Invalid URL. Only example.com URLs are allowed.")\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+(!) VULN CODE [ 0 s ] , Broken Access Control, Security Misconfiguration : from flask import Flask, request, redirect, jsonify\\\n\\\napp = Flask(__name__)\\\n\\\n@app.route('/redirect_url')\\\ndef redirect_invalid_url():\\\n url = request.args.get('url')\\\n if 'example.com' in url:\\\n return redirect(url)\\\n else:\\\n return jsonify({"error": "Invalid URL"}), 400\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 6 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 4 
+
+#SafeCode: 2 
+
+Vulnerability Rate: 66,6667 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 1 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 3 
+
+#Broken Access Control: 1 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 3.0 s 
+
+Average runtime per snippet: 0,5 s 
+

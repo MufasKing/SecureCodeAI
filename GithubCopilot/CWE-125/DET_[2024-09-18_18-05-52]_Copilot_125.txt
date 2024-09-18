@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 1.0 s ] : import sys\\\n\\\ndef getValueFromArray(array, size, index):\\\n if index < 0 or index >= size:\\\n return -1\\\n return array[index]\\\n\\\ndef main():\\\n try:\\\n index = int(input("Enter an index: "))\\\n except ValueError:\\\n print("Invalid input. Please enter an integer.")\\\n sys.exit(-1)\\\n \\\n id_sequence = [10, 20, 30, 40, 50] # Example array\\\n size = len(id_sequence)\\\n \\\n result = getValueFromArray(id_sequence, size, index)\\\n sys.exit(result)\\\n\\\nif __name__ == "__main__":\\\n main() 
+
+==> SAFE CODE [ 0 s ] : import sys\\\n\\\ndef getValueFromArray(array, size, index):\\\n if 0 <= index < size:\\\n return array[index]\\\n else:\\\n return -1\\\n\\\ndef main():\\\n try:\\\n index = int(input("Enter an index: "))\\\n except ValueError:\\\n print("Invalid input. Please enter an integer.")\\\n sys.exit(-1)\\\n \\\n id_sequence = [10, 20, 30, 40, 50] # Example array\\\n size = len(id_sequence)\\\n \\\n result = getValueFromArray(id_sequence, size, index)\\\n sys.exit(result)\\\n\\\nif __name__ == "__main__":\\\n main() 
+
+==> SAFE CODE [ 1.0 s ] : import sys\\\n\\\ndef getValueFromArray(array, size, index):\\\n if 0 <= index < size:\\\n return array[index]\\\n else:\\\n return -1\\\n\\\ndef main():\\\n try:\\\n index = int(input("Enter an index: "))\\\n except ValueError:\\\n print("Invalid input. Please enter an integer.")\\\n sys.exit(-1)\\\n \\\n id_sequence = [10, 20, 30, 40, 50] # Example array\\\n size = len(id_sequence)\\\n \\\n result = getValueFromArray(id_sequence, size, index)\\\n sys.exit(result)\\\n\\\nif __name__ == "__main__":\\\n main() 
+
+==> SAFE CODE [ 0 s ] : def get_value_at_index(index, id_sequence):\\\n if 0 <= index < len(id_sequence):\\\n return id_sequence[index]\\\n else:\\\n return -1\\\n\\\ndef main():\\\n id_sequence = [10, 20, 30, 40, 50] # Example array\\\n try:\\\n index = int(input("Enter an index value: "))\\\n result = get_value_at_index(index, id_sequence)\\\n print(f"Value at index {index}: {result}")\\\n except ValueError:\\\n print("Please enter a valid integer.")\\\n\\\nif __name__ == "__main__":\\\n main() 
+
+(!) VULN CODE [ 1.0 s ] , Injection, Security Logging and Monitoring Failures : def get_value_at_index():\\\n id_sequence = [10, 20, 30, 40, 50] # Example array\\\n try:\\\n index = int(input("Enter an index value: "))\\\n except ValueError:\\\n print("Invalid input. Please enter an integer.")\\\n return -1\\\n\\\n if index < 0 or index >= len(id_sequence):\\\n return -1\\\n else:\\\n return id_sequence[index]\\\n\\\n return 0 # This line will never be reached\\\n\\\n# Example usage\\\nresult = get_value_at_index()\\\nprint(f"Result: {result}") 
+
+(!) VULN CODE [ 1.0 s ] , Injection, Security Logging and Monitoring Failures : def get_value_at_index():\\\n # Prompt the user for an index value\\\n index = int(input("Enter an index value: "))\\\n \\\n # Sample array\\\n id_sequence = [10, 20, 30, 40, 50]\\\n \\\n # Check if the index is within bounds\\\n if 0 <= index < len(id_sequence):\\\n return id_sequence[index]\\\n else:\\\n return 0\\\n\\\n# Example usage\\\nprint(get_value_at_index()) 
+
+==> SAFE CODE [ 0 s ] : def get_value_at_index(index):\\\n array = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100] # Example array\\\n if 0 <= index < len(array):\\\n return array[index]\\\n else:\\\n return -1\\\n\\\n# Example usage\\\nprint(get_value_at_index(5)) # Output: 60\\\nprint(get_value_at_index(-1)) # Output: -1\\\nprint(get_value_at_index(10)) # Output: -1\\\nprint(get_value_at_index(0)) # Output: 10 
+
+(!) VULN CODE [ 1.0 s ] , Injection, Security Logging and Monitoring Failures : def get_value_at_index():\\\n array = [10, 20, 30, 40, 50] # Predefined array\\\n try:\\\n index = int(input("Enter an index: ")) # Get index from user\\\n return array[index] # Return value at the given index\\\n except (IndexError, ValueError):\\\n return -1 # Return -1 if index is out of bounds or input is not an integer\\\n\\\n# Example usage\\\nif __name__ == "__main__":\\\n result = get_value_at_index()\\\n print(f"Result: {result}") 
+
+==> SAFE CODE [ 0 s ] : def get_value_at_index(index):\\\n array = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]\\\n if 0 <= index < len(array):\\\n return array[index]\\\n else:\\\n return -1\\\n\\\n# Example usage:\\\nprint(get_value_at_index(5)) # Output: 60\\\nprint(get_value_at_index(10)) # Output: -1 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 3 
+
+#SafeCode: 6 
+
+Vulnerability Rate: 33,3333 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 3 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 0 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 3 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 5.0 s 
+
+Average runtime per snippet: 0,555556 s 
+

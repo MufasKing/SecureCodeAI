@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 0 s ] : def http_hello_page(request, response):\\\n # Step 1: Read the request body (the username)\\\n username = request.body.decode('utf-8')\\\n \\\n # Step 2: Construct the response body (the HTML page)\\\n outputbuf = f"""\\\n <html>\\\n <head><title>Hello Page</title></head>\\\n <body>\\\n <h1>Hello, {username}!</h1>\\\n </body>\\\n </html>\\\n """\\\n \\\n # Step 3: Write the response body to the response stream\\\n response.write(outputbuf.encode('utf-8'))\\\n \\\n # Step 4: Close the response stream\\\n response.close()\\\n \\\n # The server is now ready to handle the next request 
+
+(!) VULN CODE [ 1.0 s ] , Broken Access Control : def http_hello_page(request, response):\\\n # Read the username from the request file stream\\\n username = request.read().strip()\\\n \\\n # Construct the response string\\\n response_message = f"Hello {username}"\\\n \\\n # Write the response message to the response file stream\\\n response.write(response_message) 
+
+(!) VULN CODE [ 0 s ] , Broken Access Control : def escape_html(text):\\\n """Escapes HTML special characters in the given text."""\\\n import html\\\n return html.escape(text)\\\n\\\ndef http_hello_page(request, response):\\\n # Read the username from the request\\\n username = request.read().strip()\\\n \\\n # Escape the username to prevent HTML injection\\\n escaped_username = escape_html(username)\\\n \\\n # Construct the response string\\\n response_string = f"hello {escaped_username}"\\\n \\\n # Write the response string to the response file stream\\\n response.write(response_string) 
+
+(!) VULN CODE [ 1.0 s ] , Broken Access Control, Security Misconfiguration, Injection : from flask import Flask, request, Response\\\nfrom jinja2 import Environment, FileSystemLoader\\\n\\\napp = Flask(__name__)\\\n\\\n# Assuming the templates are stored in a directory named 'templates'\\\nenv = Environment(loader=FileSystemLoader('templates'))\\\n\\\ndef render_response_from_env(environment):\\\n # Get the 'name' parameter from the request\\\n name = request.args.get('name', 'Guest')\\\n \\\n # Get the template from the environment\\\n template = environment.get_template('template.html')\\\n \\\n # Render the template with the 'name' parameter\\\n rendered_template = template.render(name=name)\\\n \\\n # Return a response with the rendered template\\\n return Response(rendered_template, mimetype='text/html')\\\n\\\n@app.route('/')\\\ndef home():\\\n # Call the render_response_from_env function with the env variable\\\n response = render_response_from_env(env)\\\n \\\n # Return the response from the render_response_from_env function\\\n return response\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+(!) VULN CODE [ 1.0 s ] , Broken Access Control, Security Misconfiguration : from flask import Flask, request, render_template_string\\\n\\\napp = Flask(__name__)\\\n\\\n# Mock environment and template for demonstration purposes\\\nenv = {\\\n 'template': '<h1>Hello, {{ name }}!</h1>'\\\n}\\\n\\\ndef render_response_from_env(environment):\\\n # Get the name parameter from the request\\\n name = request.args.get('name', 'World')\\\n \\\n # Get the template from the environment\\\n template = environment.get('template')\\\n \\\n # Render the template with the name parameter\\\n rendered_template = render_template_string(template, name=name)\\\n \\\n # Return a response with the rendered template\\\n return rendered_template\\\n\\\n@app.route('/')\\\ndef home():\\\n # Call the render_response_from_env function with the env variable\\\n response = render_response_from_env(env)\\\n \\\n # Return the response from render_response_from_env\\\n return response\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+(!) VULN CODE [ 0 s ] , Broken Access Control, Security Misconfiguration : from flask import Flask, request, render_template_string\\\n\\\napp = Flask(__name__)\\\n\\\ndef render_response_from_env(env):\\\n # Get the name parameter from the user request\\\n name = request.args.get('name', 'Guest')\\\n \\\n # Get the template from the environment\\\n template = env.get_template('template.html')\\\n \\\n # Render the template with the name parameter from the request\\\n rendered_template = template.render(name=name)\\\n \\\n # Return a response with the rendered template\\\n return rendered_template\\\n\\\n@app.route('/')\\\ndef home():\\\n # Assume env is defined somewhere globally or passed to the function\\\n response = render_response_from_env(env)\\\n return response\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+(!) VULN CODE [ 1.0 s ] , Security Misconfiguration : from flask import Flask, render_template\\\n\\\napp = Flask(__name__)\\\n\\\n@app.route('/hello/<username>')\\\ndef hello(username):\\\n return render_template('hello.html', username=username)\\\n\\\nif __name__ == '__main__':\\\n app.run(debug=True) 
+
+==> SAFE CODE [ 0 s ] : from flask import Flask # Import the web application class\\\n\\\napp = Flask(__name__) # Create the application object\\\n\\\n@app.route('/') # Decorator to associate URL with function\\\ndef hello_world(): # Function called when user visits the URL\\\n return 'Hello, World!' # Return message to the user\\\n\\\nif __name__ == '__main__':\\\n app.run() # Run the application 
+
+==> SAFE CODE [ 1.0 s ] : from html import escape\\\n\\\n# Step 1: Define the decorator\\\nurl_map = {}\\\n\\\ndef url_decorator(url):\\\n def decorator(func):\\\n url_map[url] = func\\\n return func\\\n return decorator\\\n\\\n# Step 2: Define the hello function\\\n@url_decorator('/hello/<username>')\\\ndef hello(username):\\\n return f"Hello {escape(username)}"\\\n\\\n# Step 4: Simulate URL mapping\\\ndef simulate_request(url):\\\n # Extract the username from the URL\\\n if url.startswith('/hello/'):\\\n username = url[len('/hello/'):]\\\n if '<username>' in url_map['/hello/<username>']:\\\n return url_map['/hello/<username>'](username)\\\n return "404 Not Found"\\\n\\\n# Example usage\\\nprint(simulate_request('/hello/john_doe')) # Output: Hello john_doe 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 6 
+
+#SafeCode: 3 
+
+Vulnerability Rate: 66,6667 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 1 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 4 
+
+#Broken Access Control: 5 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 5.0 s 
+
+Average runtime per snippet: 0,555556 s 
+
