@@ -1,0 +1,67 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 1.0 s ] : import os\\\nimport sys\\\n\\\n# Define the file path\\\nfile_path = 'important_config'\\\n\\\n# Define the flags\\\nflags = os.O_RDWR | os.O_CREAT\\\n\\\n# Define the permissions\\\nmode = (os.S_IRUSR | os.S_IWUSR | os.S_IRGRP | os.S_IROTH)\\\n\\\n# Open the file\\\ntry:\\\n fd = os.open(file_path, flags, mode)\\\nexcept OSError as e:\\\n print(f"Error opening file: {e}")\\\n sys.exit(1)\\\n\\\n# The string to be written to the file\\\ncontent = "important_config"\\\n\\\n# Write to the file\\\ntry:\\\n os.write(fd, content.encode())\\\nexcept OSError as e:\\\n print(f"Error writing to file: {e}")\\\n os.close(fd)\\\n sys.exit(1)\\\n\\\n# Close the file\\\nos.close(fd)\\\nprint("File written and closed successfully.")\\\n 
+
+==> SAFE CODE [ 0 s ] : import os\\\nimport stat\\\n\\\n# Define the file name\\\nfilename = 'important_config'\\\n\\\n# Define the permissions: readable and writable by the owner (user)\\\npermissions = stat.S_IRUSR | stat.S_IWUSR\\\n\\\n# Define the flags: create if it does not exist, truncate if it does, and open for writing only\\\nflags = os.O_CREAT | os.O_TRUNC | os.O_WRONLY\\\n\\\n# Open the file with the specified flags and permissions\\\nfd = os.open(filename, flags, permissions)\\\n\\\n# Optionally, you can write some data to the file (example: writing a config line)\\\nwith os.fdopen(fd, 'w') as file:\\\n file.write('config_value=42\\\n')\\\n\\\nprint(f"{filename} has been created with the specified permissions and flags.")\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import os\\\n\\\n# Define the file path and the string to write\\\nfile_path = 'example.txt'\\\nimportant_config = 'important_config'\\\n\\\n# Define the flags and permissions\\\nflags = os.O_RDWR | os.O_CREAT\\\nmode = 0o700\\\n\\\n# Open the file with the specified flags and permissions\\\nfd = os.open(file_path, flags, mode)\\\n\\\ntry:\\\n # Write the string to the file\\\n os.write(fd, important_config.encode('utf-8'))\\\nfinally:\\\n # Close the file descriptor\\\n os.close(fd)\\\n 
+
+==> SAFE CODE [ 0 s ] : import os\\\nimport errno\\\n\\\n# Define the file path\\\nfile_path = 'example.txt'\\\n\\\n# Define the flags\\\nflags = os.O_CREAT | os.O_TRUNC | os.O_WRONLY | os.O_EXCL\\\n\\\n# Define the file mode (e.g., 0o644 is rw-r--r--)\\\nmode = 0o644\\\n\\\ntry:\\\n # Open the file with the specified flags and mode\\\n file_descriptor = os.open(file_path, flags, mode)\\\n \\\n # You can write to the file using os.write() or file-like object operations\\\n with os.fdopen(file_descriptor, 'w') as file:\\\n file.write('Hello, world!\\\n')\\\n \\\n print(f"File '{file_path}' created and written to successfully.")\\\nexcept OSError as e:\\\n if e.errno == errno.EEXIST:\\\n print(f"File '{file_path}' already exists.")\\\n else:\\\n print(f"Error opening/creating file: {e}")\\\n\\\n# Note: You don't need to manually close the file descriptor when using os.fdopen() with 'with' statement\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import os\\\nimport sys\\\n\\\n# Define the flags and mode for opening the file\\\nO_WRONLY = os.O_WRONLY\\\nO_CREAT = os.O_CREAT\\\nS_IRUSR = 0o400\\\nS_IWUSR = 0o200\\\n\\\n# Combine the flags and mode\\\nflags = O_WRONLY | O_CREAT\\\nmode = S_IRUSR | S_IWUSR\\\n\\\n# The name of the file to open\\\nfilename = 'important_config'\\\n\\\n# The content to write to the file\\\ncontent = 'important_config'\\\n\\\ntry:\\\n # Open the file with the specified flags and mode\\\n fd = os.open(filename, flags, mode)\\\n \\\n # Write the content to the file\\\n os.write(fd, content.encode())\\\n \\\n # Close the file\\\n os.close(fd)\\\n \\\n print(f"Successfully wrote to {filename}")\\\nexcept OSError as e:\\\n print(f"Failed to write to {filename}: {e}", file=sys.stderr)\\\n 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 5 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 0 
+
+#SafeCode: 5 
+
+Vulnerability Rate: 0 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 0 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 0 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 3.0 s 
+
+Average runtime per snippet: 0,6 s 
+

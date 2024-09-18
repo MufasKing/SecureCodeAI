@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 1.0 s ] : def copy_bytes(destination, source, num_bytes):\\\n """\\\n Copies a number of bytes from source to destination.\\\n\\\n Args:\\\n - destination (bytearray): The buffer to which bytes will be copied.\\\n - source (bytearray): The buffer from which bytes will be copied.\\\n - num_bytes (int): The number of bytes to copy.\\\n\\\n Raises:\\\n - ValueError: If num_bytes is greater than the length of either buffer.\\\n """\\\n if num_bytes > len(source):\\\n raise ValueError("num_bytes is greater than the length of the source buffer.")\\\n if num_bytes > len(destination):\\\n raise ValueError("num_bytes is greater than the length of the destination buffer.")\\\n\\\n destination[:num_bytes] = source[:num_bytes]\\\n\\\n# Example usage\\\nsrc = bytearray(b"Hello, world! This is a test.")\\\ndst = bytearray(256) # Initialize destination buffer with 256 bytes\\\n\\\nnum_bytes_to_copy = 16\\\ncopy_bytes(dst, src, num_bytes_to_copy)\\\n\\\nprint("Source:", src)\\\nprint("Destination:", dst[:num_bytes_to_copy])\\\n 
+
+==> SAFE CODE [ 0 s ] : # Define a list of vehicles\\\nvehicles = ["Car", "Motorcycle", "Bicycle", "Bus", "Truck"]\\\n\\\n# Prompt the user to enter an index\\\nuser_input = input("Enter the index of the vehicle you want to access (0 to {}): ".format(len(vehicles) - 1))\\\n\\\ntry:\\\n # Convert the user input to an integer\\\n index = int(user_input)\\\n\\\n # Check if the index is within the valid range\\\n if 0 <= index < len(vehicles):\\\n # Access and print the vehicle at the given index\\\n print("The vehicle at index {} is: {}".format(index, vehicles[index]))\\\n else:\\\n print("Error: Index is out of range. Please enter a number between 0 and {}.".format(len(vehicles) - 1))\\\n\\\nexcept ValueError:\\\n print("Error: Invalid input. Please enter a valid integer.")\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import sys\\\n\\\ndef atoi(s):\\\n """Convert a string to an integer."""\\\n try:\\\n return int(s)\\\n except ValueError:\\\n print(f"Error: '{s}' is not a valid integer.")\\\n sys.exit(1)\\\n\\\ndef main():\\\n if len(sys.argv) < 3:\\\n print("Usage: python script.py <index> <arg1> <arg2> ...")\\\n sys.exit(1)\\\n \\\n # The second argument is at index 1\\\n index_arg = sys.argv[1]\\\n\\\n # Convert the second argument (index) to an integer\\\n try:\\\n index = atoi(index_arg)\\\n except ValueError:\\\n print(f"Error: Invalid index '{index_arg}'")\\\n sys.exit(1)\\\n\\\n # Ensure the index is within the range of command line arguments\\\n if index < 2 or index >= len(sys.argv):\\\n print(f"Error: Index {index} is out of range.")\\\n sys.exit(1)\\\n\\\n # Retrieve the argument at the specified index\\\n argument = sys.argv[index]\\\n \\\n # Print the argument\\\n print(argument)\\\n \\\n # Exit the program with return code 0\\\n sys.exit(0)\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+==> SAFE CODE [ 0 s ] : # Define an array of vehicles\\\nvehicles = ["Car", "Truck", "Motorcycle", "Bicycle", "Boat"]\\\n\\\n# Prompt the user for the index of a vehicle\\\ntry:\\\n index = int(input("Enter the index of the vehicle you want to select (0-4): "))\\\n\\\n # Ensure the index is within the valid range\\\n if 0 <= index < len(vehicles):\\\n # Return the vehicle at the specified index\\\n selected_vehicle = vehicles[index]\\\n print(f"The vehicle at index {index} is: {selected_vehicle}")\\\n else:\\\n print("Index out of range. Please enter a valid index.")\\\n\\\nexcept ValueError:\\\n print("Invalid input. Please enter an integer.")\\\n\\\n# Loop through the array and print out each vehicle\\\nprint("\\\nList of all vehicles:")\\\nfor vehicle in vehicles:\\\n print(vehicle)\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import sys\\\n\\\ndef main():\\\n # Check if there are enough arguments\\\n if len(sys.argv) < 2:\\\n print("Usage: python argv_index.py <index>")\\\n sys.exit(1)\\\n \\\n # Parse the index argument\\\n try:\\\n index = int(sys.argv[1])\\\n except ValueError:\\\n print("The index must be an integer.")\\\n sys.exit(1)\\\n \\\n # Check if the index is within the valid range\\\n if index < 1 or index >= len(sys.argv):\\\n print(f"Index {index} is out of range. Please provide a valid index.")\\\n sys.exit(1)\\\n \\\n # Print the corresponding command-line argument\\\n print(sys.argv[index])\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+==> SAFE CODE [ 1.0 s ] : def memcpy(dest, src, num_bytes):\\\n """Emulate the C memcpy function."""\\\n # Ensure that src is at least num_bytes long\\\n if len(src) < num_bytes:\\\n raise ValueError("Source is shorter than num_bytes")\\\n \\\n # Copy num_bytes from src to dest\\\n for i in range(num_bytes):\\\n if i < len(dest):\\\n dest[i] = src[i]\\\n\\\ndef strlen(s):\\\n """Emulate the C strlen function."""\\\n return len(s)\\\n\\\n# Create a buffer with a fixed size (for example, 10 bytes)\\\nbuffer_size = 10\\\nbuffer = [''] * buffer_size\\\n\\\n# Define the source string\\\nsource_string = "Hello"\\\n\\\n# Copy the string "Hello" to the buffer\\\nnum_bytes_to_copy = strlen(source_string)\\\nmemcpy(buffer, source_string, num_bytes_to_copy)\\\n\\\n# Print the buffer as a string to verify the result\\\nprint("".join(buffer))\\\n 
+
+==> SAFE CODE [ 0 s ] : def memcpy(dest, src, num_bytes):\\\n """\\\n Copy num_bytes from src to dest.\\\n \\\n :param dest: The destination list to which bytes will be copied.\\\n :param src: The source list from which bytes will be copied.\\\n :param num_bytes: The number of bytes to copy.\\\n """\\\n # Ensure we don't copy more bytes than available in src or can fit in dest\\\n num_bytes = min(num_bytes, len(src), len(dest))\\\n dest[:num_bytes] = src[:num_bytes]\\\n\\\ndef strlen(s):\\\n """\\\n Return the length of the string s.\\\n \\\n :param s: The string whose length is to be calculated.\\\n :return: Length of the string.\\\n """\\\n return len(s)\\\n\\\n# Example usage\\\nbuffer_size = 20\\\nbuffer = [0] * buffer_size # Create a buffer with a certain size\\\n\\\nmessage = "Hello, World!" # The message to be copied\\\nmessage_bytes = [ord(c) for c in message] # Convert message to a list of byte values\\\n\\\n# Copy the message into the buffer\\\nmemcpy(buffer, message_bytes, strlen(message))\\\n\\\n# Convert buffer back to a string for display\\\ncopied_message =\".join(chr(b) for b in buffer if b != 0) # Convert byte values back to characters\\\nprint(f"Copied message: {copied_message}")\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import sys\\\n\\\n# Define a sample array\\\narray = [10, 20, 30, 40, 50]\\\n\\\ndef main():\\\n if len(sys.argv) != 2:\\\n print("Usage: python script.py <index>")\\\n sys.exit(1)\\\n\\\n try:\\\n # Convert the command line argument to an integer\\\n index = int(sys.argv[1])\\\n except ValueError:\\\n print("invalid input")\\\n sys.exit(1)\\\n\\\n # Check if the index is within the valid range\\\n if 0 <= index < len(array):\\\n print(array[index])\\\n else:\\\n print("invalid input")\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+==> SAFE CODE [ 0 s ] : import sys\\\n\\\ndef atoi(s):\\\n """Convert a string to an integer."""\\\n try:\\\n return int(s)\\\n except ValueError:\\\n raise ValueError(f"Invalid input for integer conversion: '{s}'")\\\n\\\ndef main():\\\n argc = len(sys.argv)\\\n argv = sys.argv\\\n \\\n # Print number of arguments\\\n print(f"Number of arguments: {argc}")\\\n\\\n # Print the program name and arguments\\\n print(f"Program name: {argv[0]}")\\\n print("Arguments:")\\\n \\\n for i in range(1, argc):\\\n print(f"argv[{i}] = {argv[i]}")\\\n try:\\\n # Convert argument to integer\\\n num = atoi(argv[i])\\\n print(f" Converted to integer: {num}")\\\n except ValueError as e:\\\n print(f" Error: {e}")\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 0 
+
+#SafeCode: 9 
+
+Vulnerability Rate: 0 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 0 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 0 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 5.0 s 
+
+Average runtime per snippet: 0,555556 s 
+

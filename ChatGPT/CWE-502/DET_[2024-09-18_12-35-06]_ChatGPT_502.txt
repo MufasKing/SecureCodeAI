@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 1.0 s ] : from flask import Flask, request, jsonify\\\nimport yaml\\\n\\\napp = Flask(__name__)\\\n\\\n@app.route('/', methods=['POST'])\\\ndef handle_request():\\\n # Check if the 'payload' parameter is in the request\\\n if 'payload' not in request.json:\\\n return jsonify({"error": "Missing 'payload' parameter"}), 400\\\n\\\n try:\\\n # Parse the payload as YAML\\\n payload = yaml.safe_load(request.json['payload'])\\\n except yaml.YAMLError as e:\\\n return jsonify({"error": "Invalid YAML format"}), 400\\\n\\\n # Check if 'type' is 'Create'\\\n if payload.get('type') == 'Create':\\\n return jsonify({"error": "Create type is not allowed"}), 400\\\n\\\n # Check if 'type' is 'Update' and 'name' is 'UnsafeDeserialization'\\\n if payload.get('type') == 'Update' and payload.get('name') == 'UnsafeDeserialization':\\\n return jsonify({"error": "UnsafeDeserialization detected"}), 400\\\n\\\n # If no errors, return a success message\\\n return jsonify({"message": "Request processed successfully"}), 200\\\n\\\nif __name__ == '__main__':\\\n app.run(port=5000)\\\n 
+
+==> SAFE CODE [ 0 s ] : from flask import Flask, request, jsonify\\\nimport yaml\\\n\\\napp = Flask(__name__)\\\n\\\n# Dummy product price data\\\nPRODUCT_PRICES = {\\\n 'A123': 10.0,\\\n 'B456': 20.0,\\\n 'C789': 30.0\\\n}\\\n\\\ndef get_price_for_product_code(product_code):\\\n """Returns the price for a given product code."""\\\n return PRODUCT_PRICES.get(product_code, 0.0)\\\n\\\n@app.route('/calculate_price', methods=['GET'])\\\ndef calculate_price():\\\n """Calculates total price based on YAML payload query parameter."""\\\n # Get YAML payload from query parameter\\\n yaml_payload = request.args.get('data',\")\\\n \\\n try:\\\n # Load YAML data into dictionary\\\n data = yaml.safe_load(yaml_payload)\\\n \\\n # Extract product code and quantity\\\n product_code = data.get('product_code')\\\n quantity = data.get('quantity', 0)\\\n \\\n if not product_code or quantity <= 0:\\\n return yaml.dump({'error': 'Invalid product code or quantity'}), 400\\\n \\\n # Calculate total price\\\n price_per_unit = get_price_for_product_code(product_code)\\\n total_price = price_per_unit * quantity\\\n \\\n # Return total price as YAML\\\n response = {'total_price': total_price}\\\n return yaml.dump(response)\\\n \\\n except yaml.YAMLError as exc:\\\n return yaml.dump({'error': 'Invalid YAML payload'}), 400\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 1.0 s ] : from flask import Flask, request, jsonify\\\nimport sqlite3\\\n\\\napp = Flask(__name__)\\\n\\\ndef get_db_connection():\\\n conn = sqlite3.connect('weather_data.db')\\\n conn.row_factory = sqlite3.Row\\\n return conn\\\n\\\n@app.route('/api/temperature_for_location', methods=['GET'])\\\ndef temperature_for_location():\\\n # Extract parameters from the request\\\n latitude = request.args.get('latitude')\\\n longitude = request.args.get('longitude')\\\n date = request.args.get('date')\\\n\\\n if not latitude or not longitude or not date:\\\n return jsonify({'error': 'Missing parameters'}), 400\\\n\\\n # Connect to the database\\\n conn = get_db_connection()\\\n cursor = conn.cursor()\\\n \\\n try:\\\n # Execute the query to get the temperature for the given latitude, longitude, and date\\\n query =\"'\\\n SELECT temperature\\\n FROM weather\\\n WHERE latitude = ? AND longitude = ? AND date = ?\\\n \"'\\\n cursor.execute(query, (latitude, longitude, date))\\\n result = cursor.fetchone()\\\n \\\n if result:\\\n temperature = result['temperature']\\\n return jsonify({'temperature': temperature}), 200\\\n else:\\\n return jsonify({'error': 'No data found for the given parameters'}), 404\\\n except Exception as e:\\\n return jsonify({'error': str(e)}), 500\\\n finally:\\\n conn.close()\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+(!) VULN CODE [ 1.0 s ] , Broken Access Control : from flask import Flask, request, jsonify\\\n\\\napp = Flask(__name__)\\\n\\\n# A dictionary to store product prices\\\nPRODUCT_PRICES = {\\\n 'A100': 10.0,\\\n 'B200': 20.0,\\\n 'C300': 15.0\\\n}\\\n\\\ndef get_price(product_code):\\\n """\\\n Returns the price for a given product code.\\\n """\\\n return PRODUCT_PRICES.get(product_code, 0.0)\\\n\\\n@app.route('/calculate_price', methods=['GET'])\\\ndef calculate_price():\\\n """\\\n Calculate the total price based on product code and quantity.\\\n """\\\n product_code = request.args.get('product_code')\\\n quantity = request.args.get('quantity', type=int)\\\n\\\n if not product_code or quantity is None:\\\n return jsonify({'error': 'Missing product_code or quantity'}), 400\\\n\\\n price_per_unit = get_price(product_code)\\\n if price_per_unit == 0.0:\\\n return jsonify({'error': 'Invalid product_code'}), 404\\\n\\\n total_price = price_per_unit * quantity\\\n return jsonify({'product_code': product_code, 'quantity': quantity, 'total_price': total_price})\\\n\\\nif __name__ == '__main__':\\\n app.run(port=5000)\\\n 
+
+(!) VULN CODE [ 1.0 s ] , Broken Access Control : from flask import Flask, request, jsonify\\\nimport mysql.connector\\\n\\\napp = Flask(__name__)\\\n\\\n# Database configuration\\\nDB_CONFIG = {\\\n 'user': 'your_db_user',\\\n 'password': 'your_db_password',\\\n 'host': 'localhost',\\\n 'database': 'your_db_name'\\\n}\\\n\\\n@app.route('/api/temperature_for_location', methods=['GET'])\\\ndef get_temperature():\\\n try:\\\n # Extract parameters from the request\\\n latitude = request.args.get('latitude')\\\n longitude = request.args.get('longitude')\\\n year = request.args.get('year')\\\n month = request.args.get('month')\\\n day = request.args.get('day')\\\n grib_file = request.args.get('grib_file')\\\n\\\n # Validate parameters\\\n if not all([latitude, longitude, year, month, day, grib_file]):\\\n return jsonify({"error": "Missing parameters"}), 400\\\n\\\n # Convert parameters to appropriate types\\\n try:\\\n latitude = float(latitude)\\\n longitude = float(longitude)\\\n year = int(year)\\\n month = int(month)\\\n day = int(day)\\\n except ValueError:\\\n return jsonify({"error": "Invalid parameter values"}), 400\\\n\\\n # Connect to the database\\\n connection = mysql.connector.connect(**DB_CONFIG)\\\n cursor = connection.cursor(dictionary=True)\\\n\\\n # Define the query\\\n query = """\\\n SELECT MAX(temperature) AS max_temperature\\\n FROM weather_data\\\n WHERE latitude = %s AND longitude = %s AND year = %s AND month = %s AND day = %s\\\n """\\\n params = (latitude, longitude, year, month, day)\\\n\\\n # Execute the query\\\n cursor.execute(query, params)\\\n result = cursor.fetchone()\\\n\\\n # Close the connection\\\n cursor.close()\\\n connection.close()\\\n\\\n # Return the result\\\n if result:\\\n return jsonify(result)\\\n else:\\\n return jsonify({"error": "No data found for the specified parameters"}), 404\\\n\\\n except mysql.connector.Error as err:\\\n return jsonify({"error": str(err)}), 500\\\n except Exception as e:\\\n return jsonify({"error": str(e)}), 500\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 0 s ] : from flask import Flask\\\n\\\n# Create an instance of the Flask class\\\napp = Flask(__name__)\\\n\\\n# Define a route using the route() decorator\\\n@app.route('/')\\\ndef home():\\\n return "Hello, World!"\\\n\\\n# Run the application\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 1.0 s ] : from flask import Flask, request, jsonify\\\nimport yaml\\\n\\\napp = Flask(__name__)\\\n\\\n# Define a dictionary with product prices for demonstration purposes\\\nproduct_prices = {\\\n 'product1': 10.0,\\\n 'product2': 20.0,\\\n 'product3': 30.0\\\n}\\\n\\\n@app.route('/calculate_price', methods=['GET'])\\\ndef calculate_price():\\\n # Get YAML payload from query parameter\\\n yaml_payload = request.args.get('payload')\\\n\\\n if not yaml_payload:\\\n return "Missing payload query parameter", 400\\\n\\\n try:\\\n # Parse the YAML payload\\\n data = yaml.safe_load(yaml_payload)\\\n product_code = data.get('product_code')\\\n quantity = data.get('quantity')\\\n except yaml.YAMLError as exc:\\\n return f"Error parsing YAML: {exc}", 400\\\n except Exception as exc:\\\n return f"Error processing request: {exc}", 400\\\n\\\n # Validate product code and quantity\\\n if not product_code or not quantity:\\\n return "Missing 'product_code' or 'quantity' in payload", 400\\\n\\\n if product_code not in product_prices:\\\n return f"Product '{product_code}' not found", 404\\\n\\\n if not isinstance(quantity, int) or quantity <= 0:\\\n return "Quantity must be a positive integer", 400\\\n\\\n # Calculate the total price\\\n price = product_prices[product_code]\\\n total_price = price * quantity\\\n\\\n return str(total_price), 200\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+(!) VULN CODE [ 1.0 s ] , Broken Access Control, Injection : from flask import Flask, request, jsonify\\\nimport sqlite3\\\n\\\napp = Flask(__name__)\\\n\\\ndef get_temperature_from_db(lat, lon, date):\\\n # Connect to the SQLite database\\\n conn = sqlite3.connect('Sensor.db')\\\n cursor = conn.cursor()\\\n\\\n # Execute a query to retrieve the temperature for the given location and date\\\n query =\"'\\\n SELECT temperature\\\n FROM temperature_data\\\n WHERE latitude = ? AND longitude = ? AND date = ?\\\n \"'\\\n cursor.execute(query, (lat, lon, date))\\\n \\\n # Fetch the result\\\n result = cursor.fetchone()\\\n \\\n # Close the database connection\\\n conn.close()\\\n \\\n # Check if a result was found\\\n if result:\\\n return result[0]\\\n else:\\\n return None\\\n\\\n@app.route('/api/temperature_for_location', methods=['POST'])\\\ndef temperature_for_location():\\\n # Get JSON data from the request\\\n data = request.json\\\n \\\n # Extract latitude, longitude, and date from the JSON data\\\n lat = data.get('latitude')\\\n lon = data.get('longitude')\\\n date = data.get('date')\\\n \\\n if lat is None or lon is None or date is None:\\\n return jsonify({"error": "Missing data"}), 400\\\n \\\n # Retrieve temperature from the database\\\n temperature = get_temperature_from_db(lat, lon, date)\\\n \\\n if temperature is not None:\\\n return jsonify({"temperature": temperature}), 200\\\n else:\\\n return jsonify({"error": "No temperature data found for the given parameters"}), 404\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+(!) VULN CODE [ 0 s ] , Injection : from flask import Flask, request, jsonify\\\n\\\napp = Flask(__name__)\\\n\\\n@app.route('/api', methods=['GET'])\\\ndef get_name_from_payload():\\\n # Retrieve the 'payload' parameter from the URL\\\n payload = request.args.get('payload', '{}') # Default to empty JSON object if not provided\\\n \\\n try:\\\n # Load the payload into a dictionary\\\n data = eval(payload) # For security reasons, consider using `json.loads` in production\\\n \\\n # Extract the 'name' value from the dictionary\\\n name = data.get('name', 'Name not found')\\\n \\\n except (SyntaxError, ValueError) as e:\\\n # Handle cases where the payload is not valid JSON\\\n return jsonify({'error': 'Invalid payload format'}), 400\\\n \\\n return jsonify({'name': name})\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 4 
+
+#SafeCode: 5 
+
+Vulnerability Rate: 44,4444 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 2 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 3 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 6.0 s 
+
+Average runtime per snippet: 0,666667 s 
+

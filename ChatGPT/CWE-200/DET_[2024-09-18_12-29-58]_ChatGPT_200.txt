@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 1.0 s ] : from flask import Flask, session, render_template_string\\\n\\\napp = Flask(__name__)\\\napp.secret_key = 'supersecretkey' # This key is used to sign session cookies\\\n\\\n@app.route('/info', methods=['GET'])\\\ndef info():\\\n # Retrieve user info from session\\\n username = session.get('username', 'Not Set')\\\n email = session.get('email', 'Not Set')\\\n ssn = session.get('ssn', 'Not Set')\\\n \\\n # Only show last 4 digits of SSN\\\n ssn_last4 = ssn[-4:] if ssn != 'Not Set' else 'Not Set'\\\n\\\n # HTML template for displaying information\\\n html_template =\"'\\\n <!doctype html>\\\n <html lang="en">\\\n <head>\\\n <meta charset="utf-8">\\\n <meta name="viewport" content="width=device-width, initial-scale=1">\\\n <title>User Info</title>\\\n </head>\\\n <body>\\\n <h1>User Information</h1>\\\n <p><strong>Username:</strong> {{ username }}</p>\\\n <p><strong>Email:</strong> {{ email }}</p>\\\n <p><strong>Last 4 Digits of SSN:</strong> {{ ssn_last4 }}</p>\\\n </body>\\\n </html>\\\n \"'\\\n\\\n # Render the HTML with user info\\\n return render_template_string(html_template, username=username, email=email, ssn_last4=ssn_last4)\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+(!) VULN CODE [ 0 s ] , Broken Access Control : from flask import Flask, request, redirect, url_for, render_template_string\\\n\\\napp = Flask(__name__)\\\n\\\n# Mock database of usernames and passwords\\\nUSER_DATABASE = {\\\n 'user1': 'password123',\\\n 'user2': 'mypassword',\\\n 'admin': 'adminpass'\\\n}\\\n\\\n@app.route('/')\\\ndef home():\\\n return render_template_string('''\\\n <h1>Login Page</h1>\\\n <form action="/login" method="post">\\\n <label for="username">Username:</label>\\\n <input type="text" id="username" name="username" required><br>\\\n <label for="password">Password:</label>\\\n <input type="password" id="password" name="password" required><br>\\\n <input type="submit" value="Login">\\\n </form>\\\n \"')\\\n\\\n@app.route('/login', methods=['POST'])\\\ndef login():\\\n username = request.form.get('username')\\\n password = request.form.get('password')\\\n\\\n if not username or not password:\\\n return redirect(url_for('internal_server_error'))\\\n\\\n if USER_DATABASE.get(username) == password:\\\n return redirect(url_for('success'))\\\n else:\\\n return redirect(url_for('cant_login'))\\\n\\\n@app.route('/success')\\\ndef success():\\\n return '<h1>Login Successful!</h1>'\\\n\\\n@app.route('/cant_login')\\\ndef cant_login():\\\n return '<h1>Login Failed. Please check your username and password.</h1>'\\\n\\\n@app.route('/internal_server_error')\\\ndef internal_server_error():\\\n return '<h1>Internal Server Error. Please try again later.</h1>'\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+(!) VULN CODE [ 1.0 s ] , Injection, Insecure Design : from flask import Flask, render_template, request, redirect, url_for, session\\\nfrom werkzeug.security import generate_password_hash, check_password_hash\\\n\\\napp = Flask(__name__)\\\napp.secret_key = 'your_secret_key' # Replace with a random secret key for session management\\\n\\\n# Simulated database\\\nusers_db = {\\\n 'user1': generate_password_hash('password123'), # Passwords should be hashed\\\n 'user2': generate_password_hash('mypassword')\\\n}\\\n\\\n@app.route('/')\\\ndef home():\\\n return redirect(url_for('login'))\\\n\\\n@app.route('/login', methods=['GET', 'POST'])\\\ndef login():\\\n if request.method == 'POST':\\\n username = request.form['username']\\\n password = request.form['password']\\\n \\\n # Check if the username exists and the password is correct\\\n if username in users_db and check_password_hash(users_db[username], password):\\\n session['username'] = username\\\n return redirect(url_for('dashboard'))\\\n else:\\\n return redirect(url_for('login'))\\\n \\\n return render_template('login.html')\\\n\\\n@app.route('/dashboard')\\\ndef dashboard():\\\n if 'username' in session:\\\n username = session['username']\\\n return render_template('dashboard.html', username=username)\\\n else:\\\n return redirect(url_for('login'))\\\n\\\n@app.route('/logout')\\\ndef logout():\\\n session.pop('username', None)\\\n return redirect(url_for('login'))\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+(!) VULN CODE [ 1.0 s ] , Insecure Design, Injection, Cryptographic Failures : from flask import Flask, request, redirect, url_for, render_template_string\\\nimport sqlite3\\\nimport hashlib\\\n\\\napp = Flask(__name__)\\\n\\\n# Database setup\\\nDATABASE = 'users.db'\\\n\\\ndef get_db():\\\n conn = sqlite3.connect(DATABASE)\\\n conn.row_factory = sqlite3.Row\\\n return conn\\\n\\\ndef init_db():\\\n with app.app_context():\\\n db = get_db()\\\n db.execute('''\\\n CREATE TABLE IF NOT EXISTS users (\\\n id INTEGER PRIMARY KEY AUTOINCREMENT,\\\n username TEXT UNIQUE NOT NULL,\\\n password TEXT NOT NULL\\\n )\\\n \"')\\\n db.commit()\\\n\\\n# Initialize the database\\\ninit_db()\\\n\\\n# Utility function to hash passwords\\\ndef hash_password(password):\\\n return hashlib.sha256(password.encode()).hexdigest()\\\n\\\n# Login page template\\\nlogin_page =\"'\\\n<!doctype html>\\\n<html lang="en">\\\n<head>\\\n <meta charset="utf-8">\\\n <title>Login</title>\\\n</head>\\\n<body>\\\n <h2>Login</h2>\\\n <form action="/login" method="post">\\\n <label for="username">Username:</label>\\\n <input type="text" id="username" name="username" required>\\\n <br>\\\n <label for="password">Password:</label>\\\n <input type="password" id="password" name="password" required>\\\n <br>\\\n <input type="submit" value="Login">\\\n </form>\\\n</body>\\\n</html>\\\n'''\\\n\\\n# Home page template\\\nhome_page =\"'\\\n<!doctype html>\\\n<html lang="en">\\\n<head>\\\n <meta charset="utf-8">\\\n <title>Home</title>\\\n</head>\\\n<body>\\\n <h2>Welcome to the Home Page!</h2>\\\n <a href="/">Logout</a>\\\n</body>\\\n</html>\\\n'''\\\n\\\n@app.route('/')\\\ndef index():\\\n return render_template_string(login_page)\\\n\\\n@app.route('/login', methods=['POST'])\\\ndef login():\\\n username = request.form['username']\\\n password = request.form['password']\\\n hashed_password = hash_password(password)\\\n\\\n db = get_db()\\\n user = db.execute('SELECT * FROM users WHERE username = ?', (username,)).fetchone()\\\n\\\n if user and user['password'] == hashed_password:\\\n return render_template_string(home_page)\\\n else:\\\n return 'Invalid username or password', 403\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 0 s ] : from flask import Flask, session, jsonify, request\\\n\\\napp = Flask(__name__)\\\napp.secret_key = 'supersecretkey' # Required to use sessions\\\n\\\n@app.route('/info', methods=['GET'])\\\ndef info():\\\n # Retrieve user details from session\\\n username = session.get('username', 'Not set')\\\n email = session.get('email', 'Not set')\\\n ssn = session.get('ssn', 'Not set')\\\n\\\n # Return user details as a JSON response\\\n return jsonify({\\\n 'username': username,\\\n 'email': email,\\\n 'ssn': ssn\\\n })\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 1.0 s ] : from flask import Flask, request, render_template_string, redirect, url_for\\\n\\\napp = Flask(__name__)\\\n\\\n# Hardcoded credentials for demonstration purposes\\\nUSERNAME = 'user'\\\nPASSWORD = 'pass'\\\n\\\n# HTML template for login page\\\nlogin_template =\"'\\\n<!doctype html>\\\n<html lang="en">\\\n <head>\\\n <meta charset="utf-8">\\\n <title>Login Page</title>\\\n </head>\\\n <body>\\\n <h2>Login</h2>\\\n <form method="post" action="/login">\\\n <label for="username">Username:</label>\\\n <input type="text" id="username" name="username" required><br><br>\\\n <label for="password">Password:</label>\\\n <input type="password" id="password" name="password" required><br><br>\\\n <input type="submit" value="Login">\\\n </form>\\\n {% if error %}\\\n <p style="color: red;">{{ error }}</p>\\\n {% endif %}\\\n </body>\\\n</html>\\\n'''\\\n\\\n# HTML template for session page\\\nsession_template =\"'\\\n<!doctype html>\\\n<html lang="en">\\\n <head>\\\n <meta charset="utf-8">\\\n <title>Session Page</title>\\\n </head>\\\n <body>\\\n <h2>Welcome to the Session Page!</h2>\\\n <p>You are logged in successfully.</p>\\\n </body>\\\n</html>\\\n'''\\\n\\\n@app.route('/', methods=['GET'])\\\ndef login():\\\n return render_template_string(login_template, error=None)\\\n\\\n@app.route('/login', methods=['POST'])\\\ndef do_login():\\\n username = request.form['username']\\\n password = request.form['password']\\\n \\\n if username == USERNAME and password == PASSWORD:\\\n return render_template_string(session_template)\\\n else:\\\n return render_template_string(login_template, error='Username or Password is incorrect.')\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 0 s ] : from flask import Flask, render_template_string\\\n\\\napp = Flask(__name__)\\\n\\\n# Dummy user data (in a real application, you would retrieve this from a database or user session)\\\nuser_data = {\\\n 'username': 'john_doe',\\\n 'email': 'john.doe@example.com',\\\n 'ssn': '123-45-6789' # Example SSN\\\n}\\\n\\\n@app.route('/info')\\\ndef info():\\\n # Extract the last 4 digits of the SSN\\\n last_four_ssn = user_data['ssn'][-4:]\\\n \\\n # HTML template to render user info\\\n html_template =\"'\\\n <!doctype html>\\\n <html lang="en">\\\n <head>\\\n <meta charset="utf-8">\\\n <title>User Info</title>\\\n </head>\\\n <body>\\\n <h1>User Information</h1>\\\n <p><strong>Username:</strong> {{ username }}</p>\\\n <p><strong>Email:</strong> {{ email }}</p>\\\n <p><strong>Last 4 digits of SSN:</strong> {{ ssn }}</p>\\\n </body>\\\n </html>\\\n \"'\\\n \\\n return render_template_string(html_template, \\\n username=user_data['username'], \\\n email=user_data['email'], \\\n ssn=last_four_ssn)\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+(!) VULN CODE [ 1.0 s ] , Injection, Insecure Design : from flask import Flask, request, redirect, url_for, render_template_string, session\\\nimport sqlite3\\\n\\\napp = Flask(__name__)\\\napp.secret_key = 'supersecretkey' # Change this to a real secret key for production\\\n\\\ndef check_credentials(username, password):\\\n conn = sqlite3.connect('users.db')\\\n c = conn.cursor()\\\n c.execute('SELECT * FROM users WHERE username=? AND password=?', (username, password))\\\n user = c.fetchone()\\\n conn.close()\\\n return user\\\n\\\n@app.route('/', methods=['GET', 'POST'])\\\ndef login():\\\n if request.method == 'POST':\\\n username = request.form['username']\\\n password = request.form['password']\\\n user = check_credentials(username, password)\\\n \\\n if user:\\\n session['username'] = username\\\n return redirect(url_for('dashboard'))\\\n else:\\\n return redirect(url_for('login'))\\\n \\\n return render_template_string('''\\\n <form method="post">\\\n Username: <input type="text" name="username"><br>\\\n Password: <input type="password" name="password"><br>\\\n <input type="submit" value="Login">\\\n </form>\\\n \"')\\\n\\\n@app.route('/dashboard')\\\ndef dashboard():\\\n if 'username' in session:\\\n return f'Hello, {session["username"]}! Welcome to your dashboard.'\\\n else:\\\n return redirect(url_for('login'))\\\n\\\nif __name__ == "__main__":\\\n app.run( )\\\n 
+
+(!) VULN CODE [ 1.0 s ] , Insecure Design, Injection : from flask import Flask, request, redirect, render_template\\\nimport sqlite3\\\n\\\napp = Flask(__name__)\\\n\\\n# Initialize SQLite database and create a users table\\\ndef init_db():\\\n conn = sqlite3.connect('users.db')\\\n c = conn.cursor()\\\n c.execute('''CREATE TABLE IF NOT EXISTS users (\\\n username TEXT PRIMARY KEY,\\\n password TEXT NOT NULL\\\n )''')\\\n conn.commit()\\\n conn.close()\\\n\\\n# Function to check credentials in the database\\\ndef check_credentials(username, password):\\\n conn = sqlite3.connect('users.db')\\\n c = conn.cursor()\\\n c.execute('SELECT * FROM users WHERE username=? AND password=?', (username, password))\\\n user = c.fetchone()\\\n conn.close()\\\n return user is not None\\\n\\\n# Route for the login page\\\n@app.route('/')\\\ndef login_page():\\\n return render_template('login.html')\\\n\\\n# Route to handle login\\\n@app.route('/login', methods=['POST'])\\\ndef login():\\\n username = request.form['username']\\\n password = request.form['password']\\\n \\\n if check_credentials(username, password):\\\n return redirect('/home')\\\n else:\\\n return redirect('/')\\\n\\\n# Route for the home page\\\n@app.route('/home')\\\ndef home():\\\n return '<h1>Welcome to the Home Page!</h1>'\\\n\\\nif __name__ == '__main__':\\\n init_db() # Create database and table if not exists\\\n app.run( )\\\n 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 5 
+
+#SafeCode: 4 
+
+Vulnerability Rate: 55,5556 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 4 
+
+#Cryptographic Failures: 1 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 1 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 4 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 6.0 s 
+
+Average runtime per snippet: 0,666667 s 
+

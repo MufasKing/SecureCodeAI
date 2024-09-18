@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+(!) VULN CODE [ 1.0 s ] , Injection : from flask import Flask, request, send_from_directory, jsonify\\\nimport mysql.connector\\\nimport os\\\n\\\napp = Flask(__name__)\\\nUPLOAD_FOLDER = 'uploads'\\\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\\\n\\\n# Configure MySQL connection\\\ndb_config = {\\\n 'user': 'your_username',\\\n 'password': 'your_password',\\\n 'host': 'your_host',\\\n 'database': 'your_database'\\\n}\\\n\\\ndef get_db_connection():\\\n return mysql.connector.connect(**db_config)\\\n\\\n@app.route('/upload', methods=['POST'])\\\ndef upload_pdf():\\\n if 'file' not in request.files:\\\n return jsonify({'error': 'No file part'}), 400\\\n\\\n file = request.files['file']\\\n if file.filename ==\":\\\n return jsonify({'error': 'No selected file'}), 400\\\n\\\n if file and file.filename.endswith('.pdf'):\\\n filename = file.filename\\\n filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)\\\n file.save(filepath)\\\n\\\n # Save filepath to database\\\n conn = get_db_connection()\\\n cursor = conn.cursor()\\\n cursor.execute('INSERT INTO files (filepath) VALUES (%s)', (filepath,))\\\n conn.commit()\\\n cursor.close()\\\n conn.close()\\\n\\\n return jsonify({'message': 'File uploaded successfully'}), 200\\\n else:\\\n return jsonify({'error': 'Invalid file type. Only PDF files are allowed.'}), 400\\\n\\\n@app.route('/download/<int:file_id>', methods=['GET'])\\\ndef download_pdf(file_id):\\\n conn = get_db_connection()\\\n cursor = conn.cursor()\\\n cursor.execute('SELECT filepath FROM files WHERE id = %s', (file_id,))\\\n result = cursor.fetchone()\\\n cursor.close()\\\n conn.close()\\\n\\\n if result:\\\n filepath = result[0]\\\n if os.path.exists(filepath):\\\n return send_from_directory(directory=os.path.dirname(filepath), filename=os.path.basename(filepath))\\\n else:\\\n return jsonify({'error': 'File not found'}), 404\\\n else:\\\n return jsonify({'error': 'File ID not found'}), 404\\\n\\\nif __name__ == '__main__':\\\n if not os.path.exists(UPLOAD_FOLDER):\\\n os.makedirs(UPLOAD_FOLDER)\\\n app.run( )\\\n 
+
+(!) VULN CODE [ 0 s ] , Injection, Security Logging and Monitoring Failures, Broken Access Control : import mysql.connector\\\nfrom mysql.connector import Error\\\nfrom PIL import Image\\\nimport io\\\n\\\n# Function to connect to the MySQL database\\\ndef connect_to_database():\\\n try:\\\n connection = mysql.connector.connect(\\\n host='your_host', # Replace with your MySQL server host\\\n user='your_username', # Replace with your MySQL username\\\n password='your_password', # Replace with your MySQL password\\\n database='your_database' # Replace with your MySQL database name\\\n )\\\n if connection.is_connected():\\\n print("Successfully connected to the database")\\\n return connection\\\n except Error as e:\\\n print(f"Error: {e}")\\\n return None\\\n\\\n# Function to create the table if it doesn't exist\\\ndef create_table_if_not_exists(connection):\\\n try:\\\n cursor = connection.cursor()\\\n cursor.execute("""\\\n CREATE TABLE IF NOT EXISTS images (\\\n id INT AUTO_INCREMENT PRIMARY KEY,\\\n image LONGBLOB NOT NULL\\\n )\\\n """)\\\n connection.commit()\\\n print("Table created successfully")\\\n except Error as e:\\\n print(f"Error: {e}")\\\n\\\n# Function to insert an image into the database\\\ndef insert_image(connection, image_path):\\\n try:\\\n cursor = connection.cursor()\\\n with open(image_path, 'rb') as file:\\\n binary_data = file.read()\\\n cursor.execute("INSERT INTO images (image) VALUES (%s)", (binary_data,))\\\n connection.commit()\\\n print("Image inserted successfully")\\\n except Error as e:\\\n print(f"Error: {e}")\\\n\\\n# Main function\\\ndef main():\\\n image_path = input("Enter the path of the image file to upload: ")\\\n connection = connect_to_database()\\\n if connection:\\\n create_table_if_not_exists(connection)\\\n insert_image(connection, image_path)\\\n connection.close()\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+==> SAFE CODE [ 1.0 s ] : from flask import Flask, request, redirect, url_for, render_template_string\\\nimport os\\\n\\\napp = Flask(__name__)\\\n\\\n# Configure the upload folder and allowed extensions\\\nUPLOAD_FOLDER = 'uploads'\\\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\\\n\\\n# Ensure the upload folder exists\\\nif not os.path.exists(UPLOAD_FOLDER):\\\n os.makedirs(UPLOAD_FOLDER)\\\n\\\ndef file_is_safe_type(filename):\\\n # This is a stub function that always returns True\\\n return True\\\n\\\n@app.route('/')\\\ndef index():\\\n return\"'\\\n <!doctype html>\\\n <title>Upload File</title>\\\n <h1>Upload File</h1>\\\n <form action="/upload" method="post" enctype="multipart/form-data">\\\n <input type="file" name="file">\\\n <input type="submit" value="Upload">\\\n </form>\\\n \"'\\\n\\\n@app.route('/upload', methods=['POST'])\\\ndef upload_file():\\\n if 'file' not in request.files:\\\n return 'No file part'\\\n \\\n file = request.files['file']\\\n\\\n # If no file was selected\\\n if file.filename ==\":\\\n return 'No selected file'\\\n \\\n if file and file_is_safe_type(file.filename):\\\n filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)\\\n file.save(filename)\\\n return f'File uploaded successfully to {filename}'\\\n else:\\\n return 'File type not allowed'\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 0 s ] : from flask import Flask, request, redirect, url_for\\\nimport os\\\n\\\napp = Flask(__name__)\\\n\\\n# Ensure the 'uploads' directory exists\\\nUPLOAD_FOLDER = 'uploads'\\\nif not os.path.exists(UPLOAD_FOLDER):\\\n os.makedirs(UPLOAD_FOLDER)\\\n\\\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\\\n\\\n@app.route('/')\\\ndef index():\\\n return redirect(url_for('upload_form'))\\\n\\\n@app.route('/upload', methods=['POST'])\\\ndef upload_file():\\\n if 'file' not in request.files:\\\n return "No file part"\\\n\\\n file = request.files['file']\\\n if file.filename ==\":\\\n return "No selected file"\\\n\\\n if file and file.filename.lower().endswith('.pdf'):\\\n filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)\\\n file.save(filepath)\\\n return f'File successfully uploaded and saved to {filepath}'\\\n else:\\\n return "File is not a PDF"\\\n\\\n@app.route('/form')\\\ndef upload_form():\\\n return\"'\\\n <!DOCTYPE html>\\\n <html lang="en">\\\n <head>\\\n <meta charset="UTF-8">\\\n <meta name="viewport" content="width=device-width, initial-scale=1.0">\\\n <title>Upload PDF</title>\\\n </head>\\\n <body>\\\n <h1>Upload PDF File</h1>\\\n <form action="/upload" method="post" enctype="multipart/form-data">\\\n <label for="file">Choose PDF file:</label>\\\n <input type="file" id="file" name="file" accept=".pdf" required>\\\n <button type="submit">Upload</button>\\\n </form>\\\n </body>\\\n </html>\\\n \"'\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+(!) VULN CODE [ 1.0 s ] , Broken Access Control : import sqlite3\\\nimport base64\\\n\\\ndef upload_image(image_path):\\\n # Read and encode image to base64\\\n with open(image_path, "rb") as image_file:\\\n image_base64 = base64.b64encode(image_file.read()).decode('utf-8')\\\n \\\n # Extract the image name from the path\\\n image_name = image_path.split('/')[-1]\\\n \\\n # Insert the image name and base64 string into the database\\\n conn = sqlite3.connect('images.db')\\\n c = conn.cursor()\\\n \\\n c.execute('''\\\n INSERT INTO images (name, image_base64)\\\n VALUES (?, ?)\\\n \"', (image_name, image_base64))\\\n \\\n conn.commit()\\\n conn.close()\\\n print(f"Image {image_name} has been uploaded and stored in the database.")\\\n\\\n# Example usage\\\nupload_image('path/to/your/image.jpg')\\\n 
+
+(!) VULN CODE [ 1.0 s ] , Broken Access Control : from flask import Flask, request, redirect, url_for, render_template_string\\\nimport os\\\n\\\napp = Flask(__name__)\\\napp.config['UPLOAD_FOLDER'] = 'uploads'\\\napp.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # 16 MB limit\\\n\\\n# Create the upload directory if it doesn't exist\\\nif not os.path.exists(app.config['UPLOAD_FOLDER']):\\\n os.makedirs(app.config['UPLOAD_FOLDER'])\\\n\\\n# HTML template for the upload page\\\nupload_page =\"'\\\n<!doctype html>\\\n<html>\\\n<head>\\\n <title>Upload File</title>\\\n</head>\\\n<body>\\\n <h1>Upload File</h1>\\\n <form method="POST" enctype="multipart/form-data">\\\n <input type="file" name="file">\\\n <input type="submit" value="Upload">\\\n </form>\\\n {% if filename %}\\\n <p>File uploaded successfully: <a href="{{ url_for('uploaded_file', filename=filename) }}">{{ filename }}</a></p>\\\n {% endif %}\\\n</body>\\\n</html>\\\n'''\\\n\\\n@app.route('/', methods=['GET', 'POST'])\\\ndef upload_file():\\\n filename = None\\\n if request.method == 'POST':\\\n file = request.files.get('file')\\\n if file and file.filename:\\\n # Save the file to the upload folder\\\n file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)\\\n file.save(file_path)\\\n filename = file.filename\\\n return render_template_string(upload_page, filename=filename)\\\n \\\n return render_template_string(upload_page)\\\n\\\n@app.route('/uploads/<filename>')\\\ndef uploaded_file(filename):\\\n return redirect(url_for('static', filename='uploads/' + filename))\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 0 s ] : from flask import Flask, request, redirect, url_for\\\nimport base64\\\n\\\napp = Flask(__name__)\\\n\\\n@app.route('/')\\\ndef upload_form():\\\n return\"'\\\n <!doctype html>\\\n <title>Upload an Image</title>\\\n <h1>Upload an Image</h1>\\\n <form action="/upload" method="post" enctype="multipart/form-data">\\\n <input type="file" name="image">\\\n <input type="submit" value="Upload">\\\n </form>\\\n \"'\\\n\\\n@app.route('/upload', methods=['POST'])\\\ndef upload_image():\\\n if 'image' not in request.files:\\\n return 'No file part'\\\n \\\n file = request.files['image']\\\n \\\n if file.filename ==\":\\\n return 'No selected file'\\\n \\\n if file:\\\n # Read image file as binary\\\n image_binary = file.read()\\\n \\\n # Encode image to base64\\\n encoded_image = base64.b64encode(image_binary).decode('utf-8')\\\n \\\n # Write encoded image to a file\\\n with open('encoded_image.txt', 'w') as f:\\\n f.write(encoded_image)\\\n \\\n return 'Image uploaded and encoded successfully!'\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import os\\\nfrom flask import Flask, request, redirect, url_for, flash\\\n\\\napp = Flask(__name__)\\\napp.secret_key = 'your_secret_key' # Change this to a real secret key in a production environment\\\n\\\n# Define allowed file extensions\\\nALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}\\\n\\\ndef file_is_safe_type(filename):\\\n """\\\n Check if the uploaded file has a safe extension.\\\n """\\\n return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS\\\n\\\ndef upload_file(file):\\\n """\\\n Handle the upload of the file.\\\n """\\\n if file and file_is_safe_type(file.filename):\\\n filename = file.filename\\\n file.save(os.path.join('uploads', filename))\\\n return True\\\n return False\\\n\\\n@app.route('/upload', methods=['POST'])\\\ndef upload():\\\n if 'file' not in request.files:\\\n flash('No file part')\\\n return redirect(request.url)\\\n \\\n file = request.files['file']\\\n \\\n if file.filename ==\":\\\n flash('No selected file')\\\n return redirect(request.url)\\\n \\\n if upload_file(file):\\\n flash('File successfully uploaded')\\\n else:\\\n flash('File type not allowed')\\\n \\\n return redirect(url_for('upload'))\\\n\\\nif __name__ == '__main__':\\\n # Ensure the uploads folder exists\\\n if not os.path.exists('uploads'):\\\n os.makedirs('uploads')\\\n \\\n app.run( )\\\n 
+
+==> SAFE CODE [ 0 s ] : from flask import Flask, request, redirect, url_for, render_template\\\nimport os\\\n\\\napp = Flask(__name__)\\\n\\\n# Set the upload folder and allowed extensions\\\napp.config['UPLOAD_FOLDER'] = 'uploads'\\\napp.config['ALLOWED_EXTENSIONS'] = {'pdf'}\\\n\\\n# Helper function to check if the file is allowed\\\ndef allowed_file(filename):\\\n return '.' in filename and \\\\n filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']\\\n\\\n# Route for the upload page\\\n@app.route('/')\\\ndef index():\\\n return render_template('upload.html')\\\n\\\n# Route to handle the file upload\\\n@app.route('/upload', methods=['POST'])\\\ndef upload_file():\\\n if 'file' not in request.files:\\\n return redirect(request.url)\\\n \\\n file = request.files['file']\\\n \\\n if file.filename ==\":\\\n return redirect(request.url)\\\n \\\n if file and allowed_file(file.filename):\\\n filename = file.filename\\\n file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))\\\n return 'File successfully uploaded'\\\n else:\\\n return 'Invalid file type'\\\n\\\nif __name__ == '__main__':\\\n # Create the uploads directory if it does not exist\\\n if not os.path.exists(app.config['UPLOAD_FOLDER']):\\\n os.makedirs(app.config['UPLOAD_FOLDER'])\\\n \\\n app.run( )\\\n 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 4 
+
+#SafeCode: 5 
+
+Vulnerability Rate: 44,4444 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 2 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 3 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 1 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 5.0 s 
+
+Average runtime per snippet: 0,555556 s 
+

@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 1.0 s ] : def getMonthlySales(month):\\\n # This is a placeholder for the actual implementation of getMonthlySales\\\n # For example purposes, let's assume it returns a fixed value\\\n # In a real scenario, it would return the sales for the given month\\\n return 1000 + month * 100\\\n\\\n# Initialize sum to 0\\\nsum = 0\\\n\\\n# Loop over the first three months (0, 1, 2)\\\nfor i in range(3):\\\n # Add the sales for the current month to sum\\\n sum += getMonthlySales(i)\\\n\\\n# After the loop, sum contains the total sales for the first quarter\\\nprint("Total sales for the first quarter:", sum)\\\n 
+
+(!) VULN CODE [ 0 s ] , Cryptographic Failures : import random\\\n\\\n# Generate three random integers larger than 1000\\\na = random.randint(1001, 9999)\\\nb = random.randint(1001, 9999)\\\nc = random.randint(1001, 9999)\\\n\\\n# Print the three integers\\\nprint(f"a : {a}")\\\nprint(f"b : {b}")\\\nprint(f"c : {c}")\\\n\\\n# Add the three integers and print the result\\\nsum1 = a + b + c\\\nprint(f"sum: {sum1}")\\\n\\\n# Add the three integers using a long long (in Python, int is of arbitrary precision)\\\nsum2 = int(a) + int(b) + int(c)\\\nprint(f"sum2: {sum2}")\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import sys\\\n\\\n# Constant offset value\\\nOFFSET = 1000\\\n\\\ndef main():\\\n if len(sys.argv) != 2:\\\n print("Usage: python script.py <value>")\\\n sys.exit(1)\\\n\\\n try:\\\n # Read the value from the command line argument\\\n input_value = int(sys.argv[1])\\\n\\\n # Add the offset to the input value\\\n result = input_value + OFFSET\\\n\\\n # Print the result\\\n print(f"Result: {result}")\\\n\\\n except ValueError:\\\n print("Please enter a valid integer value.")\\\n sys.exit(1)\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+==> SAFE CODE [ 0 s ] : import sys\\\n\\\ndef main():\\\n # Check if the argument is provided\\\n if len(sys.argv) != 2:\\\n print("Usage: python script.py <number>")\\\n return 1\\\n\\\n try:\\\n # Read the input value from the command line\\\n input_value = int(sys.argv[1])\\\n except ValueError:\\\n print("Please provide a valid integer.")\\\n return 1\\\n\\\n # Add 1000 to the input value\\\n result = input_value + 1000\\\n\\\n # Print the result\\\n print(result)\\\n\\\n # Return 0\\\n return 0\\\n\\\nif __name__ == "__main__":\\\n sys.exit(main())\\\n 
+
+==> SAFE CODE [ 1.0 s ] : def main():\\\n # Declare a variable called totalSales\\\n totalSales = 0\\\n\\\n # Add sales for each month to the totalSales variable\\\n january_sales = 1200\\\n february_sales = 1500\\\n march_sales = 1800\\\n\\\n totalSales += january_sales\\\n totalSales += february_sales\\\n totalSales += march_sales\\\n\\\n # Print the total sales to the screen\\\n print("Total Sales:", totalSales)\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+(!) VULN CODE [ 0 s ] , Cryptographic Failures : import random\\\n\\\n# Generate the first random integer between 10 and 1000\\\nnum1 = random.randint(10, 1000)\\\n\\\n# Generate the second random integer between 10 and 1000\\\nnum2 = random.randint(10, 1000)\\\n\\\n# Calculate the difference between the two integers\\\ndifference = abs(num1 - num2)\\\n\\\n# Print the results\\\nprint(f"The first random integer is: {num1}")\\\nprint(f"The second random integer is: {num2}")\\\nprint(f"The difference between the two integers is: {difference}")\\\n 
+
+(!) VULN CODE [ 1.0 s ] , Cryptographic Failures : import random\\\n\\\ndef getMonthlySales():\\\n # Simulate getting monthly sales as a random number between 0 and 100000\\\n return random.randint(0, 100000)\\\n\\\n# Initialize a list to store monthly sales\\\nmonthly_sales = []\\\n\\\n# Call getMonthlySales 12 times, once for each month\\\nfor _ in range(12):\\\n sales = getMonthlySales()\\\n monthly_sales.append(sales)\\\n\\\n# Initialize quarterly sales\\\nquarterly_sales = [0, 0, 0, 0]\\\n\\\n# Calculate the sales for each quarter\\\nfor i in range(4):\\\n quarterly_sales[i] = sum(monthly_sales[i*3:(i+1)*3])\\\n\\\n# Print the results\\\nfor i, sales in enumerate(quarterly_sales):\\\n print(f"Quarter {i + 1} Sales: ${sales}")\\\n\\\n# Optional: Print monthly sales for reference\\\nprint("\\\nMonthly Sales:")\\\nfor i, sales in enumerate(monthly_sales):\\\n print(f"Month {i + 1}: ${sales}")\\\n 
+
+==> SAFE CODE [ 0 s ] : # In Python, we use import statements to include modules\\\n\\\n# Importing a specific module\\\nimport sys\\\n\\\n# Importing the entire standard library (Note: This is not a typical practice in Python)\\\n# Standard library modules are available by default, you do not need to explicitly import them all.\\\n# You should import only the specific modules you need.\\\n\\\n# Example function to demonstrate the inclusion of modules\\\ndef main():\\\n # Using the print function, which is built-in in Python\\\n print("Hello, World!")\\\n \\\n # Example usage of a function from the sys module\\\n print("Python version:", sys.version)\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import sys\\\n\\\ndef add_1000():\\\n if len(sys.argv) != 2:\\\n print("Usage: python script.py <number>")\\\n sys.exit(1)\\\n \\\n try:\\\n value = int(sys.argv[1])\\\n except ValueError:\\\n print("Please enter a valid integer.")\\\n sys.exit(1)\\\n\\\n result = value + 1000\\\n print(f"The result is: {result}")\\\n\\\nif __name__ == "__main__":\\\n add_1000()\\\n 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 3 
+
+#SafeCode: 6 
+
+Vulnerability Rate: 33,3333 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 0 
+
+#Cryptographic Failures: 3 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 0 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 5.0 s 
+
+Average runtime per snippet: 0,555556 s 
+

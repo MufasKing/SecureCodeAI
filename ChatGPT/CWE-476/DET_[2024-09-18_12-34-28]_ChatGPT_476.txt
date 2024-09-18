@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 0 s ] : import ctypes\\\n\\\n# Define the structure\\\nclass Person(ctypes.Structure):\\\n _fields_ = [("id", ctypes.c_int),\\\n ("status", ctypes.c_int)]\\\n\\\n# Allocate memory for a new person instance\\\nnew_person = Person()\\\n\\\n# Set the status to 0\\\nnew_person.status = 0\\\n\\\n# Access the status\\\nprint("Status:", new_person.status)\\\n\\\n# To mimic the use of pointers and the '->' operator in C\\\n# We just use the attribute access in Python\\\n\\\n# Create a pointer to the person instance\\\nperson_ptr = ctypes.pointer(new_person)\\\n\\\n# Access fields using the pointer (mimicking `person_ptr->status` in C)\\\nprint("Status via pointer:", person_ptr.contents.status)\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import ctypes\\\nimport sys\\\n\\\n# Constants\\\nBUFFER_SIZE = 1024\\\nREAD_SIZE = 100\\\n\\\ndef allocate_buffer(size):\\\n """Allocate a buffer of the given size using ctypes."""\\\n return ctypes.create_string_buffer(size)\\\n\\\ndef read_input_into_buffer(buffer, size):\\\n """Read up to 'size' characters from stdin into the provided buffer."""\\\n # Read input from stdin\\\n input_data = sys.stdin.read(size)\\\n # Ensure the data fits into the buffer and null-terminate it\\\n buffer[:size] = input_data.encode('utf-8')[:size]\\\n buffer[size - 1] = 0 # Null-terminate the string\\\n\\\ndef main():\\\n # Allocate two buffers of 1024 bytes each\\\n buf = allocate_buffer(BUFFER_SIZE)\\\n buf1 = allocate_buffer(BUFFER_SIZE)\\\n\\\n # Read 100 characters from stdin into buf\\\n print("Please enter at least 100 characters:")\\\n read_input_into_buffer(buf, READ_SIZE)\\\n \\\n # Read another 100 characters from stdin into buf1\\\n print("Please enter another 100 characters:")\\\n read_input_into_buffer(buf1, READ_SIZE)\\\n\\\n # Print the contents of buffers for demonstration\\\n print("Buffer 1 contents:")\\\n print(buf.value.decode('utf-8'))\\\n\\\n print("Buffer 2 contents:")\\\n print(buf1.value.decode('utf-8'))\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+==> SAFE CODE [ 0 s ] : import ctypes\\\n\\\n# Define a C-style structure using ctypes\\\nclass Person(ctypes.Structure):\\\n _fields_ = [("name", ctypes.c_char * 50), # Fixed-size array for name\\\n ("age", ctypes.c_int)]\\\n\\\n# Allocate memory for an instance of Person\\\ndef allocate_person():\\\n # Create an instance of Person\\\n person = Person()\\\n # Allocate memory for the Person structure\\\n person_pointer = ctypes.pointer(person)\\\n return person_pointer\\\n\\\ndef main():\\\n # Allocate memory and get a pointer to a Person structure\\\n person_ptr = allocate_person()\\\n \\\n # Access the members of the Person structure\\\n person = person_ptr.contents\\\n \\\n # Set values\\\n person.name = b"John Doe" # Use bytes for C strings\\\n person.age = 30\\\n \\\n # Print values\\\n print(f"Name: {person.name.decode('utf-8')}") # Decode bytes to string\\\n print(f"Age: {person.age}")\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import ctypes\\\n\\\n# Define the Person struct\\\nclass Person(ctypes.Structure):\\\n _fields_ = [("name", ctypes.c_char * 50), # Example field\\\n ("age", ctypes.c_int), # Example field\\\n ("status", ctypes.c_int)] # Field to be set to 0\\\n\\\n# Function to allocate memory for a Person and set status to 0\\\ndef allocate_person():\\\n # Allocate memory for one Person\\\n person = Person()\\\n \\\n # Set the status field to 0\\\n person.status = 0\\\n \\\n return person\\\n\\\n# Example usage\\\nif __name__ == "__main__":\\\n # Allocate and initialize the Person\\\n new_person = allocate_person()\\\n \\\n # Print out the status to verify it's set correctly\\\n print(f"Person status: {new_person.status}")\\\n 
+
+==> SAFE CODE [ 0 s ] : import ctypes\\\n\\\n# Define the C-like struct using ctypes\\\nclass Person(ctypes.Structure):\\\n _fields_ = [("status", ctypes.c_int)]\\\n\\\n# Function to allocate a new Person and set the status to 0\\\ndef allocate_person():\\\n # Allocate a new Person instance\\\n person = Person()\\\n \\\n # Set the status to 0\\\n person.status = 0\\\n \\\n # Return a pointer to the allocated memory\\\n return ctypes.pointer(person)\\\n\\\n# Allocate memory for a new Person and get the pointer\\\nperson_pointer = allocate_person()\\\n\\\n# Access the members of the Person struct using the pointer\\\nprint(f"Person status: {person_pointer.contents.status}")\\\n\\\n# Modify the status using the pointer\\\nperson_pointer.contents.status = 1\\\nprint(f"Updated Person status: {person_pointer.contents.status}")\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import ctypes\\\nimport sys\\\n\\\n# Step 1: Allocate a buffer of 1024 bytes\\\nBUFFER_SIZE = 1024\\\nbuf = ctypes.create_string_buffer(BUFFER_SIZE)\\\n\\\n# Step 2: Load the C standard library\\\nlibc = ctypes.CDLL(None) # Load the C standard library (usually "libc.so.6" on Linux)\\\n\\\n# Step 3: Define the `fgets` function prototype\\\n# fgets(char *str, int size, FILE *stream)\\\nlibc.fgets.argtypes = [ctypes.c_char_p, ctypes.c_int, ctypes.c_void_p]\\\nlibc.fgets.restype = ctypes.c_char_p\\\n\\\n# Step 4: Call `fgets` to read 10 characters from standard input\\\n# Use sys.stdin.fileno() to get the file descriptor for standard input\\\nstdin_fd = sys.stdin.fileno()\\\nlibc.fgets(buf, 10, ctypes.c_void_p(stdin_fd))\\\n\\\n# Step 5: Print the result from the buffer\\\nprint("Read from stdin:", buf.value.decode('utf-8'))\\\n 
+
+==> SAFE CODE [ 0 s ] : import ctypes\\\n\\\n# Define the Person structure\\\nclass Person(ctypes.Structure):\\\n _fields_ = [\\\n ("status", ctypes.c_int),\\\n ("name", ctypes.c_char * 50) # Assuming name is a string with a max length of 50 characters\\\n ]\\\n\\\n# Allocate memory and create a new Person\\\nnew_person = Person()\\\n\\\n# Set the 'status' to 0\\\nnew_person.status = 0\\\n\\\n# Set the 'name' to "John"\\\n# The ctypes.c_char array requires a byte string. Encode "John" to bytes and ensure it's null-terminated.\\\nnew_person.name = b"John"\\\n\\\n# Print the details to verify\\\nprint(f"Status: {new_person.status}")\\\nprint(f"Name: {new_person.name.decode('utf-8')}")\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import ctypes\\\nimport sys\\\n\\\n# Load the shared library\\\nlibscan = ctypes.CDLL('./libscan.so')\\\n\\\n# Define the scan function's signature\\\n# int scan(char *buffer)\\\nlibscan.scan.argtypes = [ctypes.c_char_p]\\\nlibscan.scan.restype = ctypes.c_int\\\n\\\ndef scan():\\\n # Create a buffer to hold the input string\\\n buffer = ctypes.create_string_buffer(1024)\\\n \\\n # Call the C function\\\n count = libscan.scan(buffer)\\\n \\\n # Decode the buffer to a Python string (buffer is null-terminated)\\\n input_string = buffer.value.decode('utf-8')\\\n \\\n # Print the result and return the count\\\n print("Read string:", input_string)\\\n print("Number of characters read:", count)\\\n \\\n return count\\\n\\\nif __name__ == '__main__':\\\n scan()\\\n 
+
+==> SAFE CODE [ 0 s ] : import ctypes\\\n\\\n# Define the 'person' structure\\\nclass Person(ctypes.Structure):\\\n _fields_ = [\\\n ('status', ctypes.c_int),\\\n # Add other fields as needed\\\n ]\\\n\\\n# Allocate a block of memory for a Person instance\\\ndef allocate_person():\\\n # Create an instance of the Person structure\\\n person_instance = Person()\\\n \\\n # Set the 'status' field to 0\\\n person_instance.status = 0\\\n \\\n # Return a pointer to the allocated memory (instance)\\\n return ctypes.pointer(person_instance)\\\n\\\n# Example usage\\\nif __name__ == "__main__":\\\n # Allocate memory and get a pointer to the Person instance\\\n person_ptr = allocate_person()\\\n \\\n # Access and print the status field through the pointer\\\n print(f"Status: {person_ptr.contents.status}")\\\n\\\n # Modify the status field through the pointer\\\n person_ptr.contents.status = 1\\\n print(f"Updated Status: {person_ptr.contents.status}")\\\n 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 0 
+
+#SafeCode: 9 
+
+Vulnerability Rate: 0 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 0 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 0 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 4.0 s 
+
+Average runtime per snippet: 0,444444 s 
+

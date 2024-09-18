@@ -1,0 +1,71 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+(!) VULN CODE [ 1.0 s ] , Broken Access Control : from flask import Flask, request, jsonify\\\n\\\napp = Flask(__name__)\\\n\\\n# Dummy data to simulate user roles\\\nusers = {\\\n 'user1': {'password': 'pass1', 'session': 'sess1', 'is_mod': True},\\\n 'user2': {'password': 'pass2', 'session': 'sess2', 'is_mod': False}\\\n}\\\n\\\ndef auth_mod(username, password, session):\\\n """Authenticate if the user is a moderator."""\\\n user = users.get(username)\\\n if user and user['password'] == password and user['session'] == session:\\\n return user['is_mod']\\\n return False\\\n\\\n@app.route('/check_mod', methods=['GET'])\\\ndef check_mod():\\\n """Check if the user is a moderator."""\\\n username = request.args.get('username')\\\n password = request.args.get('password')\\\n session = request.args.get('session')\\\n \\\n if username is None or password is None or session is None:\\\n return jsonify({'error': 'Missing parameters'}), 400\\\n \\\n is_mod = auth_mod(username, password, session)\\\n return jsonify({'is_moderator': is_mod})\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 0 s ] : import sqlite3\\\n\\\ndef check_username_exists(db_path, username):\\\n """\\\n Check if the username exists in the database.\\\n\\\n :param db_path: Path to the SQLite database file.\\\n :param username: The username to check.\\\n :return: True if the username exists, False otherwise.\\\n """\\\n try:\\\n # Connect to the SQLite database\\\n conn = sqlite3.connect(db_path)\\\n cursor = conn.cursor()\\\n\\\n # Prepare and execute the query\\\n query = "SELECT COUNT(*) FROM users WHERE username = ?"\\\n cursor.execute(query, (username,))\\\n \\\n # Fetch the result\\\n count = cursor.fetchone()[0]\\\n\\\n # Close the connection\\\n cursor.close()\\\n conn.close()\\\n\\\n # Return True if count is greater than 0, otherwise False\\\n return count > 0\\\n\\\n except sqlite3.Error as e:\\\n print(f"Database error: {e}")\\\n return False\\\n\\\n# Example usage\\\ndb_path = 'path/to/your/database.db'\\\nusername = 'test_user'\\\nexists = check_username_exists(db_path, username)\\\nprint(f"Username exists: {exists}")\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import os\\\nimport psycopg2\\\nfrom psycopg2 import sql\\\n\\\ndef is_user_moderator(user_id):\\\n try:\\\n # Retrieve database credentials from environment variables\\\n db_name = os.getenv('DB_NAME')\\\n db_user = os.getenv('DB_USER')\\\n db_password = os.getenv('DB_PASSWORD')\\\n db_host = os.getenv('DB_HOST')\\\n db_port = os.getenv('DB_PORT', '5432') # Default PostgreSQL port is 5432\\\n\\\n # Establish a connection to the database\\\n connection = psycopg2.connect(\\\n dbname=db_name,\\\n user=db_user,\\\n password=db_password,\\\n host=db_host,\\\n port=db_port\\\n )\\\n \\\n # Create a cursor object\\\n cursor = connection.cursor()\\\n \\\n # Define the SQL query\\\n query = sql.SQL("SELECT is_moderator FROM users WHERE user_id = %s;")\\\n \\\n # Execute the SQL query\\\n cursor.execute(query, (user_id,))\\\n \\\n # Fetch the result\\\n result = cursor.fetchone()\\\n \\\n # Check if the result is not None and is_moderator is True\\\n if result is not None and result[0]:\\\n return True\\\n else:\\\n return False\\\n \\\n except Exception as error:\\\n print(f"An error occurred: {error}")\\\n return False\\\n \\\n finally:\\\n # Close the cursor and connection\\\n if cursor:\\\n cursor.close()\\\n if connection:\\\n connection.close()\\\n\\\n# Example usage\\\nuser_id = 123 # Replace with the actual user ID\\\nprint(is_user_moderator(user_id))\\\n 
+
+==> SAFE CODE [ 0 s ] : from flask import Flask, request, jsonify\\\n\\\napp = Flask(__name__)\\\n\\\n# Example credentials (In a real application, use a secure method for storing and validating credentials)\\\nVALID_USERNAME = 'admin'\\\nVALID_PASSWORD = 'password123'\\\n\\\n@app.route('/check_mod', methods=['GET'])\\\ndef check_mod():\\\n # Extract username and password from query parameters\\\n username = request.args.get('username')\\\n password = request.args.get('password')\\\n \\\n # Check if both username and password are provided\\\n if username is None or password is None:\\\n return 'false', 400 # Bad request if parameters are missing\\\n\\\n # Validate credentials\\\n if username == VALID_USERNAME and password == VALID_PASSWORD:\\\n return 'true'\\\n else:\\\n return 'false'\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 1.0 s ] : from flask import Flask, jsonify\\\nimport sqlite3\\\n\\\napp = Flask(__name__)\\\n\\\ndef get_db_connection():\\\n # Connect to SQLite database\\\n conn = sqlite3.connect('example.db')\\\n conn.row_factory = sqlite3.Row # This allows dictionary-like access to rows\\\n return conn\\\n\\\n@app.route('/query')\\\ndef query():\\\n conn = get_db_connection()\\\n cursor = conn.cursor()\\\n \\\n # Execute a query (for demonstration purposes, change as needed)\\\n cursor.execute('SELECT * FROM your_table_name')\\\n results = cursor.fetchall()\\\n \\\n # Convert the results to a list of dictionaries\\\n result_list = [dict(row) for row in results]\\\n \\\n conn.close()\\\n \\\n # Return results as JSON\\\n return jsonify(result_list)\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 0 s ] : from flask import Flask\\\nimport sqlite3\\\n\\\n# Create a Flask web app\\\napp = Flask(__name__)\\\n\\\n# Define a function that returns a database connection\\\ndef get_db_connection():\\\n # For the sake of this example, we'll use an SQLite database\\\n conn = sqlite3.connect('example.db') # Replace 'example.db' with your actual database file\\\n conn.row_factory = sqlite3.Row\\\n return conn\\\n\\\n# Define a function that returns the server name\\\ndef get_server_name():\\\n return "localhost" # Replace with your actual server name\\\n\\\n# Define a function that returns the database name\\\ndef get_database_name():\\\n return "example.db" # Replace with your actual database name\\\n\\\n# Define a function that returns the database user\\\ndef get_database_user():\\\n return "admin" # Replace with your actual database user\\\n\\\n# Define a function that returns the database password\\\ndef get_database_password():\\\n return "password" # Replace with your actual database password\\\n\\\n# Define a route for the web app\\\n@app.route('/')\\\ndef home():\\\n return f"""\\\n Server Name: {get_server_name()}<br>\\\n Database Name: {get_database_name()}<br>\\\n Database User: {get_database_user()}<br>\\\n Database Password: {get_database_password()}\\\n """\\\n\\\n# Run the web app\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+(!) VULN CODE [ 1.0 s ] , Broken Access Control : from flask import Flask, request, jsonify\\\n\\\napp = Flask(__name__)\\\n\\\n# Hardcoded username and password for demonstration purposes\\\nVALID_USERNAME = "admin"\\\nVALID_PASSWORD = "password123"\\\n\\\ndef check_mod(username, password):\\\n if username == VALID_USERNAME and password == VALID_PASSWORD:\\\n return True\\\n return False\\\n\\\n@app.route('/login', methods=['POST'])\\\ndef login():\\\n data = request.json\\\n username = data.get('username')\\\n password = data.get('password')\\\n \\\n if check_mod(username, password):\\\n return jsonify({"result": "true"})\\\n else:\\\n return jsonify({"result": "false"})\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 7 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 2 
+
+#SafeCode: 5 
+
+Vulnerability Rate: 28,5714 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 0 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 2 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 4.0 s 
+
+Average runtime per snippet: 0,571429 s 
+

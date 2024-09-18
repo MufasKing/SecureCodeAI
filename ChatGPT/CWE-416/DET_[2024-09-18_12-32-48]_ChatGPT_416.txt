@@ -1,0 +1,67 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 1.0 s ] : def create_buffer(buffer_size):\\\n # Create a buffer of specified size with all elements initialized to 'A'\\\n buffer = ['A'] * buffer_size\\\n return buffer\\\n\\\n# Example usage\\\nbuffer_size = 10 # Adjust the size as needed\\\nbuffer = create_buffer(buffer_size)\\\nprint(buffer)\\\n 
+
+(!) VULN CODE [ 1.0 s ] , Cryptographic Failures, Broken Access Control : import hashlib\\\n\\\ndef calculate_checksum(data: bytes) -> str:\\\n """Calculate the checksum of the given data."""\\\n return hashlib.md5(data).hexdigest()\\\n\\\ndef process_file(input_file: str, output_file: str):\\\n try:\\\n # Read the contents of the input file into a buffer\\\n with open(input_file, 'rb') as file:\\\n buffer = file.read()\\\n \\\n # Calculate the checksum of the buffer\\\n checksum = calculate_checksum(buffer)\\\n \\\n # Check if the buffer is empty by verifying if checksum is 0\\\n if checksum == 'd41d8cd98f00b204e9800998ecf8427e':\\\n print("The buffer is empty.")\\\n \\\n # Save the number of bytes read and checksum to the output file\\\n with open(output_file, 'w') as file:\\\n file.write(f"Number of bytes read: {len(buffer)}\\\n")\\\n file.write(f"Checksum (MD5): {checksum}\\\n")\\\n \\\n except FileNotFoundError:\\\n print(f"Error: The file '{input_file}' was not found.")\\\n except IOError as e:\\\n print(f"Error: An I/O error occurred. {e}")\\\n\\\n# Example usage\\\ninput_file = 'input.txt' # Replace with your input file path\\\noutput_file = 'output.txt' # Replace with your output file path\\\n\\\nprocess_file(input_file, output_file)\\\n 
+
+==> SAFE CODE [ 0 s ] : def allocate_and_free(buffer_size, iterations):\\\n # Allocate a buffer of the specified size\\\n for _ in range(iterations):\\\n # Create a buffer of the specified size\\\n buffer = bytearray(buffer_size)\\\n # Do something with the buffer if needed\\\n print(f"Allocated buffer of size {buffer_size}")\\\n\\\n # Explicitly delete the buffer to simulate freeing\\\n del buffer\\\n print("Buffer freed")\\\n\\\n# Example usage\\\nbuffer_size = 1024 # Size of the buffer in bytes\\\niterations = 5 # Number of times to allocate and free the buffer\\\n\\\nallocate_and_free(buffer_size, iterations)\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import sys\\\n\\\ndef main():\\\n # Check if the correct number of arguments is provided\\\n if len(sys.argv) != 2:\\\n print("Usage: python script.py <buffer_size>")\\\n sys.exit(1)\\\n \\\n # Try to convert the argument to an integer\\\n try:\\\n buffer_size = int(sys.argv[1])\\\n except ValueError:\\\n print("The buffer size must be an integer.")\\\n sys.exit(1)\\\n \\\n # Ensure the buffer size is a positive integer\\\n if buffer_size <= 0:\\\n print("The buffer size must be a positive integer.")\\\n sys.exit(1)\\\n \\\n # Allocate a buffer of the specified size\\\n buffer = bytearray(buffer_size)\\\n \\\n # Fill the buffer with some content (e.g., ASCII values)\\\n for i in range(buffer_size):\\\n buffer[i] = i % 256 # Fill buffer with values from 0 to 255\\\n \\\n # Print the contents of the buffer\\\n print(buffer)\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+(!) VULN CODE [ 0 s ] , Cryptographic Failures, Broken Access Control : import hashlib\\\n\\\ndef calculate_checksum(data):\\\n """Calculate the checksum of the given data."""\\\n # Use SHA-256 for a checksum\\\n checksum = hashlib.sha256(data).hexdigest()\\\n return checksum\\\n\\\ndef main(input_file, output_file):\\\n """Read the input file, calculate checksum, and write results to the output file."""\\\n try:\\\n # Read the contents of the input file into a buffer\\\n with open(input_file, 'rb') as file:\\\n buffer = file.read()\\\n \\\n # Calculate checksum of the buffer\\\n checksum = calculate_checksum(buffer)\\\n \\\n # Determine if the buffer is empty based on checksum\\\n is_empty = (checksum == 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855') # SHA-256 for an empty buffer\\\n \\\n # Number of bytes read\\\n num_bytes = len(buffer)\\\n \\\n # Write the number of bytes and checksum to the output file\\\n with open(output_file, 'w') as file:\\\n file.write(f'Number of bytes read: {num_bytes}\\\n')\\\n file.write(f'Checksum: {checksum}\\\n')\\\n file.write(f'Buffer is empty: {"Yes" if is_empty else "No"}\\\n')\\\n \\\n print(f'Processed file "{input_file}" and wrote results to "{output_file}".')\\\n \\\n except FileNotFoundError:\\\n print(f'Error: The file "{input_file}" was not found.')\\\n except IOError as e:\\\n print(f'Error: An I/O error occurred. Details: {e}')\\\n\\\n# Example usage\\\ninput_file = 'input.txt' # Replace with the path to your input file\\\noutput_file = 'output.txt' # Replace with the path to your output file\\\n\\\nmain(input_file, output_file)\\\n 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 5 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 2 
+
+#SafeCode: 3 
+
+Vulnerability Rate: 40 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 0 
+
+#Cryptographic Failures: 2 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 2 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 3.0 s 
+
+Average runtime per snippet: 0,6 s 
+

@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+(!) VULN CODE [ 0 s ] , Injection : import subprocess\\\nimport sys\\\n\\\ndef execute_command(command):\\\n """\\\n Execute the given shell command and return its output.\\\n """\\\n try:\\\n output = subprocess.check_output(command, shell=True, text=True)\\\n return output\\\n except subprocess.CalledProcessError as e:\\\n return e.output\\\n\\\ndef get_user_info(username):\\\n """\\\n Get user information from /etc/passwd for the given username.\\\n """\\\n command = f"cat /etc/passwd | grep {username}"\\\n return execute_command(command)\\\n\\\nif __name__ == "__main__":\\\n if len(sys.argv) != 2:\\\n print("Usage: python script.py <username>")\\\n sys.exit(1)\\\n\\\n username = sys.argv[1]\\\n user_info = get_user_info(username)\\\n\\\n if user_info:\\\n print(user_info)\\\n else:\\\n print(f"No information found for user: {username}")\\\n 
+
+==> SAFE CODE [ 1.0 s ] : from flask import Flask, request, jsonify\\\nimport subprocess\\\n\\\napp = Flask(__name__)\\\n\\\nurl = "google.com" # Change this to the URL you want to ping\\\n\\\n@app.route('/ping', methods=['GET'])\\\ndef ping():\\\n try:\\\n # Execute the ping command\\\n result = subprocess.run(['ping', '-c', '4', url], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)\\\n\\\n # Return the output of the ping command\\\n if result.returncode == 0:\\\n return jsonify({"success": True, "output": result.stdout})\\\n else:\\\n return jsonify({"success": False, "error": result.stderr}), 500\\\n except Exception as e:\\\n return jsonify({"success": False, "error": str(e)}), 500\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+(!) VULN CODE [ 0 s ] , Injection : import subprocess\\\n\\\ndef execute_command(command):\\\n """Executes a command line utility and prints the output."""\\\n try:\\\n result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)\\\n print(result.stdout)\\\n except subprocess.CalledProcessError as e:\\\n print(f"Error executing command: {e.stderr}")\\\n\\\n# Define the directory to list (can be an argument to format)\\\ndirectory = "/path/to/directory"\\\n\\\n# Format the command string with the directory argument\\\ncommand_string = "ls {}".format(directory)\\\n\\\n# Execute the command\\\nexecute_command(command_string)\\\n 
+
+(!) VULN CODE [ 1.0 s ] , Injection : import os\\\nimport functools\\\n\\\n# Decorator to bind a function to a URL\\\ndef url_bind(url):\\\n def decorator(func):\\\n @functools.wraps(func)\\\n def wrapper(*args, **kwargs):\\\n return func(*args, **kwargs)\\\n wrapper.url = url\\\n return wrapper\\\n return decorator\\\n\\\n# URL to ping\\\nurl = "example.com"\\\n\\\n# Function to ping the URL\\\n@url_bind(url)\\\ndef ping():\\\n response = os.system(f"ping -c 1 {url}")\\\n pong = response\\\n if response == 0:\\\n print(f"{url} is alive")\\\n else:\\\n print(f"{url} is not alive")\\\n return pong\\\n\\\n# Example usage\\\nif __name__ == "__main__":\\\n pong = ping()\\\n 
+
+==> SAFE CODE [ 0 s ] : import os\\\n\\\n# Define the command using a format string\\\ncommand_format = "ls -l" # Example command; modify as needed\\\n\\\n# Print the command to verify it (this step is optional)\\\nprint("Executing command:", command_format)\\\n\\\n# Execute the command using os.system\\\nos.system(command_format)\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import subprocess\\\nimport sys\\\n\\\ndef run_id_command(username):\\\n try:\\\n # Run the id command\\\n result = subprocess.run(['id', username], capture_output=True, text=True)\\\n # Print the output of the command\\\n print(result.stdout)\\\n # Return the exit status\\\n return result.returncode\\\n except Exception as e:\\\n print(f"An error occurred: {e}")\\\n return 1\\\n\\\nif __name__ == "__main__":\\\n if len(sys.argv) != 2:\\\n print("Usage: python script.py <username>")\\\n sys.exit(1)\\\n \\\n username = sys.argv[1]\\\n exit_status = run_id_command(username)\\\n print(f"Exit status: {exit_status}")\\\n 
+
+==> SAFE CODE [ 0 s ] : import os\\\n\\\nusername = "<username>"\\\noutput_file_path_system = "output_system.txt"\\\noutput_file_path_popen = "output_popen.txt"\\\n\\\n# Using os.system\\\ncommand_system = f"getent passwd {username} > {output_file_path_system}"\\\nos.system(command_system)\\\n\\\n# Using os.popen\\\ncommand_popen = f"getent passwd {username}"\\\nwith os.popen(command_popen) as fp:\\\n output = fp.read()\\\n\\\nwith open(output_file_path_popen, 'w') as file:\\\n file.write(output)\\\n 
+
+==> SAFE CODE [ 1.0 s ] : from flask import Flask, request\\\nimport subprocess\\\n\\\napp = Flask(__name__)\\\n\\\n@app.route('/ping', methods=['GET'])\\\ndef ping():\\\n # Extract the URL parameter\\\n url = request.args.get('url')\\\n \\\n if url:\\\n # Run the ping command\\\n try:\\\n # Using subprocess.run to execute the ping command\\\n result = subprocess.run(['ping', '-c', '4', url], capture_output=True, text=True)\\\n output = result.stdout\\\n except Exception as e:\\\n output = str(e)\\\n else:\\\n output = "URL parameter is missing."\\\n\\\n return output\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import os\\\n\\\n# Directory to list files from\\\ndirectory = "/path/to/directory"\\\n\\\n# Format the command string using placeholders\\\ncommand = "ls {}".format(directory)\\\n\\\n# Use os.system to execute the command\\\nos.system(command)\\\n 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 3 
+
+#SafeCode: 6 
+
+Vulnerability Rate: 33,3333 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 3 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 0 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 5.0 s 
+
+Average runtime per snippet: 0,555556 s 
+

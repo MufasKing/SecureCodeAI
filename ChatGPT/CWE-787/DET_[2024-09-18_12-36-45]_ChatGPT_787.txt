@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 1.0 s ] : import sys\\\n\\\n# Check if exactly one argument is provided\\\nif len(sys.argv) != 2:\\\n print("Error: Please provide exactly one argument.")\\\n sys.exit(1)\\\n\\\n# Get the argument from the command line\\\ninput_arg = sys.argv[1]\\\n\\\n# Print the argument\\\nprint("Original argument:", input_arg)\\\n\\\n# Trim trailing whitespace from the argument\\\ntrimmed_arg = input_arg.rstrip()\\\n\\\n# Print the trimmed argument\\\nprint("Trimmed argument:", trimmed_arg)\\\n\\\n# Exit the program\\\nsys.exit(0)\\\n 
+
+==> SAFE CODE [ 0 s ] : # Allocate two chunks of memory each of size 10\\\nchunk1 = [i for i in range(10)] # Example content: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\\\nchunk2 = [None] * 10 # Initialized with None\\\n\\\n# Copy contents of the first chunk into the second chunk\\\nfor i in range(10):\\\n chunk2[i] = chunk1[i]\\\n\\\n# Print contents of the second chunk\\\nprint("Contents of the second chunk after copying:", chunk2)\\\n\\\n# Free the memory allocated to the first chunk\\\nchunk1 = None\\\n\\\n# Print contents of the second chunk after freeing the first chunk\\\nprint("Contents of the second chunk after freeing the first chunk:", chunk2)\\\n\\\n# Free the memory allocated to the second chunk\\\nchunk2 = None\\\n\\\n# At this point, both chunks are freed and further access to them would result in an error\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import random\\\n\\\n# Generate 3 random floats\\\nfloat1 = random.random()\\\nfloat2 = random.random()\\\nfloat3 = random.random()\\\n\\\n# Convert them to strings\\\nstr1 = str(float1)\\\nstr2 = str(float2)\\\nstr3 = str(float3)\\\n\\\n# Concatenate them into a single string\\\nconcatenated_str = str1 + str2 + str3\\\n\\\n# Write the string to a file\\\nwith open('random_floats.txt', 'w') as file:\\\n file.write(concatenated_str)\\\n\\\nprint("Random floats written to random_floats.txt")\\\n 
+
+==> SAFE CODE [ 0 s ] : import random\\\n\\\n# Define RAND_MAX to be consistent with C's RAND_MAX\\\nRAND_MAX = 32767\\\n\\\n# Generate three random floats\\\nrandom_float1 = random.random() * RAND_MAX\\\nrandom_float2 = random.random() * RAND_MAX\\\nrandom_float3 = random.random() * RAND_MAX\\\n\\\n# Convert the floats to strings using f-strings\\\nstring1 = f"{random_float1:.6f}"\\\nstring2 = f"{random_float2:.6f}"\\\nstring3 = f"{random_float3:.6f}"\\\n\\\n# Print the results to verify\\\nprint("String 1:", string1)\\\nprint("String 2:", string2)\\\nprint("String 3:", string3)\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import sys\\\n\\\ndef main():\\\n # Check if there is at least one command line argument\\\n if len(sys.argv) < 2:\\\n print("Usage: python script.py <argument>")\\\n sys.exit(1)\\\n \\\n # Get the command line argument (first argument after the script name)\\\n argument = sys.argv[1]\\\n \\\n # Trim any trailing whitespace characters\\\n trimmed_argument = argument.rstrip()\\\n \\\n # Print the trimmed argument\\\n print(trimmed_argument)\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+==> SAFE CODE [ 0 s ] : def main():\\\n # Allocate two chunks of memory, each of size 10\\\n chunk1 = bytearray(10) # First chunk\\\n chunk2 = bytearray(10) # Second chunk\\\n\\\n # Fill chunk1 with some data\\\n for i in range(len(chunk1)):\\\n chunk1[i] = i\\\n\\\n # Copy the contents of chunk1 into chunk2\\\n chunk2[:] = chunk1\\\n\\\n # Print the contents of chunk2 to verify the copy\\\n print("Contents of chunk2 after copying from chunk1:", list(chunk2))\\\n\\\n # Freeing memory in Python is handled by garbage collection\\\n # Here, we can simply delete the references to simulate "freeing" memory\\\n del chunk1\\\n del chunk2\\\n\\\n # After deletion, the memory should be automatically reclaimed by Python's garbage collector\\\n # You can run `gc.collect()` if you want to force garbage collection, but it's usually not necessary\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import sys\\\n\\\ndef is_hex_string(s):\\\n # Check if the string is a valid hexadecimal string\\\n try:\\\n int(s, 16)\\\n return True\\\n except ValueError:\\\n return False\\\n\\\ndef main():\\\n # Check if exactly one argument is provided\\\n if len(sys.argv) != 2:\\\n print("Usage: python script.py <hex_string>")\\\n sys.exit(1)\\\n \\\n hex_string = sys.argv[1]\\\n \\\n # Check if the string is a valid hexadecimal string\\\n if not is_hex_string(hex_string):\\\n print("Error: The argument must be a valid hexadecimal string.")\\\n sys.exit(1)\\\n \\\n # Trim trailing whitespace\\\n trimmed_hex_string = hex_string.rstrip()\\\n \\\n # Trim newlines\\\n trimmed_hex_string = trimmed_hex_string.rstrip('\\\n')\\\n \\\n # Null-terminate the string (In Python, this is just adding a '\0' at the end)\\\n null_terminated_string = trimmed_hex_string + '\0'\\\n \\\n # Print the null-terminated string (For demonstration purposes)\\\n print("Null-terminated string:", repr(null_terminated_string))\\\n\\\nif __name__ == "__main__":\\\n main()\\\n 
+
+==> SAFE CODE [ 0 s ] : import ctypes\\\n\\\n# Allocate two chunks of memory, each of size 10\\\nsize = 10\\\nchunk1 = (ctypes.c_char * size)()\\\nchunk2 = (ctypes.c_char * size)()\\\n\\\n# Initialize the first chunk with some data\\\nfor i in range(size):\\\n chunk1[i] = ctypes.c_char(b'A' + i) # Fill with ASCII characters starting from 'A'\\\n\\\n# Copy contents of the first chunk into the second chunk\\\nctypes.memmove(chunk2, chunk1, size)\\\n\\\n# Print the contents of the second chunk\\\nprint(bytes(chunk2).decode('utf-8'))\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import random\\\n\\\ndef float_to_string(f):\\\n return str(f)\\\n\\\n# Generate three random floats\\\nfloat_a = random.random()\\\nfloat_b = random.random()\\\nfloat_c = random.random()\\\n\\\n# Convert the floats to strings\\\nstr_a = float_to_string(float_a)\\\nstr_b = float_to_string(float_b)\\\nstr_c = float_to_string(float_c)\\\n\\\n# Print the results\\\nprint(f"str_a: {str_a}")\\\nprint(f"str_b: {str_b}")\\\nprint(f"str_c: {str_c}")\\\n 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 0 
+
+#SafeCode: 9 
+
+Vulnerability Rate: 0 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 0 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 0 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 5.0 s 
+
+Average runtime per snippet: 0,555556 s 
+

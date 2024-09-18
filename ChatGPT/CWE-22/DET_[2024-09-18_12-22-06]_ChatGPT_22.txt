@@ -1,0 +1,75 @@
+==================>      SNIPPETS DETECTED      <========================
+|                                                                       |
+|           (!) VULN CODE : Vulnerable code snippets detected           |
+|           ==> SAFE CODE : Safe code snippet                           |
+|                                                                       |
+|                 [XXX s] : Execution Time per snippet                  |
+|                                                                       |
+=========================================================================
+
+==> SAFE CODE [ 0 s ] : import tarfile\\\nimport os\\\n\\\n# Define file names and paths\\\ntar_filename = 'example_archive.tar.gz'\\\nfile_to_archive = 'example_file.txt'\\\nextracted_dir = 'extracted_files/'\\\n\\\n# Create a sample file to archive\\\nwith open(file_to_archive, 'w') as file:\\\n file.write('This is a sample file to be archived.')\\\n\\\n# Create a tar.gz archive\\\nwith tarfile.open(tar_filename, 'w:gz') as tar:\\\n tar.add(file_to_archive, arcname=os.path.basename(file_to_archive))\\\n\\\n# Extract the tar.gz archive\\\nwith tarfile.open(tar_filename, 'r:gz') as tar:\\\n # Create the directory for extraction if it doesn't exist\\\n os.makedirs(extracted_dir, exist_ok=True)\\\n tar.extractall(path=extracted_dir)\\\n\\\nprint(f"Archive '{tar_filename}' created and extracted successfully.")\\\n 
+
+(!) VULN CODE [ 0 s ] , Broken Access Control : from flask import Flask, request, send_file, abort\\\nimport os\\\n\\\napp = Flask(__name__)\\\n\\\n@app.route('/img')\\\ndef img():\\\n # Get the 'file' parameter from the URL\\\n file_name = request.args.get('file')\\\n \\\n if not file_name:\\\n return "File parameter is missing", 400\\\n\\\n # Define the directory where images are stored\\\n image_directory = 'path_to_your_image_directory'\\\n \\\n # Construct the full file path\\\n file_path = os.path.join(image_directory, file_name)\\\n \\\n # Check if the file exists\\\n if not os.path.isfile(file_path):\\\n return "File not found", 404\\\n\\\n try:\\\n # Open the file in read binary mode and send it as a response\\\n return send_file(file_path, mimetype='image/jpeg') # Change mimetype if needed\\\n except Exception as e:\\\n return str(e), 500\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import os\\\n\\\ndef read_file_from_safe_directory(filename):\\\n # Define the safe directory path\\\n safe_directory = 'safe_directory'\\\n \\\n # Construct the full file path\\\n file_path = os.path.join(safe_directory, filename)\\\n \\\n # Check if the file exists and is a file\\\n if os.path.isfile(file_path):\\\n try:\\\n # Open and read the file\\\n with open(file_path, 'r') as file:\\\n content = file.read()\\\n return content\\\n except IOError as e:\\\n print(f"Error reading the file: {e}")\\\n else:\\\n print(f"The file does not exist or is not a file: {file_path}")\\\n\\\n# Example usage\\\nfilename = 'example.txt' # Replace with your actual filename\\\nfile_content = read_file_from_safe_directory(filename)\\\nif file_content is not None:\\\n print(file_content)\\\n 
+
+(!) VULN CODE [ 0 s ] , Broken Access Control : import os\\\n\\\ndef read_file(filename):\\\n # Define the path to the /safe/ directory\\\n safe_directory = '/safe/'\\\n \\\n # Create the full file path\\\n file_path = os.path.join(safe_directory, filename)\\\n \\\n # Check if the file exists\\\n if not os.path.isfile(file_path):\\\n raise FileNotFoundError(f"The file '{filename}' does not exist in the directory '{safe_directory}'.")\\\n \\\n # Read the file content\\\n try:\\\n with open(file_path, 'r') as file:\\\n content = file.read()\\\n return content\\\n except IOError as e:\\\n raise RuntimeError(f"An error occurred while reading the file: {e}")\\\n\\\n# Example usage\\\nif __name__ == "__main__":\\\n filename = 'example.txt' # Replace with the actual file name you want to read\\\n try:\\\n file_content = read_file(filename)\\\n print(file_content)\\\n except Exception as e:\\\n print(e)\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import zipfile\\\nimport os\\\n\\\n# Define the path to the zip file and the extraction directory\\\nzip_file_path = 'archive.zip'\\\nextraction_directory = '/tmp/unpack'\\\n\\\n# Ensure the extraction directory exists\\\nos.makedirs(extraction_directory, exist_ok=True)\\\n\\\n# Open the zip file and extract all its contents\\\nwith zipfile.ZipFile(zip_file_path, 'r') as zip_ref:\\\n zip_ref.extractall(extraction_directory)\\\n\\\nprint(f"Extracted all files to {extraction_directory}")\\\n 
+
+==> SAFE CODE [ 0 s ] : from flask import Flask, send_from_directory, abort\\\nimport os\\\n\\\napp = Flask(__name__)\\\nIMAGE_FOLDER = 'images' # Path to the folder containing images\\\n\\\n@app.route('/images/<filename>')\\\ndef serve_image(filename):\\\n file_path = os.path.join(IMAGE_FOLDER, filename)\\\n \\\n if os.path.isfile(file_path):\\\n return send_from_directory(IMAGE_FOLDER, filename)\\\n else:\\\n abort(404) # Return a 404 error if the file does not exist\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+==> SAFE CODE [ 1.0 s ] : import os\\\n\\\ndef read_file_from_safe_directory(filename):\\\n # Define the path to the /safe/ directory\\\n directory = '/safe/'\\\n \\\n # Construct the full file path\\\n file_path = os.path.join(directory, filename)\\\n \\\n # Check if the file exists before attempting to read\\\n if os.path.isfile(file_path):\\\n try:\\\n with open(file_path, 'r') as file:\\\n content = file.read()\\\n return content\\\n except Exception as e:\\\n return f"An error occurred while reading the file: {e}"\\\n else:\\\n return "File does not exist."\\\n\\\n# Example usage\\\nfilename = 'yourfile.txt' # Replace with your actual file name\\\nfile_content = read_file_from_safe_directory(filename)\\\nprint(file_content)\\\n 
+
+==> SAFE CODE [ 0 s ] : import zipfile\\\nimport os\\\n\\\ndef unzip_archive(zip_path, extract_to):\\\n # Ensure the destination directory exists\\\n os.makedirs(extract_to, exist_ok=True)\\\n\\\n # Open the ZIP file\\\n with zipfile.ZipFile(zip_path, 'r') as zip_ref:\\\n # Extract all the contents into the specified directory\\\n zip_ref.extractall(extract_to)\\\n\\\n# Define the path to the ZIP file and the extraction directory\\\nzip_path = 'archive.zip'\\\nextract_to = '/tmp/unpack'\\\n\\\n# Call the function to unzip the archive\\\nunzip_archive(zip_path, extract_to)\\\n\\\nprint(f"All files have been extracted to {extract_to}")\\\n 
+
+==> SAFE CODE [ 0 s ] : from flask import Flask, send_file, abort\\\n\\\napp = Flask(__name__)\\\n\\\n# Decorator to associate the URL /img with the img function\\\n@app.route('/img/<name>')\\\ndef img(name):\\\n try:\\\n # Construct the file path\\\n file_path = f'images/{name}'\\\n \\\n # Send the file back to the browser\\\n return send_file(file_path)\\\n except FileNotFoundError:\\\n # Handle the case where the file is not found\\\n abort(404)\\\n\\\nif __name__ == '__main__':\\\n app.run( )\\\n 
+
+
+
+
+
+=================>          DATASET SIZE         <=================
+
+#DimTestSet: 9 
+
+
+
+=================>    FINAL RESULTS DETECTION    <=================
+
+#TotalVulnerabilities: 2 
+
+#SafeCode: 7 
+
+Vulnerability Rate: 22,2222 % 
+
+
+
+=================>        OWASP CATEGORIES       <=================
+
+#Injection: 0 
+
+#Cryptographic Failures: 0 
+
+#Security Misconfiguration: 0 
+
+#Broken Access Control: 2 
+
+#Identification and Authentication Failures: 0 
+
+#Security Logging and Monitoring Failures: 0 
+
+#Insecure Design: 0 
+
+#SSRF: 0 
+
+#Software and Data Integrity Failures: 0 
+
+
+
+=================>        EXECUTION TIME        <=================
+
+Runtime: 5.0 s 
+
+Average runtime per snippet: 0,555556 s 
+
