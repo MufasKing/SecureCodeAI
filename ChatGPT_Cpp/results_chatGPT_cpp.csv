@@ -1,0 +1,48 @@
+File, Line, Severity, Id, Summary
+CWE-119\119_1a.cpp,22,style,constVariable,Variable 'source' can be declared as const array
+CWE-119\119_3c.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-119\119_2b.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-119\119_3b.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-125\125_2b.cpp,27,style,unreadVariable,Variable 'result' is assigned a value that is never used.
+CWE-119\119_3a.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-125\125_3a.cpp,3,style,constParameter,Parameter 'arr' can be declared as const array
+CWE-125\125_3b.cpp,4,style,constParameter,Parameter 'arr' can be declared as const array
+CWE-125\125_3c.cpp,4,style,constParameter,Parameter 'arr' can be declared as const array
+CWE-190\190_1b.cpp,6,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-190\190_1c.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-190\190_1a.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-200\200_3a.cpp,9,style,noExplicitConstructor,Class 'MyApp' has a constructor with 1 argument that is not explicit.
+CWE-22\22_3c.cpp,9,style,noExplicitConstructor,Class 'FileManager' has a constructor with 1 argument that is not explicit.
+CWE-306\306_2b.cpp,32,style,noExplicitConstructor,Class 'LoginApp' has a constructor with 1 argument that is not explicit.
+CWE-416\416_1b.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-434\434_1b.cpp,44,style,noExplicitConstructor,Class 'HttpSession' has a constructor with 1 argument that is not explicit.
+CWE-416\416_2a.cpp,8,style,useStlAlgorithm,Consider using std::accumulate algorithm instead of a raw loop.
+CWE-434\434_3c.cpp,8,style,constVariable,Variable 'allowed_extensions' can be declared as const array
+CWE-434\434_3c.cpp,11,style,useStlAlgorithm,Consider using std::any_of algorithm instead of a raw loop.
+CWE-416\416_2b.cpp,8,style,useStlAlgorithm,Consider using std::accumulate algorithm instead of a raw loop.
+CWE-434\434_2b.cpp,23,style,constVariablePointer,Variable 'err_msg' can be declared as pointer to const
+CWE-434\434_2b.cpp,23,style,unreadVariable,Variable 'err_msg' is assigned a value that is never used.
+CWE-434\434_3a.cpp,19,style,knownConditionTrueFalse,Condition '!file_is_safe_type(file.name)' is always false
+CWE-476\476_3c.cpp,7,style,cstyleCast,C-style pointer casting
+CWE-476\476_2a.cpp,12,style,cstyleCast,C-style pointer casting
+CWE-502\502_1c.cpp,18,style,variableScope,The scope of the variable 'payload' can be reduced.
+CWE-476\476_1b.cpp,13,style,cstyleCast,C-style pointer casting
+CWE-502\502_1b.cpp,12,style,noExplicitConstructor,Class 'WebApplication' has a constructor with 1 argument that is not explicit.
+CWE-502\502_2c.cpp,23,error,unknownMacro,There is an unknown macro here somewhere. Configuration is required. If HTTP_PROTOTYPE is a macro then please configure it.
+CWE-522\522_2b.cpp,36,style,cstyleCast,C-style pointer casting
+CWE-522\522_1a.cpp,9,style,cstyleCast,C-style pointer casting
+CWE-522\522_2c.cpp,31,style,cstyleCast,C-style pointer casting
+CWE-78\78_1b.cpp,26,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-78\78_1c.cpp,16,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-78\78_2b.cpp,7,style,noExplicitConstructor,Class 'URLDecorator' has a constructor with 1 argument that is not explicit.
+CWE-787\787_3c.cpp,10,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-79\79_1a.cpp,27,style,variableScope,The scope of the variable 'username' can be reduced.
+CWE-787\787_3b.cpp,6,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-787\787_3a.cpp,5,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-787\787_3a.cpp,16,style,useStlAlgorithm,Consider using std::any_of algorithm instead of a raw loop.
+CWE-79\79_2c.cpp,19,style,noExplicitConstructor,Class 'Response' has a constructor with 1 argument that is not explicit.
+CWE-79\79_2b.cpp,27,style,noExplicitConstructor,Class 'Response' has a constructor with 1 argument that is not explicit.
+CWE-798\798_2a.cpp,10,style,noExplicitConstructor,Struct 'Database' has a constructor with 1 argument that is not explicit.
+CWE-798\798_2a.cpp,22,style,unusedVariable,Unused variable: errMsg
+CWE-89\89_1b.cpp,8,style,noExplicitConstructor,Class 'Database' has a constructor with 1 argument that is not explicit.
+CWE-89\89_3b.cpp,70,error,syntaxError,syntax error

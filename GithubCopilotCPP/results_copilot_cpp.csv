@@ -1,0 +1,41 @@
+File, Line, Severity, Id, Summary
+CWE-119\119_2b.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-119\119_3a.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-119\119_3b.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-119\119_3c.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-190\190_1a.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-190\190_1b.cpp,6,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-190\190_1c.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-200\200_1a.cpp,38,style,noExplicitConstructor,Class 'LoginPage' has a constructor with 1 argument that is not explicit.
+CWE-306\306_3a.cpp,44,style,variableScope,The scope of the variable 'oldEmail' can be reduced.
+CWE-306\306_3a.cpp,44,style,variableScope,The scope of the variable 'newEmail' can be reduced.
+CWE-306\306_3a.cpp,44,style,variableScope,The scope of the variable 'confirmPassword' can be reduced.
+CWE-306\306_1a.cpp,67,style,knownConditionTrueFalse,Condition 'request=="/"' is always true
+CWE-306\306_3b.cpp,32,style,variableScope,The scope of the variable 'oldEmail' can be reduced.
+CWE-306\306_3b.cpp,32,style,variableScope,The scope of the variable 'newEmail' can be reduced.
+CWE-306\306_3b.cpp,32,style,variableScope,The scope of the variable 'confirmPassword' can be reduced.
+CWE-416\416_1b.cpp,4,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-416\416_1b.cpp,23,error,uninitdata,Memory is allocated but not initialized: buffer[i]
+CWE-416\416_1c.cpp,9,error,uninitdata,Memory is allocated but not initialized: buffer
+CWE-434\434_2a.cpp,52,style,cstyleCast,C-style pointer casting
+CWE-434\434_3a.cpp,21,style,knownConditionTrueFalse,Condition '!file_is_safe_type(file_type)' is always false
+CWE-502\502_1b.cpp,11,style,noExplicitConstructor,Class 'WebApplication' has a constructor with 1 argument that is not explicit.
+CWE-522\522_1a.cpp,11,style,cstyleCast,C-style pointer casting
+CWE-522\522_1a.cpp,23,style,unusedVariable,Unused variable: res
+CWE-78\78_1c.cpp,11,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-78\78_1b.cpp,24,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-787\787_2c.cpp,7,style,cstyleCast,C-style pointer casting
+CWE-787\787_2c.cpp,8,style,cstyleCast,C-style pointer casting
+CWE-787\787_3a.cpp,43,style,redundantAssignment,Variable 'input[len]' is reassigned a value before the old one has been used.
+CWE-787\787_3b.cpp,6,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-787\787_3c.cpp,12,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-79\79_1b.cpp,13,style,variableScope,The scope of the variable 'response_message' can be reduced.
+CWE-79\79_1c.cpp,29,style,variableScope,The scope of the variable 'response_message' can be reduced.
+CWE-79\79_2a.cpp,27,style,noExplicitConstructor,Class 'Response' has a constructor with 1 argument that is not explicit.
+CWE-79\79_2a.cpp,32,style,variableScope,The scope of the variable 'name' can be reduced.
+CWE-79\79_2c.cpp,24,style,noExplicitConstructor,Class 'Response' has a constructor with 1 argument that is not explicit.
+CWE-79\79_2b.cpp,38,style,noExplicitConstructor,Class 'Response' has a constructor with 1 argument that is not explicit.
+CWE-89\89_1b.cpp,15,style,redundantIfRemove,Redundant checking of STL container element existence before removing it.
+CWE-89\89_1c.cpp,22,style,knownConditionTrueFalse,Condition '!emailExistsInDatabase(email)' is always false
+CWE-89\89_2b.cpp,21,style,unusedVariable,Unused variable: res
+CWE-89\89_3b.cpp,33,style,knownEmptyContainer,Iterating over container 'messages' that is always empty.
