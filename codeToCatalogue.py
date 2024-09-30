@@ -41,7 +41,7 @@ def main_interactive():
             text = get_multiline_input("Inserisci il testo normale (termina con 'EOF' su una nuova riga):")
             bp = get_comma_separated_input("Inserisci le Best Practices separate da virgola:")
             cwe = get_multiline_input("Inserisci CWE (termina con 'EOF' su una nuova riga):")
-            output_file = '/Users/stefano/Desktop/SecureCodeAI/ChatGPT_BP_Cpp/SecureCatalogue_ChatGPT_BP_CPP.jsonl'
+            output_file = 'GithubCopilot_BP_Cpp/SecureCatalogue_Copilot_BP_CPP.jsonl'
 
             # Chiedi il codice solo una volta
             code = get_multiline_input("Inserisci il codice C++:")
