@@ -1,8 +1,8 @@
 Fatto fino a riga 10
 
-Cartelle inserite 119, 125, 190, 200, 22, 306, 416, 434, 476, 502, 522
+Cartelle inserite 119, 125, 190, 200, 22, 306, 416, 434, 476, 502, 522, 78
 
-Da fare: 78 (partire da Riga 35)
+Da fare: 787 (partire da Riga 38)
 
 
 NOTE: 22_3c ha come prompt l'utilizzo di funzioni escusive di python. Il codice prodotto è quindi un adattamento. Tenere a mente nel caso in cui si rilevino troppi errori in fase di analisi di sicurezza. (Riga 14 del catalogo = Riga 15 del file results_chatGPT_cpp.csv)
