@@ -1,0 +1,31 @@
+File, Line, Severity, Id, Summary
+CWE-119\119_1a_BP.cpp,31,style,variableScope,The scope of the variable 'source' can be reduced.
+CWE-119\119_1a_BP.cpp,32,style,variableScope,The scope of the variable 'destination' can be reduced.
+CWE-119\119_1a_BP.cpp,31,style,constVariable,Variable 'source' can be declared as const array
+CWE-119\119_2b_BP.cpp,26,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-119\119_3a_BP.cpp,22,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-119\119_3c_BP.cpp,6,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-190\190_1c_BP.cpp,6,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-200\200_3a_BP.cpp,14,style,unusedStructMember,struct member 'User::username' is never used.
+CWE-22\22_3c_BP.cpp,10,style,noExplicitConstructor,Class 'FileManager' has a constructor with 1 argument that is not explicit.
+CWE-416\416_1b_BP.cpp,24,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-416\416_2a_BP.cpp,72,style,variableScope,The scope of the variable 'inputFilename' can be reduced.
+CWE-416\416_2a_BP.cpp,73,style,variableScope,The scope of the variable 'outputFilename' can be reduced.
+CWE-416\416_2a_BP.cpp,66,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-416\416_2a_BP.cpp,13,style,useStlAlgorithm,Consider using std::accumulate algorithm instead of a raw loop.
+CWE-434\434_3a_Bp.cpp,56,style,noExplicitConstructor,Class 'FileUploadApp' has a constructor with 1 argument that is not explicit.
+CWE-434\434_3a_Bp.cpp,84,style,knownConditionTrueFalse,Condition '!file_is_safe_type(file.filename())' is always false
+CWE-476\476_1b_BP.cpp,46,warning,uselessAssignmentPtrArg,Assignment of function parameter has no effect outside the function. Did you forget dereferencing it?
+CWE-476\476_3c_BP.cpp,9,style,cstyleCast,C-style pointer casting
+CWE-522\522_1a_BP.cpp,71,error,unknownMacro,There is an unknown macro here somewhere. Configuration is required. If HTTP_PROTOTYPE is a macro then please configure it.
+CWE-78\78_1b_BP.cpp,51,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-78\78_1c_BP.cpp,41,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-78\78_1c_BP.cpp,12,style,useStlAlgorithm,Consider using std::all_of or std::none_of algorithm instead of a raw loop.
+CWE-787\787_3b_BP.cpp,15,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-787\787_3c_BP.cpp,74,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-79\79_1a_BP.cpp,42,style,variableScope,The scope of the variable 'username' can be reduced.
+CWE-79\79_2b_BP.cpp,65,style,knownConditionTrueFalse,Condition '!is_authenticated()' is always false
+CWE-79\79_2b_BP.cpp,70,style,knownConditionTrueFalse,Condition '!is_authorized()' is always false
+CWE-79\79_2b_BP.cpp,119,style,variableScope,The scope of the variable 'name' can be reduced.
+CWE-79\79_2c_BP.cpp,46,style,useStlAlgorithm,Consider using std::replace_if algorithm instead of a raw loop.
+CWE-89\89_1b_BP.cpp,32,style,variableScope,The scope of the variable 'driver' can be reduced.

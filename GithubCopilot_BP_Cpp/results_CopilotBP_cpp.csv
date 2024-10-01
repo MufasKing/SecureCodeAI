@@ -1,0 +1,37 @@
+File, Line, Severity, Id, Summary
+CWE-119\119_2b_BP.cpp,5,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-119\119_3a_BP.cpp,23,style,knownConditionTrueFalse,Condition 'index<1' is always false
+CWE-119\119_3a_BP.cpp,23,style,knownConditionTrueFalse,Condition 'index>=argc' is always false
+CWE-119\119_3a_BP.cpp,5,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-119\119_3b_BP.cpp,6,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-119\119_3c_BP.cpp,5,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-190\190_1a_BP.cpp,7,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-190\190_1c_BP.cpp,21,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-306\306_3a_BP.cpp,81,style,variableScope,The scope of the variable 'oldEmail' can be reduced.
+CWE-306\306_3a_BP.cpp,81,style,variableScope,The scope of the variable 'newEmail' can be reduced.
+CWE-306\306_3a_BP.cpp,81,style,variableScope,The scope of the variable 'confirmPassword' can be reduced.
+CWE-306\306_3b_BP.cpp,78,style,variableScope,The scope of the variable 'email' can be reduced.
+CWE-306\306_3b_BP.cpp,78,style,variableScope,The scope of the variable 'password' can be reduced.
+CWE-306\306_3b_BP.cpp,78,style,variableScope,The scope of the variable 'newEmail' can be reduced.
+CWE-306\306_3b_BP.cpp,78,style,variableScope,The scope of the variable 'confirmPassword' can be reduced.
+CWE-416\416_1b_BP.cpp,5,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-434\434_3a_BP.cpp,50,style,knownConditionTrueFalse,Condition '!has_permission(user)' is always false
+CWE-434\434_3a_BP.cpp,58,style,knownConditionTrueFalse,Condition '!file_is_safe_type(file_name)' is always false
+CWE-502\502_1b_BP.cpp,19,style,constVariableReference,Variable 'c' can be declared as reference to const
+CWE-502\502_1b_BP.cpp,20,style,useStlAlgorithm,Consider using std::any_of algorithm instead of a raw loop.
+CWE-78\78_1b_BP.cpp,13,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-78\78_1c_BP.cpp,21,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-787\787_2c_BP.cpp,8,style,cstyleCast,C-style pointer casting
+CWE-787\787_2c_BP.cpp,9,style,cstyleCast,C-style pointer casting
+CWE-787\787_3b_BP.cpp,6,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-787\787_3c_BP.cpp,12,style,constParameter,Parameter 'argv' can be declared as const array
+CWE-89\89_1b_BP.cpp,49,style,cstyleCast,C-style pointer casting
+CWE-89\89_1b_BP.cpp,66,style,cstyleCast,C-style pointer casting
+CWE-89\89_1b_BP.cpp,98,style,cstyleCast,C-style pointer casting
+CWE-89\89_1c_BP.cpp,31,style,cstyleCast,C-style pointer casting
+CWE-89\89_2b_BP.cpp,74,style,cstyleCast,C-style pointer casting
+CWE-89\89_2b_BP.cpp,78,style,cstyleCast,C-style pointer casting
+CWE-89\89_2b_BP.cpp,82,style,cstyleCast,C-style pointer casting
+CWE-89\89_3b_BP.cpp,52,style,cstyleCast,C-style pointer casting
+CWE-89\89_3b_BP.cpp,56,style,cstyleCast,C-style pointer casting
+CWE-89\89_3b_BP.cpp,79,style,constVariablePointer,Variable 'prepare_meta_result' can be declared as pointer to const
