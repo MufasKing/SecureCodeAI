@@ -1,0 +1,1294 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Bandit",
+          "organization": "PyCQA",
+          "rules": [
+            {
+              "id": "B105",
+              "name": "hardcoded_password_string",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-259"
+                ],
+                "precision": "medium"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b105_hardcoded_password_string.html"
+            },
+            {
+              "id": "B201",
+              "name": "flask_debug_true",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-94"
+                ],
+                "precision": "medium"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b201_flask_debug_true.html"
+            },
+            {
+              "id": "B104",
+              "name": "hardcoded_bind_all_interfaces",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-605"
+                ],
+                "precision": "medium"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b104_hardcoded_bind_all_interfaces.html"
+            },
+            {
+              "id": "B404",
+              "name": "blacklist",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-78"
+                ],
+                "precision": "high"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/blacklists/blacklist_imports.html#b404-import-subprocess"
+            },
+            {
+              "id": "B603",
+              "name": "subprocess_without_shell_equals_true",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-78"
+                ],
+                "precision": "high"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b603_subprocess_without_shell_equals_true.html"
+            },
+            {
+              "id": "B602",
+              "name": "subprocess_popen_with_shell_equals_true",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-78"
+                ],
+                "precision": "high"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.7.9/plugins/b602_subprocess_popen_with_shell_equals_true.html"
+            }
+          ],
+          "version": "1.7.9",
+          "semanticVersion": "1.7.9"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2024-07-23T16:42:00Z",
+          "toolConfigurationNotifications": [
+            {
+              "message": {
+                "text": "syntax error while parsing AST from file"
+              },
+              "level": "error",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/89_N.py"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "metrics": {
+          "_totals": {
+            "loc": 1159,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "SEVERITY.LOW": 8,
+            "CONFIDENCE.LOW": 0,
+            "SEVERITY.MEDIUM": 1,
+            "CONFIDENCE.MEDIUM": 15,
+            "SEVERITY.HIGH": 10,
+            "CONFIDENCE.HIGH": 4
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\119_D.py": {
+            "loc": 21,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\119_N.py": {
+            "loc": 35,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\125_D.py": {
+            "loc": 18,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\125_N.py": {
+            "loc": 30,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\190_D.py": {
+            "loc": 24,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\190_N.py": {
+            "loc": 48,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\200_D.py": {
+            "loc": 56,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 2,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\200_N.py": {
+            "loc": 55,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\20_D.py": {
+            "loc": 21,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\20_N.py": {
+            "loc": 15,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\22_D.py": {
+            "loc": 33,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\22_N.py": {
+            "loc": 26,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\306_D.py": {
+            "loc": 84,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 2,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\306_N.py": {
+            "loc": 35,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\416_D.py": {
+            "loc": 21,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\416_N.py": {
+            "loc": 7,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\434_D.py": {
+            "loc": 26,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\434_N.py": {
+            "loc": 28,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 1,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\476_D.py": {
+            "loc": 28,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\476_N.py": {
+            "loc": 20,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\502_D.py": {
+            "loc": 28,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\502_N.py": {
+            "loc": 42,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\522_D.py": {
+            "loc": 33,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\522_N.py": {
+            "loc": 32,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\732_D.py": {
+            "loc": 23,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\732_N.py": {
+            "loc": 33,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\787_D.py": {
+            "loc": 10,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\787_N.py": {
+            "loc": 19,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\78_D.py": {
+            "loc": 31,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 2,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 2
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\78_N.py": {
+            "loc": 15,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 2
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\798_D.py": {
+            "loc": 31,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\798_N.py": {
+            "loc": 46,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\79_D.py": {
+            "loc": 20,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\79_N.py": {
+            "loc": 20,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\89_D.py": {
+            "loc": 59,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 2,
+            "CONFIDENCE.HIGH": 0
+          },
+          "C:\\Users\\tonyb\\OneDrive\\Desktop\\GemmaSecureCode\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\89_N.py": {
+            "loc": 86,
+            "nosec": 0,
+            "skipped_tests": 0
+          }
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'your_secure_secret_key_here'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "app.config['SECRET_KEY'] = 'your_secure_secret_key_here'\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 10,
+                  "startColumn": 12,
+                  "startLine": 10
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/200_D.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "# Secure Secret Key\napp.config['SECRET_KEY'] = 'your_secure_secret_key_here'\napp.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'\n"
+                  },
+                  "endLine": 11,
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(debug=True)\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 83,
+                  "startColumn": 5,
+                  "startLine": 83
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/200_D.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    db.create_all()\n    app.run(debug=True)\n"
+                  },
+                  "endLine": 83,
+                  "startLine": 82
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B201",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'your_secure_secret_key_here'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "app.config['SECRET_KEY'] = 'your_secure_secret_key_here'\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 12,
+                  "startColumn": 12,
+                  "startLine": 12
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/200_N.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "# Secure Secret Key\napp.config['SECRET_KEY'] = 'your_secure_secret_key_here'\napp.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'\n"
+                  },
+                  "endLine": 13,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(debug=True)\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 43,
+                  "startColumn": 5,
+                  "startLine": 43
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/20_D.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    # Run the Flask app\n    app.run(debug=True)\n"
+                  },
+                  "endLine": 43,
+                  "startLine": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B201",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(debug=True)\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 30,
+                  "startColumn": 5,
+                  "startLine": 30
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/20_N.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "if __name__ == '__main__':\n    app.run(debug=True)\n"
+                  },
+                  "endLine": 30,
+                  "startLine": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B201",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'your_secure_secret_key_here'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "app.config['SECRET_KEY'] = 'your_secure_secret_key_here'\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 13,
+                  "startColumn": 12,
+                  "startLine": 13
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/306_D.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "# Secure Secret Key\napp.config['SECRET_KEY'] = 'your_secure_secret_key_here'\n\n"
+                  },
+                  "endLine": 14,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(debug=True)\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 113,
+                  "startColumn": 5,
+                  "startLine": 113
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/306_D.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "if __name__ == '__main__':\n    app.run(debug=True)\n"
+                  },
+                  "endLine": 113,
+                  "startLine": 112
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B201",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(debug=True)\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 51,
+                  "startColumn": 5,
+                  "startLine": 51
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/306_N.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "if __name__ == '__main__':\n    app.run(debug=True)\n"
+                  },
+                  "endLine": 51,
+                  "startLine": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B201",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(host='0.0.0.0', port=5000, ssl_context=('cert.pem', 'key.pem'))\n"
+                  },
+                  "endColumn": 27,
+                  "endLine": 51,
+                  "startColumn": 18,
+                  "startLine": 51
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/434_N.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    # Ensure the Flask app runs under an HTTPS server\n    app.run(host='0.0.0.0', port=5000, ssl_context=('cert.pem', 'key.pem'))\n"
+                  },
+                  "endLine": 51,
+                  "startLine": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B104",
+          "ruleIndex": 2
+        },
+        {
+          "message": {
+            "text": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(debug=True)\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 41,
+                  "startColumn": 5,
+                  "startLine": 41
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/502_D.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    # Run the Flask app\n    app.run(debug=True)\n"
+                  },
+                  "endLine": 41,
+                  "startLine": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B201",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(debug=True)\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 61,
+                  "startColumn": 5,
+                  "startLine": 61
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/502_N.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    app = create_app('app')\n    app.run(debug=True)\n"
+                  },
+                  "endLine": 61,
+                  "startLine": 60
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B201",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible hardcoded password: '^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])[\\w@#$%^&+=]{8,}$'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "PASSWORD_PATTERN = r'^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])[\\w@#$%^&+=]{8,}$'\n"
+                  },
+                  "endColumn": 87,
+                  "endLine": 9,
+                  "startColumn": 20,
+                  "startLine": 9
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/522_N.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "# Define a regular expression pattern to validate passwords\nPASSWORD_PATTERN = r'^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])[\\w@#$%^&+=]{8,}$'\n\n"
+                  },
+                  "endLine": 10,
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Consider possible security implications associated with the subprocess module."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "import subprocess\n"
+                  },
+                  "endColumn": 18,
+                  "endLine": 1,
+                  "startColumn": 1,
+                  "startLine": 1
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/78_D.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "import subprocess\nimport shlex\n\n"
+                  },
+                  "endLine": 3,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B404",
+          "ruleIndex": 3
+        },
+        {
+          "message": {
+            "text": "subprocess call - check for execution of untrusted input."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "        process = subprocess.Popen(safe_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)\n"
+                  },
+                  "endColumn": 108,
+                  "endLine": 20,
+                  "startColumn": 19,
+                  "startLine": 20
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/78_D.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "        # Execute the command securely using subprocess module\n        process = subprocess.Popen(safe_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)\n        output, error = process.communicate()\n"
+                  },
+                  "endLine": 21,
+                  "startLine": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B603",
+          "ruleIndex": 4
+        },
+        {
+          "message": {
+            "text": "Consider possible security implications associated with the subprocess module."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "import subprocess\n"
+                  },
+                  "endColumn": 18,
+                  "endLine": 1,
+                  "startColumn": 1,
+                  "startLine": 1
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/78_N.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "import subprocess\nimport shlex\n\n"
+                  },
+                  "endLine": 3,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B404",
+          "ruleIndex": 3
+        },
+        {
+          "message": {
+            "text": "subprocess call with shell=True identified, security issue."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "        result = subprocess.run(command, shell=True, check=True, text=True, capture_output=True)\n"
+                  },
+                  "endColumn": 97,
+                  "endLine": 17,
+                  "startColumn": 18,
+                  "startLine": 17
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/78_N.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "        # Execute the command using subprocess.run()\n        result = subprocess.run(command, shell=True, check=True, text=True, capture_output=True)\n        print(result.stdout)\n"
+                  },
+                  "endLine": 18,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B602",
+          "ruleIndex": 5
+        },
+        {
+          "message": {
+            "text": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(debug=True)\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 36,
+                  "startColumn": 5,
+                  "startLine": 36
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/79_D.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "if __name__ == '__main__':\n    app.run(debug=True)\n"
+                  },
+                  "endLine": 36,
+                  "startLine": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B201",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'your_secure_secret_key_here'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "app.config['SECRET_KEY'] = 'your_secure_secret_key_here'\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 11,
+                  "startColumn": 12,
+                  "startLine": 11
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/89_D.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "# Secure Secret Key\napp.config['SECRET_KEY'] = 'your_secure_secret_key_here'\napp.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///stocks.db'\n"
+                  },
+                  "endLine": 12,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(debug=True)\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 83,
+                  "startColumn": 5,
+                  "startLine": 83
+                },
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/tonyb/OneDrive/Desktop/GemmaSecureCode/sonar-scanner-6.1.0.4477-windows-x64/bin/89_D.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "if __name__ == '__main__':\n    app.run(debug=True)\n"
+                  },
+                  "endLine": 83,
+                  "startLine": 82
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B201",
+          "ruleIndex": 1
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json"
+}
