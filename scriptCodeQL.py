@@ -3,7 +3,7 @@ import subprocess
 import re
 
 # Definisci la cartella principale
-base_dir = "GithubCopilotCPP"
+base_dir = "GitHubCopilot_BP_Java"
 
 # Funzione per eseguire i comandi
 def execute_commands_in_directory(directory, folder_name):
@@ -12,9 +12,9 @@ def execute_commands_in_directory(directory, folder_name):
     
     # Comandi da eseguire (il terzo comando usa il nome della cartella per il file SARIF)
     commands = [
-        'codeql database create cpp-db --language=cpp --command="g++ -c $(ls *.cpp)"',
-        "codeql database finalize cpp-db",
-        f"codeql database analyze cpp-db /Users/stefano/Desktop/codeql/cpp/ql/src/codeql-suites/cpp-security-and-quality.qls --format=sarifv2.1.0 --output={folder_name}_CodeQL_GC_CPP.sarif"
+        'codeql database create my-java-database --language=java',
+        'codeql database create my-java-database --language=java --source-root=<GitHubCopilot_BP_Java>'
+        f"codeql database analyze my-java-database /Users/stefano/Desktop/codeql/java/ql/src/codeql-suites/java-security-and-quality.qls --format=sarifv2.1.0 --output={folder_name}_CodeQL.sarif"
     ]
     
     # Esegui ogni comando
