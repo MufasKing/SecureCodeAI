@@ -1,2 +1,0 @@
-righe 1-9 = 190
-inizia da riga 10
