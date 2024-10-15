@@ -1,4 +1,4 @@
-package GitHubCopilot_BP_Java.CWE-78;
+package GitHubCopilot_BP_Java.CWE_78;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
