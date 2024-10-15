@@ -1,4 +1,4 @@
-package GitHubCopilot_BP_Java.CWE-732;
+package GitHubCopilot_BP_Java.CWE_732;
 
 import java.io.IOException;
 import java.nio.file.*;

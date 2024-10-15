@@ -1,4 +1,4 @@
-package GitHubCopilot_BP_Java.CWE-798;
+package GitHubCopilot_BP_Java.CWE_798;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

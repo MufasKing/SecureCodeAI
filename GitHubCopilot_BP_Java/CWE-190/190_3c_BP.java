@@ -1,4 +1,4 @@
-public class ddd {
+public class main {
     public static void main(String[] args) {
         // Declare a variable called totalSales
         double totalSales = 0.0;

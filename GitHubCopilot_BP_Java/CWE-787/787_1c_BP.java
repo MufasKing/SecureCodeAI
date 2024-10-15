@@ -1,4 +1,4 @@
-package GitHubCopilot_BP_Java.CWE-787;
+package GitHubCopilot_BP_Java.CWE_787;
 
 import java.util.Random;
 

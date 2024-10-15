@@ -1,4 +1,4 @@
-package GitHubCopilot_BP_Java.CWE-476;
+package GitHubCopilot_BP_Java.CWE_476;
 
 import java.util.Scanner;
 

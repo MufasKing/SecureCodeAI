@@ -1,4 +1,4 @@
-package GitHubCopilot_BP_Java.CWE-119;
+package GitHubCopilot_BP_Java.CWE_119;
 
 public class Main {
     public static void main(String[] args) {

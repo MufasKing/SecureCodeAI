@@ -1,4 +1,4 @@
-package GitHubCopilot_BP_Java.CWE-502;
+package GitHubCopilot_BP_Java.CWE_502;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package GitHubCopilot_BP_Java.CWE-502;
+package GitHubCopilot_BP_Java.CWE_502;
 
 import spark.Request;
 import spark.Response;

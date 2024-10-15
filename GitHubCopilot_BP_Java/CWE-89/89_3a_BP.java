@@ -1,4 +1,4 @@
-package GitHubCopilot_BP_Java.CWE-89;
+package GitHubCopilot_BP_Java.CWE_89;
 
 import java.io.IOException;
 import java.sql.Connection;

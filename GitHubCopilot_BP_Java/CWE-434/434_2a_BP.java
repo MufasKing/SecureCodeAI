@@ -1,4 +1,4 @@
-package GitHubCopilot_BP_Java.CWE-434;
+package GitHubCopilot_BP_Java.CWE_434;
 
 import java.io.File;
 import java.io.FileInputStream;
