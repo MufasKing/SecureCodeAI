@@ -1,4 +1,4 @@
-package GitHubCopilot_BP_Java.CWE-22;
+package GitHubCopilot_BP_Java.CWE_22;
 
 import java.io.File;
 import java.io.IOException;
