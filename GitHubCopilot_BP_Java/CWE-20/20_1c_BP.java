@@ -1,4 +1,4 @@
-package GitHubCopilot_BP_Java.CWE-20;
+package GitHubCopilot_BP_Java.CWE_20;
 
 import java.io.IOException;
 import java.util.regex.Pattern;

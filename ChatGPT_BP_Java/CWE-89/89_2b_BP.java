@@ -15,7 +15,7 @@ public class BuyStockServlet extends HttpServlet {
     public void init() throws ServletException {
         // Initialize the data source for database connection
         // This would usually be done via JNDI or some dependency injection mechanism.
-        dataSource = // Obtain your data source here.
+        //dataSource = // Obtain your data source here.
     }
 
     @Override
