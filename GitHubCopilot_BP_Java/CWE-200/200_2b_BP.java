@@ -1,11 +1,94 @@
-// User.java
-public class User {
+import java.sql.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.IOException;
+
+public class LoginServlet extends HttpServlet {
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/yourdb";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "password";
+    private static final int MAX_ATTEMPTS = 5;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        if (validateInput(username, password)) {
+            try {
+                User user = getUserFromDatabase(username);
+                if (user != null && checkPassword(password, user.getPasswordHash())) {
+                    if (user.getFailedAttempts() < MAX_ATTEMPTS) {
+                        resetFailedAttempts(user);
+                        HttpSession session = request.getSession();
+                        session.setAttribute("user", user);
+                        response.sendRedirect("dashboard.jsp");
+                    } else {
+                        response.sendRedirect("account_locked.jsp");
+                    }
+                } else {
+                    incrementFailedAttempts(user);
+                    response.sendRedirect("login.jsp?error=invalid");
+                }
+            } catch (SQLException | NoSuchAlgorithmException e) {
+                e.printStackTrace();
+                response.sendRedirect("login.jsp?error=server");
+            }
+        } else {
+            response.sendRedirect("login.jsp?error=validation");
+        }
+    }
+
+    private boolean validateInput(String username, String password) {
+        return username != null && !username.isEmpty() && password != null && !password.isEmpty();
+    }
+
+    private User getUserFromDatabase(String username) throws SQLException {
+        Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE username = ?");
+        stmt.setString(1, username);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            return new User(rs.getString("username"), rs.getString("password_hash"), rs.getInt("failed_attempts"));
+        }
+        return null;
+    }
+
+    private boolean checkPassword(String password, String storedHash) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] hash = md.digest(password.getBytes());
+        StringBuilder sb = new StringBuilder();
+        for (byte b : hash) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString().equals(storedHash);
+    }
+
+    private void incrementFailedAttempts(User user) throws SQLException {
+        Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+        PreparedStatement stmt = conn.prepareStatement("UPDATE users SET failed_attempts = failed_attempts + 1 WHERE username = ?");
+        stmt.setString(1, user.getUsername());
+        stmt.executeUpdate();
+    }
+
+    private void resetFailedAttempts(User user) throws SQLException {
+        Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+        PreparedStatement stmt = conn.prepareStatement("UPDATE users SET failed_attempts = 0 WHERE username = ?");
+        stmt.setString(1, user.getUsername());
+        stmt.executeUpdate();
+    }
+}
+
+class User {
     private String username;
     private String passwordHash;
+    private int failedAttempts;
 
-    public User(String username, String passwordHash) {
+    public User(String username, String passwordHash, int failedAttempts) {
         this.username = username;
         this.passwordHash = passwordHash;
+        this.failedAttempts = failedAttempts;
     }
 
     public String getUsername() {
@@ -15,97 +98,8 @@ public class User {
     public String getPasswordHash() {
         return passwordHash;
     }
-}
 
-// Database.java
-import java.util.HashMap;
-import java.util.Map;
-
-public class Database {
-    private static Map<String, User> users = new HashMap<>();
-
-    static {
-        // Example user
-        users.put("user1", new User("user1", BCrypt.hashpw("password", BCrypt.gensalt())));
-    }
-
-    public static User getUserByUsername(String username) {
-        return users.get(username);
-    }
-}
-
-// LoginService.java
-import org.mindrot.jbcrypt.BCrypt;
-
-public class LoginService {
-    private static final int MAX_ATTEMPTS = 5;
-    private static Map<String, Integer> loginAttempts = new HashMap<>();
-
-    public static boolean login(String username, String password) {
-        User user = Database.getUserByUsername(username);
-        if (user == null) {
-            return false;
-        }
-
-        if (loginAttempts.getOrDefault(username, 0) >= MAX_ATTEMPTS) {
-            return false; // Account locked
-        }
-
-        if (BCrypt.checkpw(password, user.getPasswordHash())) {
-            loginAttempts.put(username, 0); // Reset attempts on successful login
-            return true;
-        } else {
-            loginAttempts.put(username, loginAttempts.getOrDefault(username, 0) + 1);
-            return false;
-        }
-    }
-}
-
-// SessionManager.java
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-public class SessionManager {
-    public static void createSession(HttpServletRequest request, User user) {
-        HttpSession session = request.getSession(true);
-        session.setAttribute("user", user);
-    }
-
-    public static void invalidateSession(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
-        }
-    }
-}
-
-// LoginController.java
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
-public class LoginController extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        if (username == null || password == null || !isValidInput(username, password)) {
-            response.sendRedirect("login.jsp?error=Invalid input");
-            return;
-        }
-
-        if (LoginService.login(username, password)) {
-            User user = Database.getUserByUsername(username);
-            SessionManager.createSession(request, user);
-            response.sendRedirect("dashboard.jsp");
-        } else {
-            response.sendRedirect("login.jsp?error=Invalid username or password");
-        }
-    }
-
-    private boolean isValidInput(String username, String password) {
-        return username.matches("[a-zA-Z0-9_]+") && password.length() >= 8;
+    public int getFailedAttempts() {
+        return failedAttempts;
     }
 }

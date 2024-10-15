@@ -1,79 +1,47 @@
-// LoginServlet.java
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.IOException;
-
-public class LoginServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        if (!InputValidator.isValid(username) || !InputValidator.isValid(password)) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid input");
-            return;
-        }
-
-        if (RateLimiter.isRateLimited(request.getRemoteAddr())) {
-            response.sendError(HttpServletResponse.SC_TOO_MANY_REQUESTS, "Too many attempts");
-            return;
-        }
-
-        String hashedPassword = PasswordHasher.hash(password);
-        if (UserStore.isValidUser(username, hashedPassword)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("username", username);
-            response.sendRedirect("session");
-        } else {
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid username or password");
-        }
-    }
-}
-
-// SessionServlet.java
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.IOException;
-
-public class SessionServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("username") == null) {
-            response.sendRedirect("login.html");
-            return;
-        }
-
-        response.setContentType("text/html");
-        response.getWriter().println("Welcome, " + session.getAttribute("username"));
-    }
-}
-
-// LogoutServlet.java
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.IOException;
-
-public class LogoutServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
-        }
-        response.sendRedirect("login.html");
-    }
-}
-
-// PasswordHasher.java
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class PasswordHasher {
-    public static String hash(String password) {
+class User {
+    private String username;
+    private String hashedPassword;
+
+    public User(String username, String hashedPassword) {
+        this.username = username;
+        this.hashedPassword = hashedPassword;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getHashedPassword() {
+        return hashedPassword;
+    }
+}
+
+class LoginService {
+    private Map<String, User> users = new HashMap<>();
+
+    public LoginService() {
+        // Predefined user for demonstration
+        users.put("user1", new User("user1", hashPassword("password123")));
+    }
+
+    public boolean validateUser(String username, String password) {
+        User user = users.get(username);
+        if (user != null) {
+            return user.getHashedPassword().equals(hashPassword(password));
+        }
+        return false;
+    }
+
+    private String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] hash = md.digest(password.getBytes());
@@ -88,72 +56,112 @@ public class PasswordHasher {
     }
 }
 
-// InputValidator.java
-public class InputValidator {
-    public static boolean isValid(String input) {
-        return input != null && input.matches("[a-zA-Z0-9_]+");
+class SessionManager {
+    private Map<String, HttpSession> sessions = new HashMap<>();
+
+    public void createSession(HttpServletRequest request, String username) {
+        HttpSession session = request.getSession(true);
+        session.setAttribute("username", username);
+        sessions.put(session.getId(), session);
     }
-}
 
-// RateLimiter.java
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
-
-public class RateLimiter {
-    private static final ConcurrentHashMap<String, Long> attempts = new ConcurrentHashMap<>();
-
-    public static boolean isRateLimited(String ip) {
-        long currentTime = System.currentTimeMillis();
-        attempts.putIfAbsent(ip, currentTime);
-        long lastAttemptTime = attempts.get(ip);
-
-        if (currentTime - lastAttemptTime < TimeUnit.MINUTES.toMillis(1)) {
-            return true;
-        } else {
-            attempts.put(ip, currentTime);
-            return false;
+    public void invalidateSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            sessions.remove(session.getId());
+            session.invalidate();
         }
     }
+
+    public boolean isAuthenticated(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        return session != null && sessions.containsKey(session.getId());
+    }
 }
 
-// CSRFTokenManager.java
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.UUID;
+class RateLimiter {
+    private Map<String, Integer> attempts = new HashMap<>();
+    private static final int MAX_ATTEMPTS = 5;
 
-public class CSRFTokenManager {
-    public static String generateToken(HttpSession session) {
+    public boolean isAllowed(String ip) {
+        int attemptCount = attempts.getOrDefault(ip, 0);
+        if (attemptCount >= MAX_ATTEMPTS) {
+            return false;
+        }
+        attempts.put(ip, attemptCount + 1);
+        return true;
+    }
+
+    public void resetAttempts(String ip) {
+        attempts.remove(ip);
+    }
+}
+
+class CSRFTokenManager {
+    private Map<String, String> tokens = new HashMap<>();
+
+    public String generateToken(HttpSession session) {
         String token = UUID.randomUUID().toString();
-        session.setAttribute("csrfToken", token);
+        tokens.put(session.getId(), token);
         return token;
     }
 
-    public static boolean validateToken(HttpServletRequest request) {
-        String token = request.getParameter("csrfToken");
-        HttpSession session = request.getSession(false);
-        if (session == null) {
-            return false;
-        }
-        String sessionToken = (String) session.getAttribute("csrfToken");
-        return token != null && token.equals(sessionToken);
+    public boolean validateToken(HttpSession session, String token) {
+        return token != null && token.equals(tokens.get(session.getId()));
     }
 }
 
-// SecureHeadersFilter.java
-import javax.servlet.*;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+class LoginController {
+    private LoginService loginService = new LoginService();
+    private SessionManager sessionManager = new SessionManager();
+    private RateLimiter rateLimiter = new RateLimiter();
+    private CSRFTokenManager csrfTokenManager = new CSRFTokenManager();
 
-public class SecureHeadersFilter implements Filter {
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
-        httpResponse.setHeader("X-Content-Type-Options", "nosniff");
-        httpResponse.setHeader("X-Frame-Options", "DENY");
-        httpResponse.setHeader("X-XSS-Protection", "1; mode=block");
-        chain.doFilter(request, response);
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String ip = request.getRemoteAddr();
+        if (!rateLimiter.isAllowed(ip)) {
+            response.sendError(HttpServletResponse.SC_TOO_MANY_REQUESTS, "Too many login attempts");
+            return;
+        }
+
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        if (username == null || password == null || !username.matches("\\w+") || !password.matches("\\w+")) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid input");
+            return;
+        }
+
+        if (loginService.validateUser(username, password)) {
+            sessionManager.createSession(request, username);
+            rateLimiter.resetAttempts(ip);
+            response.setHeader("Location", "/session");
+            response.setStatus(HttpServletResponse.SC_FOUND);
+        } else {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Incorrect username or password");
+        }
     }
 
-    public void init(FilterConfig filterConfig) throws ServletException {}
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (sessionManager.isAuthenticated(request)) {
+            String csrfToken = csrfTokenManager.generateToken(request.getSession());
+            response.setHeader("X-CSRF-Token", csrfToken);
+            response.getWriter().write("Welcome to the session page");
+        } else {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Please log in first");
+        }
+    }
 
-    public void destroy() {}
+    public void doLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        sessionManager.invalidateSession(request);
+        response.setHeader("Location", "/login");
+        response.setStatus(HttpServletResponse.SC_FOUND);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // This is a placeholder for the main method.
+        // In a real application, you would set up your web server and route requests to the LoginController.
+    }
 }
