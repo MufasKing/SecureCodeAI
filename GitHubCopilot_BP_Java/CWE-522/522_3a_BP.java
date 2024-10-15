@@ -1,10 +1,5 @@
 package GitHubCopilot_BP_Java.CWE_522;
 
-public class main {
-    
-}
-package GitHubCopilot_BP_Java.CWE_522;
-
 import java.sql.*;
 import java.security.SecureRandom;
 import java.util.regex.Pattern;
